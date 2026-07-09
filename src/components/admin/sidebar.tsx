@@ -32,17 +32,21 @@ export function Sidebar() {
   const { signOut } = useAuthActions();
 
   return (
-    <aside className="flex w-64 flex-col border-r border-border/20 bg-near-black">
+    <aside
+      className="flex w-64 flex-col border-r border-border/20 bg-near-black"
+      aria-label="Admin navigation"
+    >
       <div className="flex h-16 items-center border-b border-border/20 px-6">
         <Link
           href="/admin/dashboard"
           className="font-sans text-lg font-medium tracking-tight text-almost-white"
+          aria-label="Dashboard home"
         >
           Agency
         </Link>
       </div>
 
-      <nav className="flex-1 space-y-1 px-3 py-4">
+      <nav className="flex-1 space-y-1 px-3 py-4" aria-label="Main menu">
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon;
           const isActive = pathname === item.href || pathname.startsWith(item.href + "/");

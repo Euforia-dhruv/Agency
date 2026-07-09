@@ -7,6 +7,7 @@ import { FeaturedWork } from "@/components/marketing/featured-work";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { FAQSection } from "@/components/marketing/faq-section";
 import { CTASection } from "@/components/marketing/cta-section";
+import { FeaturedProjects } from "@/components/marketing/featured-projects";
 
 export default async function HomePage() {
   const [projects, testimonials, faqs, clients] = await Promise.all([
@@ -25,6 +26,8 @@ export default async function HomePage() {
       <AgencyStats />
 
       <FeaturedWork projects={projects} />
+
+      <FeaturedProjects />
 
       <TestimonialsSection testimonials={testimonials} />
 

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface TrustLogo {
   _id: string;
   companyName: string;
@@ -24,9 +26,11 @@ export function TrustLogos({ logos }: TrustLogosProps) {
               className="flex items-center gap-3 font-sans text-sm text-ash transition-colors hover:text-almost-white"
             >
               {client.logo ? (
-                <img
+                <Image
                   src={client.logo}
                   alt={client.companyName}
+                  width={32}
+                  height={32}
                   className="h-8 w-auto object-contain opacity-50 grayscale transition-all hover:opacity-80 hover:grayscale-0"
                 />
               ) : (

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Lora } from "next/font/google";
+import { Suspense } from "react";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/lib/convex/provider";
+import { AnalyticsScript, PageViewTracker } from "@/components/analytics";
 import "./globals.css";
 
 export const dynamic = "force-dynamic";
@@ -41,8 +43,20 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} ${lora.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-signal-violet focus:px-4 focus:py-2 focus:text-sm focus:text-almost-white"
+        >
+          Skip to content
+        </a>
+        <AnalyticsScript />
         <ConvexAuthNextjsServerProvider>
-          <ConvexClientProvider>{children}</ConvexClientProvider>
+          <ConvexClientProvider>
+            {children}
+            <Suspense fallback={null}>
+              <PageViewTracker />
+            </Suspense>
+          </ConvexClientProvider>
         </ConvexAuthNextjsServerProvider>
       </body>
     </html>
