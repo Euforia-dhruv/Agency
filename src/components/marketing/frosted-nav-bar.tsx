@@ -6,7 +6,19 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
-export function FrostedNavBar() {
+interface FrostedNavBarProps {
+  brand?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  links?: readonly { label: string; href: string }[];
+}
+
+export function FrostedNavBar({
+  brand = SITE_NAME,
+  ctaLabel = "Book a Demo",
+  ctaHref = "/contact",
+  links = NAV_LINKS,
+}: FrostedNavBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
 
@@ -17,11 +29,11 @@ export function FrostedNavBar() {
     >
       <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-8 px-6">
         <Link href="/" className="font-sans text-lg font-medium tracking-tight text-almost-white">
-          {SITE_NAME}
+          {brand}
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
+          {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -35,10 +47,10 @@ export function FrostedNavBar() {
 
         <div className="hidden items-center gap-4 md:flex md:ml-auto">
           <Link
-            href="/contact"
+            href={ctaHref}
             className="rounded-lg border border-almost-white bg-near-black px-4 py-2.5 font-sans text-sm font-normal text-almost-white transition-opacity hover:opacity-90"
           >
-            Book a Demo
+            {ctaLabel}
           </Link>
         </div>
 
@@ -59,7 +71,7 @@ export function FrostedNavBar() {
       {mobileOpen && (
         <nav className="border-t border-ash/50 px-6 py-4 md:hidden">
           <div className="flex flex-col gap-4">
-            {NAV_LINKS.map((link) => (
+            {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -70,11 +82,11 @@ export function FrostedNavBar() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href={ctaHref}
               className="mt-2 inline-block rounded-lg border border-almost-white bg-near-black px-4 py-2.5 text-center font-sans text-sm font-normal text-almost-white"
               onClick={() => setMobileOpen(false)}
             >
-              Book a Demo
+              {ctaLabel}
             </Link>
           </div>
         </nav>
