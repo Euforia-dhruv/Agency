@@ -1,6 +1,6 @@
 import { fetchQuery } from "convex/nextjs";
 import { api } from "@/lib/convex/api";
-import { HeroBoardingPass } from "@/components/marketing/hero-boarding-pass";
+import { HeroSection } from "@/components/marketing/hero";
 import { TrustLogos } from "@/components/marketing/trust-logos";
 import { AgencyStats } from "@/components/marketing/agency-stats";
 import { FeaturedWork } from "@/components/marketing/featured-work";
@@ -19,7 +19,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <HeroBoardingPass />
+      <HeroSection />
 
       <TrustLogos logos={clients} />
 
