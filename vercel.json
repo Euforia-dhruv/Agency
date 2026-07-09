@@ -1,3 +1,15 @@
 {
-  "buildCommand": "npx convex deploy --cmd 'npm run build'"
+  "buildCommand": "npx convex deploy --cmd 'npm run build'",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "ventriee.in"
+        }
+      ],
+      "destination": "/ventriee/$1"
+    }
+  ]
 }
