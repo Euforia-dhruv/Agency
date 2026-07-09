@@ -24,7 +24,7 @@ export function CTASection() {
             href="/contact"
             className="inline-flex items-center gap-2 rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
           >
-            Book a Discovery Call
+            Start a Project
             <span>&rarr;</span>
           </Link>
           <Link

@@ -15,7 +15,7 @@ interface FrostedNavBarProps {
 
 export function FrostedNavBar({
   brand = SITE_NAME,
-  ctaLabel = "Book a Demo",
+  ctaLabel = "Start a Project",
   ctaHref = "/contact",
   links = NAV_LINKS,
 }: FrostedNavBarProps) {

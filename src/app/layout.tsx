@@ -26,10 +26,11 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    default: "Agency",
-    template: "%s | Agency",
+    default: "VENTRIEE",
+    template: "%s | VENTRIEE",
   },
-  description: "Digital product design & development studio.",
+  description:
+    "VENTRIEE is a freelance software development agency crafting fast, scalable, and premium digital experiences.",
 };
 
 export default function RootLayout({

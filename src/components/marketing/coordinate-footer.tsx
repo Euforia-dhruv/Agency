@@ -12,7 +12,7 @@ export function CoordinateFooter() {
             className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
             aria-label="Home"
           >
-            &copy; {year} Agency
+            &copy; {year} VENTRIEE. All rights reserved.
           </Link>
           <Link
             href="/services"
@@ -34,7 +34,7 @@ export function CoordinateFooter() {
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <span className="font-sans text-xs text-iron">NYC &middot; Global</span>
+          <span className="font-sans text-xs text-iron">Freelance Software Development</span>
         </div>
       </div>
     </footer>

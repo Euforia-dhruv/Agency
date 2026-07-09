@@ -7,4 +7,4 @@ export const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const SITE_NAME = "Agency";
+export const SITE_NAME = "VENTRIEE";

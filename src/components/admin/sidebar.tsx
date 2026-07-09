@@ -42,7 +42,7 @@ export function Sidebar() {
           className="font-sans text-lg font-medium tracking-tight text-almost-white"
           aria-label="Dashboard home"
         >
-          Agency
+          VENTRIEE
         </Link>
       </div>
 
