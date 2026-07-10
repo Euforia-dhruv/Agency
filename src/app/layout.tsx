@@ -107,10 +107,7 @@ export default function RootLayout({
                 email: "ventriee.contact@gmail.com",
                 contactType: "sales",
               },
-              sameAs: [
-                "https://github.com/Euforia-dhruv",
-                // Add LinkedIn, Instagram, X URLs here
-              ],
+              sameAs: ["https://github.com/Euforia-dhruv"],
             }),
           }}
         />

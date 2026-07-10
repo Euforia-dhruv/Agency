@@ -2,10 +2,9 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 
 const socialLinks = [
-  { label: "Twitter", href: "#" },
-  { label: "GitHub", href: "#" },
+  { label: "GitHub", href: "https://github.com/Euforia-dhruv" },
   { label: "LinkedIn", href: "#" },
-  { label: "Dribbble", href: "#" },
+  { label: "Instagram", href: "#" },
 ];
 
 export function Footer() {
@@ -48,6 +47,12 @@ export function Footer() {
                 Process
               </Link>
               <Link
+                href="/blog"
+                className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
+              >
+                Blog
+              </Link>
+              <Link
                 href="/about"
                 className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
               >
@@ -77,7 +82,7 @@ export function Footer() {
                 </a>
               ))}
               <a
-                href="mailto:hello@ventriee.com"
+                href="mailto:ventriee.contact@gmail.com"
                 className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
               >
                 ventriee.contact@gmail.com

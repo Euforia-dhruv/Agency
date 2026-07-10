@@ -157,12 +157,12 @@ export function HeroSection() {
               Start Your Project
               <ArrowRight className="size-4" />
             </Link>
-            <Link
-              href="/work"
+            <a
+              href="mailto:ventriee.contact@gmail.com"
               className="inline-flex h-[52px] items-center font-sans text-[15px] font-medium text-steel transition-colors hover:text-almost-white"
             >
-              View Our Work
-            </Link>
+              Email Us Directly
+            </a>
           </motion.div>
         </motion.div>
 
