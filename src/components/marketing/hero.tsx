@@ -2,22 +2,35 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight, Check } from "lucide-react";
+
+const services = [
+  "Custom Websites",
+  "SaaS Platforms",
+  "AI Integrations",
+  "Mobile Apps",
+  "UI / UX Design",
+  "API Development",
+];
+
+const stats = [
+  { label: "Projects Delivered", value: "12+" },
+  { label: "Client Satisfaction", value: "100%" },
+];
 
 const floatingOrbs = [
-  { size: 400, x: "15%", y: "10%", delay: 0, duration: 20, opacity: 0.08 },
-  { size: 300, x: "70%", y: "20%", delay: 5, duration: 25, opacity: 0.06 },
-  { size: 250, x: "40%", y: "60%", delay: 10, duration: 18, opacity: 0.05 },
-  { size: 350, x: "80%", y: "70%", delay: 3, duration: 22, opacity: 0.04 },
+  { size: 500, x: "10%", y: "5%", delay: 0, duration: 25, opacity: 0.07 },
+  { size: 400, x: "65%", y: "15%", delay: 5, duration: 30, opacity: 0.05 },
+  { size: 300, x: "35%", y: "55%", delay: 10, duration: 22, opacity: 0.04 },
 ];
 
 export function HeroSection() {
   return (
     <section className="relative flex min-h-screen w-full items-center overflow-hidden">
       <div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-20"
         style={{
-          background:
-            "linear-gradient(180deg, #0a0a1a 0%, #1a0a2e 30%, #2d1b4e 50%, #1a0a2e 70%, #090909 100%)",
+          background: "linear-gradient(180deg, #090909 0%, #0a0a12 40%, #0c0a16 60%, #090909 100%)",
         }}
       />
 
@@ -30,11 +43,11 @@ export function HeroSection() {
             height: orb.size,
             left: orb.x,
             top: orb.y,
-            background: "radial-gradient(circle, rgba(175, 80, 255, 0.3) 0%, transparent 70%)",
+            background: `radial-gradient(circle, rgba(175, 80, 255, ${orb.opacity}) 0%, transparent 70%)`,
           }}
           animate={{
-            x: [0, 30, -20, 40, 0],
-            y: [0, -40, 20, -30, 0],
+            x: [0, 40, -30, 50, 0],
+            y: [0, -50, 30, -40, 0],
           }}
           transition={{
             duration: orb.duration,
@@ -45,7 +58,14 @@ export function HeroSection() {
         />
       ))}
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-12 px-6 pt-32 pb-24 lg:flex-row lg:items-center lg:pt-24">
+      <div
+        className="absolute inset-0 -z-10"
+        style={{
+          background: "radial-gradient(ellipse at center, transparent 0%, #090909 85%)",
+        }}
+      />
+
+      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-6 pt-[140px] pb-[100px] lg:flex-row lg:items-center lg:pt-[120px] lg:pb-[80px]">
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, y: 40 }}
@@ -53,7 +73,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.p
-            className="font-mono text-[10px] uppercase tracking-[1.8px] text-signal-violet"
+            className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -61,118 +81,117 @@ export function HeroSection() {
             VENTRIEE &mdash; Software Development Agency
           </motion.p>
 
-          <motion.span
-            className="mt-6 block font-heading text-5xl font-light italic leading-none tracking-tight sm:text-7xl lg:text-8xl"
-            style={{ fontStyle: "italic" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            We build
-          </motion.span>
-
-          <motion.h1
-            className="mt-2 font-sans text-4xl font-normal leading-tight tracking-tight sm:text-5xl lg:text-6xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            Premium Software
-          </motion.h1>
-
-          <motion.span
-            className="block font-heading text-3xl font-light italic leading-none tracking-tight sm:text-4xl lg:text-5xl"
-            style={{ fontStyle: "italic" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            For Ambitious Businesses.
-          </motion.span>
+          <div className="mt-6">
+            <motion.span
+              className="block font-heading text-5xl italic leading-[0.95] tracking-tight text-almost-white sm:text-6xl lg:text-7xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              We build
+            </motion.span>
+            <motion.h1
+              className="mt-2 font-sans text-5xl font-medium leading-[1.05] tracking-[-0.03em] text-almost-white sm:text-6xl lg:text-7xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              software that
+            </motion.h1>
+            <motion.h1
+              className="font-sans text-5xl font-medium leading-[1.05] tracking-[-0.03em] text-almost-white sm:text-6xl lg:text-7xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              businesses love to use.
+            </motion.h1>
+          </div>
 
           <motion.p
-            className="mt-6 max-w-md font-sans text-lg font-light leading-relaxed text-almost-white/70 sm:text-xl"
+            className="mt-8 max-w-lg font-sans text-lg font-light leading-relaxed text-muted-text lg:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            VENTRIEE is a freelance software development agency crafting fast, scalable, and premium
-            digital experiences for startups, creators, and businesses.
+            We design and build modern websites, SaaS platforms, AI products, mobile apps, and
+            custom software engineered for startups, creators, and growing businesses.
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-col gap-4 sm:flex-row"
+            className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
+              className="inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)]"
             >
-              Start a Project
+              Start Your Project
+              <ArrowRight className="size-4" />
             </Link>
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 font-sans text-sm text-steel transition-colors hover:text-almost-white"
+              className="inline-flex h-[52px] items-center font-sans text-[15px] font-medium text-muted-text transition-colors hover:text-almost-white"
             >
-              View Our Work &rarr;
+              View Our Work
             </Link>
           </motion.div>
         </motion.div>
 
         <motion.div
-          className="w-full shrink-0 lg:w-[420px]"
+          className="w-full shrink-0 lg:w-[400px]"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
         >
           <div
-            className="rounded-[19.2px] border p-8 backdrop-blur-[6px] sm:p-10"
+            className="rounded-[28px] p-8 backdrop-blur-[12px] sm:p-10"
             style={{
-              background: "rgba(175, 80, 255, 0.04)",
-              borderColor: "rgba(247, 249, 250, 0.15)",
+              background: "rgba(23, 23, 31, 0.5)",
+              border: "1px solid rgba(255, 255, 255, 0.06)",
+              boxShadow: "0 8px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03)",
             }}
           >
-            <div className="flex items-center gap-2">
-              <span className="font-sans text-xs font-medium uppercase tracking-[0.07em] text-signal-violet">
-                VENTRIEE
-              </span>
+            <div>
+              <p className="font-sans text-lg font-medium text-almost-white">VENTRIEE</p>
+              <p className="mt-1 font-sans text-sm text-muted-text">Software Development Agency</p>
             </div>
 
-            <div className="mt-4 border-b border-border/20 pb-4">
-              <p className="font-sans text-xs uppercase tracking-[0.05em] text-ash">Software</p>
-              <p className="font-sans text-sm font-medium text-almost-white">Development Agency</p>
-            </div>
-
-            <h3 className="mt-4 font-sans text-xl font-normal leading-tight tracking-tight text-almost-white sm:text-2xl">
-              We build custom software for clients.
-            </h3>
-
-            <ul className="mt-4 space-y-2">
-              {[
-                "Web Development",
-                "UI / UX Design",
-                "Mobile Apps",
-                "AI Integrations",
-                "API Development",
-                "Performance Optimization",
-              ].map((service) => (
-                <li key={service} className="flex items-center gap-2 font-sans text-sm text-steel">
-                  <span className="size-1.5 rounded-full bg-signal-violet" />
-                  {service}
-                </li>
+            <div className="mt-6 space-y-3">
+              {services.map((service, i) => (
+                <motion.div
+                  key={service}
+                  className="flex items-center gap-3"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: 0.8 + i * 0.08 }}
+                >
+                  <Check className="size-4 shrink-0 text-signal-violet" />
+                  <span className="font-sans text-sm text-almost-white/90">{service}</span>
+                </motion.div>
               ))}
-            </ul>
-
-            <div className="mt-6">
-              <Link
-                href="/contact"
-                className="inline-block rounded-lg border border-almost-white bg-near-black px-5 py-2.5 text-center font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
-              >
-                Get a Quote
-              </Link>
             </div>
+
+            <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/[0.06] pt-6">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-sans text-2xl font-medium text-almost-white">{stat.value}</p>
+                  <p className="mt-0.5 font-sans text-xs text-muted-text">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-4 font-sans text-xs text-muted-text">Available Worldwide</p>
+
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex h-[44px] w-full items-center justify-center gap-2 rounded-[999px] bg-signal-violet font-sans text-[14px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.3)]"
+            >
+              Let&rsquo;s Build
+              <ArrowRight className="size-4" />
+            </Link>
           </div>
         </motion.div>
       </div>

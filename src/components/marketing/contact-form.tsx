@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "convex/react";
 import { api } from "@/lib/convex/api";
 import { contactSchema, type ContactInput } from "@/lib/validators/contact";
-import { Loader2 } from "lucide-react";
+import { ArrowRight, Loader2 } from "lucide-react";
 
 export function ContactForm() {
   const [submitState, setSubmitState] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -34,9 +34,15 @@ export function ContactForm() {
 
   if (submitState === "success") {
     return (
-      <div className="rounded-[19.2px] border border-border/20 p-10 text-center">
-        <p className="font-sans text-lg text-almost-white">Message received.</p>
-        <p className="mt-2 font-sans text-sm text-steel">
+      <div
+        className="rounded-[19.2px] p-10 text-center"
+        style={{
+          background: "rgba(23, 23, 31, 0.5)",
+          border: "1px solid rgba(255, 255, 255, 0.06)",
+        }}
+      >
+        <p className="font-sans text-xl text-almost-white">Message received.</p>
+        <p className="mt-2 font-sans text-sm text-muted-text">
           We will get back to you within one business day.
         </p>
       </div>
@@ -45,59 +51,101 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <div>
-        <label htmlFor="name" className="font-sans text-sm font-medium text-foreground">
-          Name <span className="text-destructive">*</span>
-        </label>
-        <input
-          id="name"
-          {...register("name")}
-          className="mt-1 block w-full rounded-[6px] border border-input bg-transparent px-3 py-2 font-sans text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
-          placeholder="Jane Doe"
-        />
-        {errors.name && (
-          <p className="mt-1 font-sans text-xs text-destructive">{errors.name.message}</p>
-        )}
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="font-sans text-sm font-medium text-almost-white">
+            Name <span className="text-signal-violet">*</span>
+          </label>
+          <input
+            id="name"
+            {...register("name")}
+            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
+            style={{
+              background: "rgba(23, 23, 31, 0.5)",
+              borderColor: "rgba(255, 255, 255, 0.08)",
+            }}
+            placeholder="Your name"
+          />
+          {errors.name && (
+            <p className="mt-1 font-sans text-xs text-destructive">{errors.name.message}</p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="email" className="font-sans text-sm font-medium text-almost-white">
+            Email <span className="text-signal-violet">*</span>
+          </label>
+          <input
+            id="email"
+            type="email"
+            {...register("email")}
+            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
+            style={{
+              background: "rgba(23, 23, 31, 0.5)",
+              borderColor: "rgba(255, 255, 255, 0.08)",
+            }}
+            placeholder="you@company.com"
+          />
+          {errors.email && (
+            <p className="mt-1 font-sans text-xs text-destructive">{errors.email.message}</p>
+          )}
+        </div>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="company" className="font-sans text-sm font-medium text-almost-white">
+            Company
+          </label>
+          <input
+            id="company"
+            {...register("company")}
+            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
+            style={{
+              background: "rgba(23, 23, 31, 0.5)",
+              borderColor: "rgba(255, 255, 255, 0.08)",
+            }}
+            placeholder="Company name"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="budget" className="font-sans text-sm font-medium text-almost-white">
+            Budget Range
+          </label>
+          <select
+            id="budget"
+            {...register("budget")}
+            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
+            style={{
+              background: "rgba(23, 23, 31, 0.5)",
+              borderColor: "rgba(255, 255, 255, 0.08)",
+            }}
+          >
+            <option value="">Select budget</option>
+            <option value="5k-10k">$5k - $10k</option>
+            <option value="10k-25k">$10k - $25k</option>
+            <option value="25k-50k">$25k - $50k</option>
+            <option value="50k+">$50k+</option>
+            <option value="not-sure">Not sure yet</option>
+          </select>
+        </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="font-sans text-sm font-medium text-foreground">
-          Email <span className="text-destructive">*</span>
-        </label>
-        <input
-          id="email"
-          type="email"
-          {...register("email")}
-          className="mt-1 block w-full rounded-[6px] border border-input bg-transparent px-3 py-2 font-sans text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
-          placeholder="jane@example.com"
-        />
-        {errors.email && (
-          <p className="mt-1 font-sans text-xs text-destructive">{errors.email.message}</p>
-        )}
-      </div>
-
-      <div>
-        <label htmlFor="company" className="font-sans text-sm font-medium text-foreground">
-          Company
-        </label>
-        <input
-          id="company"
-          {...register("company")}
-          className="mt-1 block w-full rounded-[6px] border border-input bg-transparent px-3 py-2 font-sans text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
-          placeholder="Acme Inc."
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="font-sans text-sm font-medium text-foreground">
-          Message <span className="text-destructive">*</span>
+        <label htmlFor="message" className="font-sans text-sm font-medium text-almost-white">
+          Project Details <span className="text-signal-violet">*</span>
         </label>
         <textarea
           id="message"
           rows={5}
           {...register("message")}
-          className="mt-1 block w-full rounded-[6px] border border-input bg-transparent px-3 py-2 font-sans text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring resize-y"
-          placeholder="Tell us about your project..."
+          className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50 resize-y"
+          style={{
+            background: "rgba(23, 23, 31, 0.5)",
+            borderColor: "rgba(255, 255, 255, 0.08)",
+          }}
+          placeholder="Tell us about your project, goals, and timeline..."
         />
         {errors.message && (
           <p className="mt-1 font-sans text-xs text-destructive">{errors.message.message}</p>
@@ -107,15 +155,24 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={submitState === "loading"}
-        className="inline-flex items-center gap-2 rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm font-normal text-almost-white transition-opacity hover:opacity-90 disabled:opacity-50"
+        className="inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-signal-violet px-8 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)] disabled:opacity-50"
       >
-        {submitState === "loading" && <Loader2 className="size-4 animate-spin" />}
-        {submitState === "loading" ? "Sending..." : "Submit Inquiry"}
+        {submitState === "loading" ? (
+          <>
+            <Loader2 className="size-4 animate-spin" />
+            Sending...
+          </>
+        ) : (
+          <>
+            Start Project
+            <ArrowRight className="size-4" />
+          </>
+        )}
       </button>
 
       {submitState === "error" && (
         <p className="font-sans text-xs text-destructive">
-          Something went wrong. Please try again or email us directly.
+          Something went wrong. Please try again or email us directly at hello@ventriee.com.
         </p>
       )}
     </form>

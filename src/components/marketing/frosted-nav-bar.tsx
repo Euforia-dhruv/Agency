@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, ChevronDown } from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
@@ -74,14 +74,13 @@ interface FrostedNavBarProps {
 
 export function FrostedNavBar({
   brand = SITE_NAME,
-  ctaLabel = "Start a Project",
+  ctaLabel = "Start Project",
   ctaHref = "/contact",
   links = NAV_LINKS,
 }: FrostedNavBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
-  const menuRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
@@ -99,57 +98,68 @@ export function FrostedNavBar({
     timeoutRef.current = setTimeout(() => setServicesOpen(false), 150);
   };
 
-  const navItems = links
-    .filter((l) => l.label !== "Services")
-    .map((l) => (
-      <Link
-        key={l.href}
-        href={l.href}
-        className="font-sans text-xs font-medium uppercase tracking-[0.07em] text-graphite transition-colors hover:text-almost-white"
-        style={pathname === l.href ? { color: "var(--color-almost-white)" } : undefined}
-      >
-        {l.label}
-      </Link>
-    ));
+  const navLinks = links.filter((l) => l.label !== "Services");
+  const servicesLink = links.find((l) => l.label === "Services");
 
   return (
     <header
-      style={{ background: "rgba(51, 50, 72, 0.7)" }}
-      className="fixed top-0 right-0 left-0 z-50 backdrop-blur-[10px]"
+      className="fixed top-0 right-0 left-0 z-50 border-b border-border/8"
+      style={{ background: "rgba(9, 9, 9, 0.6)", backdropFilter: "blur(16px)" }}
     >
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-8 px-6">
-        <Link href="/" className="font-sans text-lg font-medium tracking-tight text-almost-white">
+      <div className="mx-auto flex h-[72px] max-w-[1200px] items-center gap-10 px-6">
+        <Link
+          href="/"
+          className="font-sans text-base font-medium tracking-tight text-almost-white transition-opacity hover:opacity-80"
+        >
           {brand}
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {navItems}
-          <button
-            type="button"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => setServicesOpen(!servicesOpen)}
-            className="flex items-center gap-1.5 font-sans text-xs font-medium uppercase tracking-[0.07em] text-graphite transition-colors hover:text-almost-white"
-          >
-            Services
-            <ChevronDown
-              className={`size-3 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
-            />
-          </button>
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="group relative font-sans text-[13px] font-medium text-muted-text transition-colors hover:text-almost-white"
+            >
+              {link.label}
+              <span
+                className="absolute -bottom-1.5 left-0 h-px bg-signal-violet transition-all duration-300 group-hover:w-full"
+                style={{ width: pathname === link.href ? "100%" : "0%" }}
+              />
+            </Link>
+          ))}
+
+          {servicesLink && (
+            <button
+              type="button"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={() => setServicesOpen(!servicesOpen)}
+              className="group relative flex items-center gap-1.5 font-sans text-[13px] font-medium text-muted-text transition-colors hover:text-almost-white"
+            >
+              Services
+              <ChevronDown
+                className={`size-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+              />
+              <span
+                className="absolute -bottom-1.5 left-0 h-px bg-signal-violet transition-all duration-300"
+                style={{ width: servicesOpen ? "100%" : "0%" }}
+              />
+            </button>
+          )}
         </nav>
 
-        <div className="hidden items-center gap-4 md:flex md:ml-auto">
-          <Link
-            href={ctaHref}
-            className="rounded-lg border border-almost-white bg-near-black px-4 py-2.5 font-sans text-sm font-normal text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
-          >
-            {ctaLabel}
-          </Link>
-        </div>
+        <Link
+          href={ctaHref}
+          className="ml-auto hidden items-center gap-2 rounded-[999px] bg-signal-violet px-6 py-2.5 font-sans text-[13px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.4)] md:inline-flex"
+        >
+          {ctaLabel}
+          <ArrowRight className="size-3.5" />
+        </Link>
 
         <button
           type="button"
-          className="ml-auto md:hidden"
+          className="md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
@@ -164,7 +174,6 @@ export function FrostedNavBar({
       <AnimatePresence>
         {servicesOpen && (
           <motion.div
-            ref={menuRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             initial={{ opacity: 0, y: -8 }}
@@ -211,29 +220,38 @@ export function FrostedNavBar({
         )}
       </AnimatePresence>
 
-      {mobileOpen && (
-        <nav className="border-t border-ash/50 px-6 py-4 md:hidden">
-          <div className="flex flex-col gap-4">
-            {links.map((link) => (
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.nav
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-border/10 md:hidden"
+          >
+            <div className="flex flex-col gap-1 px-6 py-4">
+              {links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-sans text-base font-medium text-muted-text transition-colors hover:text-almost-white"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.href}
-                href={link.href}
-                className="font-sans text-xs font-medium uppercase tracking-[0.07em] text-graphite transition-colors hover:text-almost-white"
+                href={ctaHref}
+                className="mt-3 inline-flex items-center gap-2 rounded-[999px] bg-signal-violet px-6 py-3 font-sans text-sm font-medium text-almost-white"
                 onClick={() => setMobileOpen(false)}
               >
-                {link.label}
+                {ctaLabel}
+                <ArrowRight className="size-4" />
               </Link>
-            ))}
-            <Link
-              href={ctaHref}
-              className="mt-2 inline-block rounded-lg border border-almost-white bg-near-black px-4 py-2.5 text-center font-sans text-sm font-normal text-almost-white"
-              onClick={() => setMobileOpen(false)}
-            >
-              {ctaLabel}
-            </Link>
-          </div>
-        </nav>
-      )}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

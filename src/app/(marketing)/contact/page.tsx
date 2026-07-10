@@ -1,22 +1,28 @@
 import type { Metadata } from "next";
-import { StampedSectionHeading } from "@/components/marketing/stamped-section-heading";
 import { ContactForm } from "@/components/marketing/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch to discuss your project.",
+  description: "Start your project with VENTRIEE.",
 };
 
 export default function ContactPage() {
   return (
-    <div className="pt-32">
+    <div className="pt-[140px]">
       <section className="mx-auto max-w-[1200px] px-6 pb-32">
-        <StampedSectionHeading>Contact</StampedSectionHeading>
-        <p className="mt-6 max-w-xl font-sans text-lg font-light leading-relaxed text-steel">
-          Tell us about your project. We will get back to you within one business day.
-        </p>
+        <div className="max-w-2xl">
+          <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
+            Get in Touch
+          </p>
+          <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+            Let&rsquo;s build something incredible.
+          </h1>
+          <p className="mt-4 font-sans text-lg text-muted-text">
+            Tell us about your project. We will get back to you within one business day.
+          </p>
+        </div>
 
-        <div className="mt-16 max-w-lg">
+        <div className="mt-16 max-w-2xl">
           <ContactForm />
         </div>
       </section>

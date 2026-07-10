@@ -15,9 +15,15 @@
   --color-signal-violet: #af50ff;
   --color-lavender-mist: #e1bdff;
 
+  --color-surface: #111118;
+  --color-surface-card: #17171f;
+  --color-hover-violet: #8b5cf6;
+  --color-muted-text: #a1a1aa;
+
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
-  --font-heading: var(--font-lora);
+  --font-heading: var(--font-instrument-serif);
+  --font-display: var(--font-instrument-serif);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -58,6 +64,8 @@
   --radius-2xl: 99px;
   --radius-3xl: 10000px;
   --radius-4xl: 10.8px;
+  --radius-pill: 999px;
+  --radius-glass: 28px;
 
   --spacing-4: 4px;
   --spacing-8: 8px;
@@ -153,8 +161,30 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   html {
     @apply font-sans;
   }
+  ::selection {
+    background: rgba(175, 80, 255, 0.25);
+    color: #f7f9fa;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #090909;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(175, 80, 255, 0.2);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(175, 80, 255, 0.4);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }
