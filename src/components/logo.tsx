@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 interface LogoProps {
   size?: "sm" | "md" | "lg" | number;
   className?: string;
-  monochrome?: boolean;
 }
 
 const sizeClasses = {
@@ -12,35 +11,20 @@ const sizeClasses = {
   lg: "text-4xl",
 };
 
-export function Logo({ size = "md", className, monochrome = false }: LogoProps) {
+export function Logo({ size = "md", className }: LogoProps) {
   const isResponsive = typeof size === "string";
 
   return (
     <span
       className={cn(
-        "inline-flex items-baseline tracking-tight text-almost-white",
+        "font-sans font-semibold tracking-tight text-almost-white",
         isResponsive && sizeClasses[size],
         className,
       )}
       style={!isResponsive ? { fontSize: size } : undefined}
-      role="img"
-      aria-label="VENTRIEE"
+      aria-label="ventriee"
     >
-      <span
-        className={cn("font-sans font-extrabold leading-none", monochrome && "font-bold")}
-        style={{ letterSpacing: "-0.03em" }}
-      >
-        VEN
-      </span>
-      <span
-        className={cn("font-sans font-light leading-none", monochrome && "font-bold")}
-        style={{
-          letterSpacing: "-0.02em",
-          marginLeft: "-0.03em",
-        }}
-      >
-        TRIEE
-      </span>
+      ventriee
     </span>
   );
 }
