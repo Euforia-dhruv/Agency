@@ -8,9 +8,9 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { img: 24 },
-  md: { img: 30 },
-  lg: { img: 36 },
+  sm: { img: 36 },
+  md: { img: 46 },
+  lg: { img: 56 },
 };
 
 const textSizes = {
