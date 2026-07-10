@@ -7,9 +7,9 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { img: 24 },
-  md: { img: 30 },
-  lg: { img: 36 },
+  sm: { img: 28 },
+  md: { img: 36 },
+  lg: { img: 44 },
 };
 
 export function Logo({ size = "md", className }: LogoProps) {
@@ -28,7 +28,7 @@ export function Logo({ size = "md", className }: LogoProps) {
       <Image
         src="/logo-text.png"
         alt="VENTRIEE"
-        width={dims.img * 4}
+        width={dims.img * 3}
         height={dims.img}
         className="size-auto object-contain"
         priority
