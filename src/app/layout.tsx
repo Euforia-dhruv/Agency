@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/lib/convex/provider";
@@ -18,11 +19,11 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["italic", "normal"],
+const grandSlang = localFont({
+  src: "../fonts/GrandSlang-Roman.ttf",
+  variable: "--font-grand-slang",
+  weight: "400",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
@@ -45,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} dark h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${grandSlang.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <a
