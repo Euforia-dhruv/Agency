@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
+import { Logo } from "@/components/logo";
 
 const services = [
   "Custom Websites",
@@ -154,7 +155,7 @@ export function HeroSection() {
             }}
           >
             <div>
-              <p className="font-sans text-lg font-medium text-almost-white">VENTRIEE</p>
+              <Logo size="md" />
               <p className="mt-1 font-sans text-sm text-steel">Software Development Agency</p>
             </div>
 

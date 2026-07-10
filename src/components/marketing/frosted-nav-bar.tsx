@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS, SITE_NAME } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
+import { Logo } from "@/components/logo";
 
 const SERVICE_MENU_ITEMS = [
   {
@@ -66,14 +67,12 @@ const SERVICE_MENU_ITEMS = [
 ];
 
 interface FrostedNavBarProps {
-  brand?: string;
   ctaLabel?: string;
   ctaHref?: string;
-  links?: readonly { label: string; href: string }[];
+  links?: NavLink[];
 }
 
 export function FrostedNavBar({
-  brand = SITE_NAME,
   ctaLabel = "Start Project",
   ctaHref = "/contact",
   links = NAV_LINKS,
@@ -107,11 +106,10 @@ export function FrostedNavBar({
       style={{ background: "rgba(51, 50, 72, 0.7)", backdropFilter: "blur(10px)" }}
     >
       <div className="mx-auto flex h-[72px] max-w-[1200px] items-center gap-10 px-6">
-        <Link
-          href="/"
-          className="font-sans text-base font-medium tracking-tight text-almost-white transition-opacity hover:opacity-80"
-        >
-          {brand}
+        <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
+          <Logo size="lg" className="hidden md:inline-flex" />
+          <Logo size="md" className="hidden sm:inline-flex md:hidden" />
+          <Logo size="sm" className="sm:hidden" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">

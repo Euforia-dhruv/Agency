@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/logo";
 
 const socialLinks = [
   { label: "Twitter", href: "#" },
@@ -15,7 +16,7 @@ export function Footer() {
       <div className="mx-auto max-w-[1200px] px-6 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <p className="font-sans text-lg font-medium text-almost-white">VENTRIEE</p>
+            <Logo size="md" />
             <p className="mt-2 font-sans text-sm text-steel">Software Development Agency</p>
             <p className="mt-6 max-w-sm font-sans text-sm leading-relaxed text-steel">
               We build premium software for ambitious businesses. From startups to enterprises, we

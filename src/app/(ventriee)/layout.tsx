@@ -12,7 +12,6 @@ export default function VentrieeLayout({ children }: { children: React.ReactNode
   return (
     <>
       <FrostedNavBar
-        brand="VENTRIEE"
         ctaLabel="Start a Project"
         ctaHref="mailto:ventriee.contact@gmail.com"
         links={VENTRIEE_LINKS}
