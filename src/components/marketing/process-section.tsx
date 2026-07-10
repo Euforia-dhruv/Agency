@@ -4,6 +4,7 @@ import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SplitFlapText } from "@/components/splitflap-text";
 
 interface StepPart {
   text: string;
@@ -371,9 +372,14 @@ export function ProcessSection() {
     <section className="w-full bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mb-20">
-          <p className="font-mono text-[10px] uppercase tracking-[1.8px] text-soft-white">
-            O U R &nbsp; P R O C E S S
-          </p>
+          <SplitFlapText
+            text="OUR PROCESS"
+            as="p"
+            duration={1.5}
+            delay={0.2}
+            className="font-mono text-[10px] uppercase tracking-[1.8px] text-steel"
+            filledClassName="font-mono text-[10px] uppercase tracking-[1.8px] text-signal-violet"
+          />
           <h2 className="mt-8 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
             From idea to launch,
             <br />
