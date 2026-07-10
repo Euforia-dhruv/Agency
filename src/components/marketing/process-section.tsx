@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { useState, useRef, useCallback } from "react";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-type PartStyle = "sans" | "serif";
 
 interface StepPart {
   text: string;
-  style: PartStyle;
+  style: "sans" | "serif";
 }
 
 interface ProcessStep {
   num: string;
   parts: StepPart[];
   description: string;
-  tech: string[];
+  deliverables: string[];
+  timeline: string;
+  technologies: string[];
 }
 
 const STEPS: ProcessStep[] = [
@@ -27,8 +27,10 @@ const STEPS: ProcessStep[] = [
       { text: "OVER", style: "serif" },
     ],
     description:
-      "We understand your business goals, users, competitors, and technical requirements before writing a single line of code.",
-    tech: ["React", "TypeScript", "Node.js"],
+      "Understanding your business goals, users, competitors and technical requirements before writing a single line of code.",
+    deliverables: ["Product Strategy", "Technical Planning", "Wireframes", "Architecture"],
+    timeline: "2-5 Days",
+    technologies: ["Next.js", "React", "TypeScript"],
   },
   {
     num: "02",
@@ -37,18 +39,22 @@ const STEPS: ProcessStep[] = [
       { text: "SIGN", style: "serif" },
     ],
     description:
-      "Wireframes, UI systems, user flows, prototypes, and visual design that bring your product to life.",
-    tech: ["Figma", "Tailwind CSS", "Framer Motion"],
+      "Creating modern interfaces and seamless user experiences through research, wireframes, and prototyping.",
+    deliverables: ["UI Design", "UX Research", "Prototypes", "Design System"],
+    timeline: "1-2 Weeks",
+    technologies: ["Figma", "Tailwind CSS", "Framer Motion"],
   },
   {
     num: "03",
     parts: [
-      { text: "DEVE", style: "sans" },
-      { text: "LOP", style: "serif" },
+      { text: "DEVEL", style: "sans" },
+      { text: "OP", style: "serif" },
     ],
     description:
-      "Production-ready frontend and backend using modern technologies, with continuous integration and preview deployments.",
-    tech: ["Next.js", "Supabase", "PostgreSQL"],
+      "Building scalable, production-ready applications using modern technologies and best practices.",
+    deliverables: ["Frontend", "Backend", "API Design", "Database"],
+    timeline: "2-6 Weeks",
+    technologies: ["Next.js", "Supabase", "PostgreSQL"],
   },
   {
     num: "04",
@@ -57,89 +63,164 @@ const STEPS: ProcessStep[] = [
       { text: "ST", style: "serif" },
     ],
     description:
-      "QA, optimization, accessibility, SEO, and performance. Every metric is measured before launch.",
-    tech: ["Jest", "Playwright", "Lighthouse"],
+      "Performance optimization, quality assurance, responsiveness testing, and security review.",
+    deliverables: ["QA Report", "Performance Report", "Security Audit"],
+    timeline: "1 Week",
+    technologies: ["Jest", "Playwright", "Lighthouse"],
   },
   {
     num: "05",
     parts: [
-      { text: "LAUN", style: "sans" },
-      { text: "CH", style: "serif" },
+      { text: "DEP", style: "sans" },
+      { text: "LOY", style: "serif" },
     ],
     description:
-      "Deployment, monitoring, analytics, maintenance, and continuous improvements for long-term success.",
-    tech: ["AWS", "Docker", "Vercel"],
+      "CI/CD pipeline setup, cloud deployment, domain configuration, monitoring, and analytics.",
+    deliverables: ["CI/CD Pipeline", "Cloud Infrastructure", "Monitoring", "Analytics"],
+    timeline: "3-5 Days",
+    technologies: ["AWS", "Docker", "Vercel"],
+  },
+  {
+    num: "06",
+    parts: [
+      { text: "SCA", style: "sans" },
+      { text: "LE", style: "serif" },
+    ],
+    description:
+      "Continuous improvements, new features, performance tuning, and long-term support.",
+    deliverables: ["Feature Updates", "Maintenance", "Support", "Optimization"],
+    timeline: "Ongoing",
+    technologies: ["AWS", "Datadog", "Sentry"],
   },
 ];
 
-function StepRow({
+const easing: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+function StepCard({
   step,
   index,
   isExpanded,
-  onHoverStart,
-  onHoverEnd,
+  onToggle,
   prefersReducedMotion,
 }: {
   step: ProcessStep;
   index: number;
   isExpanded: boolean;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
+  onToggle: () => void;
   prefersReducedMotion: boolean;
 }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [parallaxX, setParallaxX] = useState(0);
+  const [arrowPhase, setArrowPhase] = useState<"idle" | "slidLeft" | "slidRight">("idle");
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (!cardRef.current || prefersReducedMotion) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      setParallaxX((x - 0.5) * 8);
+    },
+    [prefersReducedMotion],
+  );
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    setArrowPhase("slidLeft");
+    setTimeout(() => setArrowPhase("slidRight"), 150);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setParallaxX(0);
+    setArrowPhase("idle");
+  };
+
+  const arrowX = arrowPhase === "idle" ? 0 : arrowPhase === "slidLeft" ? -6 : 6;
+
   return (
     <motion.div
-      initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 40, filter: "blur(12px)" }}
-      whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0, filter: "blur(0px)" }}
+      layout={!prefersReducedMotion}
+      initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 80 }}
+      whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{
-        duration: prefersReducedMotion ? 0 : 0.35,
+        duration: prefersReducedMotion ? 0 : 0.8,
         delay: prefersReducedMotion ? 0 : index * 0.12,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: easing,
       }}
+      className="w-full"
     >
-      <div
-        role="button"
-        tabIndex={0}
-        className={cn(
-          "group relative w-full overflow-hidden rounded-[20px] border transition-all duration-300 ease-out",
-          isExpanded
-            ? "border-signal-violet/40 bg-[#17171F]"
-            : "border-[rgba(255,255,255,0.08)] bg-[#0F0F12]",
-        )}
-        style={{ height: "clamp(90px, 10vw, 140px)" }}
-        onMouseEnter={onHoverStart}
-        onMouseLeave={onHoverEnd}
-        onFocus={onHoverStart}
-        onBlur={onHoverEnd}
+      <motion.div
+        ref={cardRef}
+        layout={!prefersReducedMotion}
+        onClick={onToggle}
         onKeyDown={(e) => {
           if (e.key === "Enter" || e.key === " ") {
-            if (isExpanded) onHoverEnd();
-            else onHoverStart();
+            e.preventDefault();
+            onToggle();
           }
         }}
+        role="button"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={cn(
+          "cursor-pointer select-none overflow-hidden rounded-[20px] border transition-colors duration-500",
+          isExpanded || isHovered ? "border-signal-violet/30" : "border-[rgba(255,255,255,0.08)]",
+        )}
+        style={{
+          background: isExpanded || isHovered ? "#1b1b1b" : "#111111",
+          transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
       >
-        <div className="flex h-full items-center px-8 sm:px-12">
+        <div
+          className="flex items-center px-8 sm:px-12"
+          style={{
+            height: "clamp(80px, 10vw, 130px)",
+            transform: prefersReducedMotion ? "none" : `translateX(${isHovered ? 20 : 0}px)`,
+            transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
           <span
             className={cn(
-              "mr-8 hidden font-mono text-sm font-medium transition-colors duration-300 sm:block",
-              isExpanded ? "text-signal-violet" : "text-steel",
+              "mr-6 hidden font-mono text-sm font-medium transition-colors duration-500 sm:block",
+              isHovered || isExpanded ? "text-signal-violet" : "text-steel",
             )}
+            style={{
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
           >
             {step.num}
           </span>
 
           <h3
-            className="flex select-none items-baseline leading-[0.9] tracking-[-0.04em] text-almost-white"
-            style={{ fontSize: "clamp(40px, 8vw, 120px)" }}
+            className="flex select-none items-baseline leading-[0.9] text-white"
+            style={{
+              fontSize: "clamp(40px, 8vw, 130px)",
+              letterSpacing: isHovered ? "-0.06em" : "-0.04em",
+              transition: "letter-spacing 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
           >
             {step.parts.map((part, i) => (
               <span
                 key={i}
                 className={
-                  part.style === "sans"
-                    ? "font-sans font-extrabold"
-                    : "font-heading italic font-normal"
+                  part.style === "sans" ? "font-sans font-extrabold" : "font-heading italic"
+                }
+                style={
+                  part.style === "serif"
+                    ? {
+                        WebkitTextStroke: isHovered
+                          ? "0px transparent"
+                          : "1px rgba(255,255,255,0.55)",
+                        color: isHovered ? "#ffffff" : "transparent",
+                        transition:
+                          "color 0.5s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+                      }
+                    : undefined
                 }
               >
                 {part.text}
@@ -148,74 +229,125 @@ function StepRow({
           </h3>
 
           <motion.div
-            className="ml-auto hidden shrink-0 items-center sm:flex"
-            animate={
-              isExpanded ? { x: 8, rotate: -15, scale: 1.15 } : { x: 0, rotate: 0, scale: 1 }
-            }
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="ml-auto flex shrink-0 items-center"
+            animate={{
+              x: arrowX + (isHovered ? parallaxX * 0.3 : 0),
+              rotate: isHovered ? -45 : 0,
+            }}
+            transition={{ duration: 0.5, ease: easing }}
           >
-            <ArrowDown
+            <ArrowRight
               className={cn(
-                "size-6 transition-colors duration-300",
-                isExpanded ? "text-signal-violet" : "text-steel",
+                "size-5 transition-colors duration-500 sm:size-6",
+                isHovered || isExpanded ? "text-signal-violet" : "text-steel",
               )}
               style={
-                isExpanded ? { filter: "drop-shadow(0 0 8px rgba(175,80,255,0.5))" } : undefined
+                isHovered ? { filter: "drop-shadow(0 0 12px rgba(175,80,255,0.4))" } : undefined
               }
             />
           </motion.div>
         </div>
-      </div>
 
-      {isExpanded && (
-        <motion.div
-          initial={
-            prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: -10, filter: "blur(4px)" }
-          }
-          animate={
-            prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, filter: "blur(0px)" }
-          }
-          transition={{ duration: 0.25, ease: "easeOut" }}
-          className="overflow-hidden rounded-b-[20px] border-x border-b border-signal-violet/40 bg-[#17171F]"
-        >
-          <div className="px-8 py-8 sm:px-12 sm:py-10">
-            <p className="max-w-2xl font-sans text-base leading-relaxed text-steel sm:text-lg">
-              {step.description}
-            </p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {step.tech.map((tag, i) => (
-                <motion.span
-                  key={tag}
-                  initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, height: "auto" }}
+              exit={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: easing }}
+              className="overflow-hidden"
+            >
+              <div className="border-t border-[rgba(255,255,255,0.06)]" />
+              <div className="grid gap-8 px-8 py-10 sm:px-12 sm:grid-cols-2 lg:grid-cols-4">
+                <motion.div
+                  initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
                   animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
                   transition={{
-                    duration: 0.25,
-                    delay: prefersReducedMotion ? 0 : i * 0.06,
-                    ease: "easeOut",
+                    duration: 0.35,
+                    delay: prefersReducedMotion ? 0 : 0.05,
+                    ease: easing,
                   }}
-                  className="rounded-full border border-[rgba(247,249,250,0.12)] px-3 py-1 font-mono text-[11px] text-steel"
+                  className="sm:col-span-2 lg:col-span-4"
                 >
-                  {tag}
-                </motion.span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      )}
+                  <p className="max-w-2xl font-sans text-base leading-relaxed text-steel sm:text-lg">
+                    {step.description}
+                  </p>
+                </motion.div>
 
-      {!isExpanded && (
-        <p
-          className={cn(
-            "mt-3 overflow-hidden font-sans text-base leading-relaxed text-steel transition-all duration-300 lg:hidden",
+                <motion.div
+                  initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                  animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.35,
+                    delay: prefersReducedMotion ? 0 : 0.1,
+                    ease: easing,
+                  }}
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-steel">
+                    Deliverables
+                  </p>
+                  <ul className="mt-3 space-y-1.5">
+                    {step.deliverables.map((item) => (
+                      <li key={item} className="font-sans text-sm text-almost-white">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+
+                <motion.div
+                  initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                  animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.35,
+                    delay: prefersReducedMotion ? 0 : 0.15,
+                    ease: easing,
+                  }}
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-steel">
+                    Timeline
+                  </p>
+                  <p className="mt-3 font-sans text-sm text-almost-white">{step.timeline}</p>
+                </motion.div>
+
+                <motion.div
+                  initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                  animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.35,
+                    delay: prefersReducedMotion ? 0 : 0.2,
+                    ease: easing,
+                  }}
+                  className="sm:col-span-2 lg:col-span-1"
+                >
+                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-steel">
+                    Technologies
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {step.technologies.map((tech, i) => (
+                      <motion.span
+                        key={tech}
+                        initial={
+                          prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }
+                        }
+                        animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.3,
+                          delay: prefersReducedMotion ? 0 : 0.25 + i * 0.05,
+                          ease: easing,
+                        }}
+                        className="rounded-full border border-[rgba(255,255,255,0.1)] px-3 py-1 font-mono text-[11px] text-steel"
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           )}
-          style={{
-            maxHeight: isExpanded ? "200px" : "0px",
-            opacity: isExpanded ? 1 : 0,
-          }}
-        >
-          {step.description}
-        </p>
-      )}
+        </AnimatePresence>
+      </motion.div>
     </motion.div>
   );
 }
@@ -225,26 +357,27 @@ export function ProcessSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="w-full bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <div className="mb-16 max-w-2xl">
+    <section className="w-full bg-[#050505] py-[140px] md:py-[96px] sm:py-[72px]">
+      <div className="mx-auto max-w-[1500px] px-6">
+        <div className="mb-20 max-w-2xl">
           <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
             Our Process
           </p>
           <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
-            From idea to launch, every step is intentional.
+            From idea to launch,
+            <br />
+            every step is intentional.
           </h2>
         </div>
 
         <div className="space-y-3 sm:space-y-4">
           {STEPS.map((step, i) => (
-            <StepRow
+            <StepCard
               key={step.num}
               step={step}
               index={i}
               isExpanded={expandedIndex === i}
-              onHoverStart={() => setExpandedIndex(i)}
-              onHoverEnd={() => setExpandedIndex(null)}
+              onToggle={() => setExpandedIndex(expandedIndex === i ? null : i)}
               prefersReducedMotion={!!prefersReducedMotion}
             />
           ))}
