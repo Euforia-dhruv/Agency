@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { fetchQuery } from "convex/nextjs";
+import { convexAuthNextjsToken } from "@convex-dev/auth/nextjs/server";
 import { api } from "@/lib/convex/api";
 import { FileText, Briefcase, PenLine, MessageSquare } from "lucide-react";
 
@@ -15,11 +16,14 @@ const IconMap = {
 } as const;
 
 export default async function AdminDashboardPage() {
+  const token = await convexAuthNextjsToken();
+  const fetchOptions = token ? { token } : {};
+
   const [services, projects, posts, leads] = await Promise.all([
-    fetchQuery(api.services.list),
-    fetchQuery(api.projects.list),
-    fetchQuery(api.blog.list),
-    fetchQuery(api.leads.count),
+    fetchQuery(api.services.list, {}, fetchOptions),
+    fetchQuery(api.projects.list, {}, fetchOptions),
+    fetchQuery(api.blog.list, {}, fetchOptions),
+    fetchQuery(api.leads.count, {}, fetchOptions),
   ]);
 
   const widgets = [
