@@ -66,6 +66,12 @@ const SERVICE_MENU_ITEMS = [
   },
 ];
 
+interface NavLink {
+  readonly label: string;
+  readonly href: string;
+  readonly description?: string;
+}
+
 interface FrostedNavBarProps {
   ctaLabel?: string;
   ctaHref?: string;

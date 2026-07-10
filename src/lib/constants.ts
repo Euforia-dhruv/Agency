@@ -4,7 +4,7 @@ export const NAV_LINKS = [
   { label: "Process", href: "/process" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-] as const;
+];
 
 export const SITE_NAME = "VENTRIEE";
 

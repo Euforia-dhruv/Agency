@@ -6,7 +6,7 @@ const VENTRIEE_LINKS = [
   { label: "Capabilities", href: "/#capabilities" },
   { label: "Work", href: "/work" },
   { label: "Contact", href: "/contact" },
-] as const;
+];
 
 export default function VentrieeLayout({ children }: { children: React.ReactNode }) {
   return (
