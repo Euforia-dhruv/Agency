@@ -100,10 +100,10 @@ export function ContactForm() {
             className="mt-2 block w-full rounded-[12px] border border-[rgba(247,249,250,0.15)] bg-transparent px-4 py-3 font-sans text-sm text-steel focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
           >
             <option value="">Select budget</option>
-            <option value="5k-10k">$5k - $10k</option>
-            <option value="10k-25k">$10k - $25k</option>
-            <option value="25k-50k">$25k - $50k</option>
-            <option value="50k+">$50k+</option>
+            <option value="25k-50k">₹25k - ₹50k</option>
+            <option value="50k-1l">₹50k - ₹1L</option>
+            <option value="1l-2.5l">₹1L - ₹2.5L</option>
+            <option value="2.5l+">₹2.5L+</option>
             <option value="not-sure">Not sure yet</option>
           </select>
         </div>
