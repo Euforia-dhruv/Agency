@@ -30,7 +30,7 @@ export function Logo({ size = "md", className, monochrome = false }: LogoProps) 
         className={cn("font-sans font-extrabold leading-none", monochrome && "font-bold")}
         style={{ letterSpacing: "-0.03em" }}
       >
-        VENT
+        VEN
       </span>
       <span
         className={cn("font-sans font-light leading-none", monochrome && "font-bold")}
@@ -39,7 +39,7 @@ export function Logo({ size = "md", className, monochrome = false }: LogoProps) 
           marginLeft: "-0.03em",
         }}
       >
-        RIEE
+        TRIEE
       </span>
     </span>
   );
