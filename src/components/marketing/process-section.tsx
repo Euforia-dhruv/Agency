@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SplitFlapText } from "@/components/splitflap-text";
+import MagnetLines from "@/components/magnet-lines";
 
 interface StepPart {
   text: string;
@@ -369,8 +370,19 @@ export function ProcessSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="w-full bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="mx-auto max-w-[1200px] px-6">
+    <section className="relative w-full overflow-hidden bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
+      <div className="pointer-events-none absolute left-0 top-1/2 z-0 -translate-y-1/2 opacity-[0.03]">
+        <MagnetLines
+          rows={7}
+          columns={7}
+          containerSize="50vmin"
+          lineColor="#f7f9fa"
+          lineWidth="0.4vmin"
+          lineHeight="3vmin"
+          baseAngle={0}
+        />
+      </div>
+      <div className="relative z-10 mx-auto max-w-[1200px] px-6">
         <div className="mb-20">
           <SplitFlapText
             text="OUR PROCESS"

@@ -5,6 +5,7 @@ import { TrustSection } from "@/components/marketing/trust-section";
 import { ServicesSection } from "@/components/marketing/services-section";
 import { WorkSection } from "@/components/marketing/work-section";
 import { ProcessSection } from "@/components/marketing/process-section";
+import { SpeedSection } from "@/components/marketing/speed-section";
 import { TechStackSection } from "@/components/marketing/tech-stack-section";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { FAQSection } from "@/components/marketing/faq-section";
@@ -27,6 +28,8 @@ export default async function HomePage() {
       <WorkSection />
 
       <ProcessSection />
+
+      <SpeedSection />
 
       <TechStackSection />
 

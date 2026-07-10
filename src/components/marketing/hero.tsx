@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Logo } from "@/components/logo";
 import ASCIIText from "@/components/ascii-text";
-import MagnetLines from "@/components/magnet-lines";
 
 const services = [
   "Custom Websites",
@@ -76,18 +75,6 @@ export function HeroSection() {
           textFontSize={180}
           textColor="#f7f9fa"
           planeBaseHeight={6}
-        />
-      </div>
-
-      <div className="absolute right-0 top-1/2 z-0 -translate-y-1/2 opacity-[0.04] pointer-events-none">
-        <MagnetLines
-          rows={7}
-          columns={7}
-          containerSize="50vmin"
-          lineColor="#f7f9fa"
-          lineWidth="0.4vmin"
-          lineHeight="3vmin"
-          baseAngle={0}
         />
       </div>
 
