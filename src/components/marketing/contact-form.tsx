@@ -34,15 +34,9 @@ export function ContactForm() {
 
   if (submitState === "success") {
     return (
-      <div
-        className="rounded-[19.2px] p-10 text-center"
-        style={{
-          background: "rgba(23, 23, 31, 0.5)",
-          border: "1px solid rgba(255, 255, 255, 0.06)",
-        }}
-      >
+      <div className="rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-10 text-center">
         <p className="font-sans text-xl text-almost-white">Message received.</p>
-        <p className="mt-2 font-sans text-sm text-muted-text">
+        <p className="mt-2 font-sans text-sm text-steel">
           We will get back to you within one business day.
         </p>
       </div>
@@ -59,12 +53,7 @@ export function ContactForm() {
           <input
             id="name"
             {...register("name")}
-            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
-            style={{
-              background: "rgba(23, 23, 31, 0.5)",
-              borderColor: "rgba(255, 255, 255, 0.08)",
-            }}
-            placeholder="Your name"
+            className="mt-2 block w-full rounded-[12px] border border-[rgba(247,249,250,0.15)] bg-transparent px-4 py-3 font-sans text-sm text-almost-white placeholder:text-steel focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
           />
           {errors.name && (
             <p className="mt-1 font-sans text-xs text-destructive">{errors.name.message}</p>
@@ -79,11 +68,7 @@ export function ContactForm() {
             id="email"
             type="email"
             {...register("email")}
-            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
-            style={{
-              background: "rgba(23, 23, 31, 0.5)",
-              borderColor: "rgba(255, 255, 255, 0.08)",
-            }}
+            className="mt-2 block w-full rounded-[12px] border border-[rgba(247,249,250,0.15)] bg-transparent px-4 py-3 font-sans text-sm text-almost-white placeholder:text-steel focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
             placeholder="you@company.com"
           />
           {errors.email && (
@@ -100,11 +85,7 @@ export function ContactForm() {
           <input
             id="company"
             {...register("company")}
-            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
-            style={{
-              background: "rgba(23, 23, 31, 0.5)",
-              borderColor: "rgba(255, 255, 255, 0.08)",
-            }}
+            className="mt-2 block w-full rounded-[12px] border border-[rgba(247,249,250,0.15)] bg-transparent px-4 py-3 font-sans text-sm text-almost-white placeholder:text-steel focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
             placeholder="Company name"
           />
         </div>
@@ -116,11 +97,7 @@ export function ContactForm() {
           <select
             id="budget"
             {...register("budget")}
-            className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
-            style={{
-              background: "rgba(23, 23, 31, 0.5)",
-              borderColor: "rgba(255, 255, 255, 0.08)",
-            }}
+            className="mt-2 block w-full rounded-[12px] border border-[rgba(247,249,250,0.15)] bg-transparent px-4 py-3 font-sans text-sm text-steel focus:outline-none focus:ring-2 focus:ring-signal-violet/50"
           >
             <option value="">Select budget</option>
             <option value="5k-10k">$5k - $10k</option>
@@ -140,11 +117,7 @@ export function ContactForm() {
           id="message"
           rows={5}
           {...register("message")}
-          className="mt-2 block w-full rounded-[12px] border px-4 py-3 font-sans text-sm text-almost-white placeholder:text-muted-text focus:outline-none focus:ring-2 focus:ring-signal-violet/50 resize-y"
-          style={{
-            background: "rgba(23, 23, 31, 0.5)",
-            borderColor: "rgba(255, 255, 255, 0.08)",
-          }}
+          className="mt-2 block w-full rounded-[12px] border border-[rgba(247,249,250,0.15)] bg-transparent px-4 py-3 font-sans text-sm text-almost-white placeholder:text-steel focus:outline-none focus:ring-2 focus:ring-signal-violet/50 resize-y"
           placeholder="Tell us about your project, goals, and timeline..."
         />
         {errors.message && (
@@ -155,7 +128,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={submitState === "loading"}
-        className="inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-signal-violet px-8 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)] disabled:opacity-50"
+        className="inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-signal-violet px-8 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)] disabled:opacity-50"
       >
         {submitState === "loading" ? (
           <>
@@ -172,7 +145,7 @@ export function ContactForm() {
 
       {submitState === "error" && (
         <p className="font-sans text-xs text-destructive">
-          Something went wrong. Please try again or email us directly at hello@ventriee.com.
+          Something went wrong. Please try again or email us directly at ventriee.contact@gmail.com.
         </p>
       )}
     </form>

@@ -15,11 +15,6 @@
   --color-signal-violet: #af50ff;
   --color-lavender-mist: #e1bdff;
 
-  --color-surface: #111118;
-  --color-surface-card: #17171f;
-  --color-hover-violet: #8b5cf6;
-  --color-muted-text: #a1a1aa;
-
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-instrument-serif);
@@ -65,7 +60,6 @@
   --radius-3xl: 10000px;
   --radius-4xl: 10.8px;
   --radius-pill: 999px;
-  --radius-glass: 28px;
 
   --spacing-4: 4px;
   --spacing-8: 8px;

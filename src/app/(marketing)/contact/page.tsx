@@ -17,7 +17,7 @@ export default function ContactPage() {
           <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
             Let&rsquo;s build something incredible.
           </h1>
-          <p className="mt-4 font-sans text-lg text-muted-text">
+          <p className="mt-4 font-sans text-lg text-steel">
             Tell us about your project. We will get back to you within one business day.
           </p>
         </div>

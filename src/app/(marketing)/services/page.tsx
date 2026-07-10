@@ -40,7 +40,7 @@ export default function ServicesPage() {
         <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
           What We Do
         </h1>
-        <p className="mt-4 max-w-xl font-sans text-lg text-muted-text">
+        <p className="mt-4 max-w-xl font-sans text-lg text-steel">
           We partner with startups and established teams to design, build, and optimize digital
           products.
         </p>
@@ -50,13 +50,13 @@ export default function ServicesPage() {
             <Link
               key={service.title}
               href="/contact"
-              className="group rounded-[28px] border border-white/[0.06] bg-[#17171F] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-signal-violet/30 hover:shadow-[0_0_30px_rgba(175,80,255,0.12)]"
+              className="group rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-signal-violet/30"
             >
               <div className="flex items-start justify-between">
                 <h2 className="font-sans text-xl font-medium text-almost-white">{service.title}</h2>
-                <ArrowUpRight className="size-5 shrink-0 text-muted-text transition-all duration-300 group-hover:text-signal-violet group-hover:-translate-y-1 group-hover:translate-x-1" />
+                <ArrowUpRight className="size-5 shrink-0 text-steel transition-all duration-300 group-hover:text-signal-violet group-hover:-translate-y-1 group-hover:translate-x-1" />
               </div>
-              <p className="mt-3 font-sans text-sm leading-relaxed text-muted-text">
+              <p className="mt-3 font-sans text-sm leading-relaxed text-steel">
                 {service.description}
               </p>
             </Link>

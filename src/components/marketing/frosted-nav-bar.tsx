@@ -103,8 +103,8 @@ export function FrostedNavBar({
 
   return (
     <header
-      className="fixed top-0 right-0 left-0 z-50 border-b border-border/8"
-      style={{ background: "rgba(9, 9, 9, 0.6)", backdropFilter: "blur(16px)" }}
+      className="fixed top-0 right-0 left-0 z-50 border-b border-ash/60"
+      style={{ background: "rgba(51, 50, 72, 0.7)", backdropFilter: "blur(10px)" }}
     >
       <div className="mx-auto flex h-[72px] max-w-[1200px] items-center gap-10 px-6">
         <Link
@@ -119,7 +119,7 @@ export function FrostedNavBar({
             <Link
               key={link.href}
               href={link.href}
-              className="group relative font-sans text-[13px] font-medium text-muted-text transition-colors hover:text-almost-white"
+              className="group relative font-sans text-[13px] font-medium text-steel transition-colors hover:text-almost-white"
             >
               {link.label}
               <span
@@ -135,7 +135,7 @@ export function FrostedNavBar({
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               onClick={() => setServicesOpen(!servicesOpen)}
-              className="group relative flex items-center gap-1.5 font-sans text-[13px] font-medium text-muted-text transition-colors hover:text-almost-white"
+              className="group relative flex items-center gap-1.5 font-sans text-[13px] font-medium text-steel transition-colors hover:text-almost-white"
             >
               Services
               <ChevronDown
@@ -151,7 +151,7 @@ export function FrostedNavBar({
 
         <Link
           href={ctaHref}
-          className="ml-auto hidden items-center gap-2 rounded-[999px] bg-signal-violet px-6 py-2.5 font-sans text-[13px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.4)] md:inline-flex"
+          className="ml-auto hidden items-center gap-2 rounded-[999px] bg-signal-violet px-6 py-2.5 font-sans text-[13px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.4)] md:inline-flex"
         >
           {ctaLabel}
           <ArrowRight className="size-3.5" />
@@ -234,7 +234,7 @@ export function FrostedNavBar({
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-sans text-base font-medium text-muted-text transition-colors hover:text-almost-white"
+                  className="font-sans text-base font-medium text-steel transition-colors hover:text-almost-white"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}

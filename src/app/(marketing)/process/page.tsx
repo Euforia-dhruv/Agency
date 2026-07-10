@@ -46,7 +46,7 @@ export default function ProcessPage() {
         <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
           Our Process
         </h1>
-        <p className="mt-4 max-w-xl font-sans text-lg text-muted-text">
+        <p className="mt-4 max-w-xl font-sans text-lg text-steel">
           A structured but flexible approach that adapts to your project&rsquo;s specific needs.
         </p>
 
@@ -54,7 +54,7 @@ export default function ProcessPage() {
           {STEPS.map((step, i) => (
             <div key={step.phase} className="relative flex gap-8 pb-16 last:pb-0">
               <div className="flex flex-col items-center">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-signal-violet/30 bg-[#17171F] font-mono text-sm text-signal-violet">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-signal-violet/30 bg-near-black font-mono text-sm text-signal-violet">
                   {step.phase}
                 </div>
                 {i < STEPS.length - 1 && (
@@ -67,11 +67,11 @@ export default function ProcessPage() {
                     <h2 className="font-sans text-2xl font-medium text-almost-white">
                       {step.title}
                     </h2>
-                    <p className="mt-2 max-w-lg font-sans text-sm leading-relaxed text-muted-text">
+                    <p className="mt-2 max-w-lg font-sans text-sm leading-relaxed text-steel">
                       {step.description}
                     </p>
                   </div>
-                  <span className="shrink-0 whitespace-nowrap rounded-[99px] border border-white/[0.06] px-3 py-1 font-mono text-xs text-muted-text">
+                  <span className="shrink-0 whitespace-nowrap rounded-[99px] border border-white/[0.06] px-3 py-1 font-mono text-xs text-steel">
                     {step.duration}
                   </span>
                 </div>

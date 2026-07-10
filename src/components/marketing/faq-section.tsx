@@ -52,7 +52,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
   const items = faqs.length > 0 ? faqs : defaultFAQs;
 
   return (
-    <section className="bg-surface py-[140px] md:py-[96px] sm:py-[72px]">
+    <section className="bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mb-16 max-w-2xl">
           <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
@@ -69,11 +69,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
             return (
               <div
                 key={faq._id}
-                className="overflow-hidden rounded-[19.2px]"
-                style={{
-                  background: "rgba(23, 23, 31, 0.5)",
-                  border: "1px solid rgba(255, 255, 255, 0.06)",
-                }}
+                className="overflow-hidden rounded-[19.2px] border border-[rgba(247,249,250,0.2)]"
               >
                 <button
                   type="button"
@@ -85,7 +81,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`size-5 shrink-0 text-muted-text transition-transform duration-300 ${
+                    className={`size-5 shrink-0 text-steel transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   />
@@ -99,7 +95,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-6 font-sans text-sm leading-relaxed text-muted-text">
+                      <p className="px-6 pb-6 font-sans text-sm leading-relaxed text-steel">
                         {faq.answer}
                       </p>
                     </motion.div>

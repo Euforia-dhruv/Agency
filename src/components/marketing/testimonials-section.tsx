@@ -103,12 +103,7 @@ function TestimonialsContent({ testimonials }: { testimonials: Testimonial[] }) 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4, delay: (i % 3) * 0.1 }}
-            className="flex flex-col rounded-[19.2px] p-8"
-            style={{
-              background: "rgba(23, 23, 31, 0.5)",
-              border: "1px solid rgba(255, 255, 255, 0.06)",
-              backdropFilter: "blur(8px)",
-            }}
+            className="flex flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8"
           >
             {t.rating && (
               <div className="mb-4">
@@ -123,7 +118,7 @@ function TestimonialsContent({ testimonials }: { testimonials: Testimonial[] }) 
               <div>
                 <p className="font-sans text-sm font-medium text-almost-white">{t.author}</p>
                 {(t.role || t.company) && (
-                  <p className="mt-0.5 font-sans text-xs text-muted-text">
+                  <p className="mt-0.5 font-sans text-xs text-steel">
                     {[t.role, t.company].filter(Boolean).join(", ")}
                   </p>
                 )}

@@ -54,7 +54,7 @@ export default function WorkPage() {
         <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
           Case Studies
         </h1>
-        <p className="mt-4 max-w-xl font-sans text-lg text-muted-text">
+        <p className="mt-4 max-w-xl font-sans text-lg text-steel">
           Selected projects that demonstrate our approach and outcomes.
         </p>
 
@@ -63,19 +63,19 @@ export default function WorkPage() {
             <Link
               key={study.slug}
               href={`/work/${study.slug}`}
-              className="group rounded-[28px] border border-white/[0.06] bg-[#17171F] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-signal-violet/30 hover:shadow-[0_0_30px_rgba(175,80,255,0.12)]"
+              className="group rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-signal-violet/30"
             >
               <h2 className="font-sans text-xl font-medium text-almost-white transition-colors group-hover:text-signal-violet">
                 {study.title}
               </h2>
-              <p className="mt-3 font-sans text-sm leading-relaxed text-muted-text">
+              <p className="mt-3 font-sans text-sm leading-relaxed text-steel">
                 {study.description}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {study.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-[99px] border border-white/[0.06] px-3 py-1 font-sans text-xs text-muted-text"
+                    className="rounded-[99px] border border-white/[0.06] px-3 py-1 font-sans text-xs text-steel"
                   >
                     {tag}
                   </span>

@@ -20,7 +20,7 @@ export function VentrieeHero() {
           </p>
           <div className="mt-10 flex items-center gap-4">
             <Link
-              href="mailto:hello@ventriee.com"
+              href="mailto:ventriee.contact@gmail.com"
               className="rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-base font-normal text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
             >
               Start a Project

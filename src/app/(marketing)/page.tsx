@@ -43,7 +43,7 @@ export default async function HomePage() {
             <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
               Let&rsquo;s build something incredible.
             </h2>
-            <p className="mt-4 font-sans text-lg text-muted-text">
+            <p className="mt-4 font-sans text-lg text-steel">
               Tell us about your project and we&rsquo;ll get back to you within one business day.
             </p>
           </div>

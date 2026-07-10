@@ -66,7 +66,7 @@ export function TrustSection() {
             <p className="font-sans text-5xl font-medium tracking-tight text-almost-white lg:text-6xl">
               <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={inView} />
             </p>
-            <p className="mt-2 font-sans text-sm text-muted-text">{stat.label}</p>
+            <p className="mt-2 font-sans text-sm text-steel">{stat.label}</p>
           </motion.div>
         ))}
       </div>

@@ -44,7 +44,7 @@ const projects = [
 
 export function WorkSection() {
   return (
-    <section className="bg-surface py-[140px] md:py-[96px] sm:py-[72px]">
+    <section className="bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mb-16 max-w-2xl">
           <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
@@ -53,7 +53,7 @@ export function WorkSection() {
           <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
             Real Projects. Real Results.
           </h2>
-          <p className="mt-4 font-sans text-lg text-muted-text">
+          <p className="mt-4 font-sans text-lg text-steel">
             Premium digital products we&rsquo;ve crafted for clients across industries.
           </p>
         </div>
@@ -71,13 +71,9 @@ export function WorkSection() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col rounded-[19.2px] p-8 transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  background: "rgba(23, 23, 31, 0.5)",
-                  border: "1px solid rgba(255, 255, 255, 0.06)",
-                }}
+                className="group flex flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-signal-violet/30"
               >
-                <div className="mb-12 h-[160px] w-full rounded-[12px] bg-gradient-to-br from-signal-violet/10 via-surface-card to-near-black" />
+                <div className="mb-12 h-[160px] w-full rounded-[12px] bg-gradient-to-br from-signal-violet/10 via-transparent to-near-black" />
 
                 <div className="flex items-start justify-between">
                   <div>
@@ -99,7 +95,7 @@ export function WorkSection() {
                   </span>
                 </div>
 
-                <p className="mt-4 font-sans text-sm leading-relaxed text-muted-text">
+                <p className="mt-4 font-sans text-sm leading-relaxed text-steel">
                   {project.description}
                 </p>
 

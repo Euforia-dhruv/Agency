@@ -16,15 +16,15 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <p className="font-sans text-lg font-medium text-almost-white">VENTRIEE</p>
-            <p className="mt-2 font-sans text-sm text-muted-text">Software Development Agency</p>
-            <p className="mt-6 max-w-sm font-sans text-sm leading-relaxed text-muted-text">
+            <p className="mt-2 font-sans text-sm text-steel">Software Development Agency</p>
+            <p className="mt-6 max-w-sm font-sans text-sm leading-relaxed text-steel">
               We build premium software for ambitious businesses. From startups to enterprises, we
               craft digital products that perform.
             </p>
           </div>
 
           <div>
-            <p className="font-sans text-xs font-medium uppercase tracking-[0.08em] text-muted-text">
+            <p className="font-sans text-xs font-medium uppercase tracking-[0.08em] text-steel">
               Navigation
             </p>
             <div className="mt-4 flex flex-col gap-2.5">
@@ -62,7 +62,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-sans text-xs font-medium uppercase tracking-[0.08em] text-muted-text">
+            <p className="font-sans text-xs font-medium uppercase tracking-[0.08em] text-steel">
               Connect
             </p>
             <div className="mt-4 flex flex-col gap-2.5">
@@ -79,14 +79,14 @@ export function Footer() {
                 href="mailto:hello@ventriee.com"
                 className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
               >
-                hello@ventriee.com
+                ventriee.contact@gmail.com
               </a>
             </div>
           </div>
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/[0.06] pt-8 sm:flex-row">
-          <p className="font-sans text-xs text-muted-text">
+          <p className="font-sans text-xs text-steel">
             &copy; {year} VENTRIEE. All rights reserved.
           </p>
         </div>

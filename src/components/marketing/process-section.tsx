@@ -43,7 +43,7 @@ export function ProcessSection() {
         <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
           From idea to launch
         </h2>
-        <p className="mt-4 font-sans text-lg text-muted-text">
+        <p className="mt-4 font-sans text-lg text-steel">
           A structured but flexible approach that adapts to your project&rsquo;s specific needs.
         </p>
       </div>
@@ -61,7 +61,7 @@ export function ProcessSection() {
               transition={{ duration: 0.4, delay: i * 0.1 }}
             >
               <div className="relative mb-8 flex h-[40px] items-center">
-                <span className="z-10 flex size-[40px] items-center justify-center rounded-full border border-border/20 bg-surface-card font-mono text-xs text-signal-violet">
+                <span className="z-10 flex size-[40px] items-center justify-center rounded-full border border-[rgba(247,249,250,0.2)] bg-near-black font-mono text-xs text-signal-violet">
                   {step.num}
                 </span>
               </div>
@@ -69,7 +69,7 @@ export function ProcessSection() {
               <p className="mt-2 font-sans text-sm font-medium text-signal-violet">
                 {step.duration}
               </p>
-              <p className="mt-4 font-sans text-sm leading-relaxed text-muted-text">
+              <p className="mt-4 font-sans text-sm leading-relaxed text-steel">
                 {step.description}
               </p>
             </motion.div>

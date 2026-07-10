@@ -74,7 +74,7 @@ export function ServicesSection() {
         <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
           What we build
         </h2>
-        <p className="mt-4 font-sans text-lg text-muted-text">
+        <p className="mt-4 font-sans text-lg text-steel">
           Full-stack development, design, and growth services for ambitious teams.
         </p>
       </div>
@@ -92,18 +92,14 @@ export function ServicesSection() {
             >
               <Link
                 href="/services"
-                className="group flex h-full flex-col rounded-[19.2px] p-8 transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  background: "rgba(23, 23, 31, 0.5)",
-                  border: "1px solid rgba(255, 255, 255, 0.06)",
-                }}
+                className="group flex h-full flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8 transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="mb-6 inline-flex size-12 items-center justify-center rounded-[12px] bg-signal-violet/10 transition-colors group-hover:bg-signal-violet/20">
                   <Icon className="size-5 text-signal-violet" />
                 </div>
 
                 <h3 className="font-sans text-xl font-medium text-almost-white">{service.title}</h3>
-                <p className="mt-2 flex-1 font-sans text-sm leading-relaxed text-muted-text">
+                <p className="mt-2 flex-1 font-sans text-sm leading-relaxed text-steel">
                   {service.description}
                 </p>
 

@@ -109,7 +109,7 @@ export function HeroSection() {
           </div>
 
           <motion.p
-            className="mt-8 max-w-lg font-sans text-lg font-light leading-relaxed text-muted-text lg:text-xl"
+            className="mt-8 max-w-lg font-sans text-lg font-light leading-relaxed text-steel lg:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -126,14 +126,14 @@ export function HeroSection() {
           >
             <Link
               href="/contact"
-              className="inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)]"
+              className="inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)]"
             >
               Start Your Project
               <ArrowRight className="size-4" />
             </Link>
             <Link
               href="/work"
-              className="inline-flex h-[52px] items-center font-sans text-[15px] font-medium text-muted-text transition-colors hover:text-almost-white"
+              className="inline-flex h-[52px] items-center font-sans text-[15px] font-medium text-steel transition-colors hover:text-almost-white"
             >
               View Our Work
             </Link>
@@ -147,16 +147,15 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
         >
           <div
-            className="rounded-[28px] p-8 backdrop-blur-[12px] sm:p-10"
+            className="rounded-[19.2px] p-8 backdrop-blur-[12px] sm:p-10"
             style={{
-              background: "rgba(23, 23, 31, 0.5)",
-              border: "1px solid rgba(255, 255, 255, 0.06)",
-              boxShadow: "0 8px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.03)",
+              background: "rgba(66, 55, 56, 0.3)",
+              border: "1px solid rgba(247, 249, 250, 0.2)",
             }}
           >
             <div>
               <p className="font-sans text-lg font-medium text-almost-white">VENTRIEE</p>
-              <p className="mt-1 font-sans text-sm text-muted-text">Software Development Agency</p>
+              <p className="mt-1 font-sans text-sm text-steel">Software Development Agency</p>
             </div>
 
             <div className="mt-6 space-y-3">
@@ -178,16 +177,16 @@ export function HeroSection() {
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-sans text-2xl font-medium text-almost-white">{stat.value}</p>
-                  <p className="mt-0.5 font-sans text-xs text-muted-text">{stat.label}</p>
+                  <p className="mt-0.5 font-sans text-xs text-steel">{stat.label}</p>
                 </div>
               ))}
             </div>
 
-            <p className="mt-4 font-sans text-xs text-muted-text">Available Worldwide</p>
+            <p className="mt-4 font-sans text-xs text-steel">Available Worldwide</p>
 
             <Link
               href="/contact"
-              className="mt-6 inline-flex h-[44px] w-full items-center justify-center gap-2 rounded-[999px] bg-signal-violet font-sans text-[14px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-hover-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.3)]"
+              className="mt-6 inline-flex h-[44px] w-full items-center justify-center gap-2 rounded-[999px] bg-signal-violet font-sans text-[14px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.3)]"
             >
               Let&rsquo;s Build
               <ArrowRight className="size-4" />

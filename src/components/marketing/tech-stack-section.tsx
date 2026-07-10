@@ -19,7 +19,7 @@ const techStack = [
 
 export function TechStackSection() {
   return (
-    <section className="bg-surface py-[140px] md:py-[96px] sm:py-[72px]">
+    <section className="bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="mb-16 text-center">
           <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
@@ -38,7 +38,7 @@ export function TechStackSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.3, delay: i * 0.05 }}
-              className="rounded-full border border-white/[0.06] bg-surface-card px-6 py-3 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:border-signal-violet/30 hover:text-signal-violet"
+              className="rounded-full border border-white/[0.06] bg-near-black px-6 py-3 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:border-signal-violet/30 hover:text-signal-violet"
             >
               {tech}
             </motion.div>
