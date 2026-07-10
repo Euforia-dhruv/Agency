@@ -5,8 +5,13 @@ import { api } from "@/lib/convex/api";
 import { AnimatedSection } from "@/components/marketing/animated-section";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Insights on web development, design, and digital strategy.",
+  title: "Blog — Web Development Insights & Guides | VENTRIEE",
+  description:
+    "Learn about web development, website design, SEO, and digital strategy. Guides for gyms, schools, restaurants, and local business owners.",
+  openGraph: {
+    title: "Blog | VENTRIEE",
+    description: "Web development insights, guides, and resources for business owners.",
+  },
 };
 
 export default async function BlogPage() {

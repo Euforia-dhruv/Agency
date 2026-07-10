@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/marketing/contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Start your project with VENTRIEE.",
+  title: "Contact — Start Your Web Development Project | VENTRIEE",
+  description:
+    "Ready to build your website? Contact VENTRIEE for a free consultation. We build websites for gyms, schools, restaurants, startups, and local businesses.",
+  openGraph: {
+    title: "Contact VENTRIEE",
+    description: "Start your web development project today.",
+  },
 };
 
 export default function ContactPage() {

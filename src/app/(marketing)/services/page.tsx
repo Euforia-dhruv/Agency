@@ -3,30 +3,57 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services",
-  description: "Digital product design, development, and consulting services.",
+  title: "Web Development Services for Gyms, Schools, Restaurants & Businesses | VENTRIEE",
+  description:
+    "Custom website development for gyms, schools, restaurants, startups, clinics, hotels, and local businesses. Fast, modern, SEO-optimized sites built with Next.js.",
+  openGraph: {
+    title: "Web Development Services | VENTRIEE",
+    description: "Custom websites for gyms, schools, restaurants, startups, and local businesses.",
+  },
 };
 
 const SERVICES = [
   {
-    title: "Web Development",
+    title: "Gym Website Development",
+    href: "/services/gym-website-development",
     description:
-      "End-to-end development using Next.js, TypeScript, and modern CSS. We ship production applications that are fast, accessible, and maintainable — from landing pages to full SaaS platforms.",
+      "Modern websites for fitness businesses with member management, class scheduling, online booking, and payment integration.",
   },
   {
-    title: "Product Design",
+    title: "School Website Development",
+    href: "/services/school-website-development",
     description:
-      "Research-driven UI/UX design rooted in systems thinking. We create design tokens, component libraries, and interaction patterns that scale across your entire product surface.",
+      "Professional websites for educational institutions with LMS integration, parent portals, event calendars, and enrollment management.",
   },
   {
-    title: "Technical Architecture",
+    title: "Restaurant Website Development",
+    href: "/services/restaurant-website-development",
     description:
-      "Architecture reviews, stack evaluation, and migration strategy. We help teams make sound technical decisions that avoid lock-in and reduce long-term maintenance burden.",
+      "Beautiful websites for restaurants, cafes, and food businesses with online ordering, reservations, and menu management.",
   },
   {
-    title: "Code Audits & Optimization",
+    title: "Business Website Development",
+    href: "/services/business-website-development",
     description:
-      "Performance profiling, bundle analysis, and accessibility audits. We identify the issues that matter and provide a clear remediation roadmap with measurable outcomes.",
+      "Professional websites for startups, clinics, hotels, agencies, and local businesses. Built to establish credibility and generate leads.",
+  },
+  {
+    title: "E-Commerce Website Development",
+    href: "/services/ecommerce-website-development",
+    description:
+      "Custom online stores with product management, secure payments, inventory tracking, and SEO-optimized product pages.",
+  },
+  {
+    title: "Portfolio Website Development",
+    href: "/services/portfolio-website-development",
+    description:
+      "Stunning portfolio websites for designers, photographers, artists, and creatives. Showcase your work and land more clients.",
+  },
+  {
+    title: "Landing Page Design",
+    href: "/services/landing-page-design",
+    description:
+      "High-converting landing pages for product launches, campaigns, and lead generation. Built with Framer Motion animations.",
   },
 ];
 
@@ -38,18 +65,18 @@ export default function ServicesPage() {
           Services
         </p>
         <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
-          What We Do
+          Websites That Work for Your Business
         </h1>
         <p className="mt-4 max-w-xl font-sans text-lg text-steel">
-          We partner with startups and established teams to design, build, and optimize digital
-          products.
+          Custom web development for gyms, schools, restaurants, startups, and local businesses.
+          Fast, modern, and built to grow with you.
         </p>
 
         <div className="mt-16 grid gap-6 md:grid-cols-2">
           {SERVICES.map((service) => (
             <Link
               key={service.title}
-              href="/contact"
+              href={service.href}
               className="group rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-signal-violet/30"
             >
               <div className="flex items-start justify-between">

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Suspense } from "react";
+import Script from "next/script";
 import { ConvexAuthNextjsServerProvider } from "@convex-dev/auth/nextjs/server";
 import { ConvexClientProvider } from "@/lib/convex/provider";
 import { AnalyticsScript, PageViewTracker } from "@/components/analytics";
@@ -35,13 +36,36 @@ const cendrickNode = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "VENTRIEE",
+    default: "VENTRIEE — Web Development Agency for Gyms, Schools, Restaurants & Local Businesses",
     template: "%s | VENTRIEE",
   },
   description:
-    "VENTRIEE is a freelance software development agency crafting fast, scalable, and premium digital experiences.",
+    "VENTRIEE builds fast, modern websites for gyms, schools, restaurants, startups, clinics, hotels, and local businesses. Custom web development with Next.js, Tailwind CSS, and Framer Motion.",
   icons: {
     icon: "/logo.png",
+  },
+  openGraph: {
+    title: "VENTRIEE — Web Development Agency",
+    description:
+      "Fast, modern websites for gyms, schools, restaurants, startups, and local businesses.",
+    url: "https://ventriee.in",
+    siteName: "VENTRIEE",
+    locale: "en_IN",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "", // Add Google Search Console verification code here
   },
 };
 
@@ -63,6 +87,34 @@ export default function RootLayout({
           Skip to content
         </a>
         <AnalyticsScript />
+
+        <Script
+          id="schema-organization"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "VENTRIEE",
+              description:
+                "Freelance web development agency building fast, modern websites for gyms, schools, restaurants, startups, clinics, hotels, and local businesses.",
+              url: "https://ventriee.in",
+              image: "https://ventriee.in/logo.png",
+              areaServed: "India",
+              priceRange: "$$",
+              contactPoint: {
+                "@type": "ContactPoint",
+                email: "ventriee.contact@gmail.com",
+                contactType: "sales",
+              },
+              sameAs: [
+                "https://github.com/Euforia-dhruv",
+                // Add LinkedIn, Instagram, X URLs here
+              ],
+            }),
+          }}
+        />
+
         <ConvexAuthNextjsServerProvider>
           <ConvexClientProvider>
             {children}

@@ -2,8 +2,13 @@ import { ProcessSection } from "@/components/marketing/process-section";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Process",
-  description: "How we approach design and development engagements.",
+  title: "Our Process — How We Build Websites | VENTRIEE",
+  description:
+    "From discovery to launch — our structured approach to building websites for gyms, schools, restaurants, and local businesses.",
+  openGraph: {
+    title: "Our Process | VENTRIEE",
+    description: "Learn how we design and develop modern websites.",
+  },
 };
 
 export default function ProcessPage() {

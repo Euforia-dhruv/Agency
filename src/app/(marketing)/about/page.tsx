@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: "Learn about our team and approach.",
+  title: "About — Web Development Agency | VENTRIEE",
+  description:
+    "VENTRIEE is a freelance web development agency based in India. We build fast, modern websites for gyms, schools, restaurants, and local businesses.",
+  openGraph: {
+    title: "About VENTRIEE",
+    description: "Freelance web development agency building modern websites for businesses.",
+  },
 };
 
 const PRINCIPLES = [

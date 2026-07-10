@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Work",
-  description: "Selected case studies and client work.",
+  title: "Our Work — Web Development Portfolio | VENTRIEE",
+  description:
+    "See our portfolio of websites for gyms, schools, restaurants, startups, and local businesses. Real projects, real results.",
+  openGraph: {
+    title: "Our Work | VENTRIEE",
+    description: "Portfolio of custom websites for businesses across industries.",
+  },
 };
 
 const CASE_STUDIES = [
