@@ -15,6 +15,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     { url: `${baseUrl}/work`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.8 },
     {
+      url: `${baseUrl}/ventriee`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: `${baseUrl}/process`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -68,6 +74,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${baseUrl}/services/portfolio-website-development`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/services/landing-page-design`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
