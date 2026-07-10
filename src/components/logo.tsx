@@ -7,22 +7,27 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { width: 90, height: 28 },
-  md: { width: 110, height: 34 },
-  lg: { width: 130, height: 40 },
+  sm: { img: 28, text: "text-base" },
+  md: { img: 34, text: "text-xl" },
+  lg: { img: 40, text: "text-2xl" },
 };
 
 export function Logo({ size = "md", className }: LogoProps) {
   const dims = sizeMap[size];
 
   return (
-    <Image
-      src="/logo.png"
-      alt="ventriee"
-      width={dims.width}
-      height={dims.height}
-      className={cn("object-contain", className)}
-      priority
-    />
+    <span className={cn("inline-flex items-center gap-2.5", className)}>
+      <Image
+        src="/logo.png"
+        alt=""
+        width={dims.img}
+        height={dims.img}
+        className="size-auto object-contain"
+        priority
+      />
+      <span className={cn("font-sans font-semibold tracking-tight text-almost-white", dims.text)}>
+        ventriee
+      </span>
+    </span>
   );
 }
