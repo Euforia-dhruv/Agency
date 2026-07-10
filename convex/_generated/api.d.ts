@@ -18,6 +18,7 @@ import type * as emails from "../emails.js";
 import type * as faqs from "../faqs.js";
 import type * as leads from "../leads.js";
 import type * as projects from "../projects.js";
+import type * as seed from "../seed.js";
 import type * as services from "../services.js";
 import type * as settings from "../settings.js";
 import type * as testimonials from "../testimonials.js";
@@ -35,6 +36,7 @@ declare const fullApi: ApiFromModules<{
   faqs: typeof faqs;
   leads: typeof leads;
   projects: typeof projects;
+  seed: typeof seed;
   services: typeof services;
   settings: typeof settings;
   testimonials: typeof testimonials;
