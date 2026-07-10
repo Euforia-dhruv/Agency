@@ -6,6 +6,7 @@ import { Menu, X, ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
+import { Logo } from "@/components/logo";
 
 const SERVICE_MENU_ITEMS = [
   {
@@ -112,15 +113,9 @@ export function FrostedNavBar({
     >
       <div className="mx-auto flex h-[72px] max-w-[1200px] items-center gap-10 px-6">
         <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
-          <span className="hidden md:inline font-heading text-2xl tracking-tight text-almost-white">
-            ventriee
-          </span>
-          <span className="hidden sm:inline md:hidden font-heading text-xl tracking-tight text-almost-white">
-            ventriee
-          </span>
-          <span className="sm:hidden font-heading text-lg tracking-tight text-almost-white">
-            ventriee
-          </span>
+          <Logo size="lg" className="hidden md:inline-flex" />
+          <Logo size="md" className="hidden sm:inline-flex md:hidden" />
+          <Logo size="sm" className="sm:hidden" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
