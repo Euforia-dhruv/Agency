@@ -4,6 +4,7 @@ import Image from "next/image";
 interface LogoProps {
   size?: "sm" | "md" | "lg";
   className?: string;
+  textOnly?: boolean;
 }
 
 const sizeMap = {
@@ -12,19 +13,21 @@ const sizeMap = {
   lg: { img: 44 },
 };
 
-export function Logo({ size = "md", className }: LogoProps) {
+export function Logo({ size = "md", className, textOnly = false }: LogoProps) {
   const dims = sizeMap[size];
 
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <Image
-        src="/logo.png"
-        alt=""
-        width={dims.img}
-        height={dims.img}
-        className="size-auto object-contain"
-        priority
-      />
+      {!textOnly && (
+        <Image
+          src="/logo.png"
+          alt=""
+          width={dims.img}
+          height={dims.img}
+          className="size-auto object-contain"
+          priority
+        />
+      )}
       <Image
         src="/logo-text.png"
         alt="VENTRIEE"

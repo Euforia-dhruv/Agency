@@ -113,9 +113,9 @@ export function FrostedNavBar({
     >
       <div className="mx-auto flex h-[72px] max-w-[1200px] items-center gap-10 px-6">
         <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
-          <Logo size="lg" className="hidden md:inline-flex" />
-          <Logo size="md" className="hidden sm:inline-flex md:hidden" />
-          <Logo size="sm" className="sm:hidden" />
+          <Logo size="lg" className="hidden md:inline-flex" textOnly />
+          <Logo size="md" className="hidden sm:inline-flex md:hidden" textOnly />
+          <Logo size="sm" className="sm:hidden" textOnly />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
