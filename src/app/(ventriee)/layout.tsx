@@ -1,5 +1,5 @@
 import { FrostedNavBar } from "@/components/marketing/frosted-nav-bar";
-import { CoordinateFooter } from "@/components/marketing/coordinate-footer";
+import { Footer } from "@/components/marketing/footer";
 
 const VENTRIEE_LINKS = [
   { label: "Home", href: "/" },
@@ -18,7 +18,7 @@ export default function VentrieeLayout({ children }: { children: React.ReactNode
         links={VENTRIEE_LINKS}
       />
       <main className="flex-1">{children}</main>
-      <CoordinateFooter />
+      <Footer />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { StampedSectionHeading } from "@/components/marketing/stamped-section-heading";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -9,34 +8,53 @@ export const metadata: Metadata = {
 
 const CASE_STUDIES = [
   {
-    title: "Fintech Dashboard Redesign",
-    slug: "fintech-dashboard",
+    title: "Ramagya Sports Academy",
+    slug: "ramagya-sports-academy",
     description:
-      "Redesigned a complex financial analytics platform, reducing time-to-insight by 40% through information architecture improvements and a new component library.",
-    tags: ["Next.js", "D3.js", "PostgreSQL"],
+      "A comprehensive sports academy management platform with athlete tracking, coach scheduling, and performance analytics.",
+    tags: ["Next.js", "TypeScript", "PostgreSQL"],
   },
   {
-    title: "SaaS Platform Migration",
-    slug: "saas-migration",
+    title: "Gym 56",
+    slug: "gym-56",
     description:
-      "Migrated a legacy Rails monolith to a modern Next.js architecture, improving Lighthouse scores from 45 to 95 and reducing infrastructure costs by 60%.",
-    tags: ["Next.js", "TypeScript", "AWS"],
+      "Modern gym management system with member check-ins, class booking, billing, and progress tracking.",
+    tags: ["Next.js", "Supabase", "Tailwind CSS"],
   },
   {
-    title: "E-commerce Experience",
-    slug: "ecommerce-experience",
+    title: "Policy Adda",
+    slug: "policy-adda",
     description:
-      "Built a headless commerce platform with real-time inventory, achieving a 28% increase in conversion rate and 35% improvement in page load speed.",
-    tags: ["Next.js", "Shopify", "Stripe"],
+      "Insurance policy comparison and purchase platform with real-time quote generation and document management.",
+    tags: ["Next.js", "Node.js", "PostgreSQL"],
+  },
+  {
+    title: "Dhruv Portfolio",
+    slug: "dhruv-portfolio",
+    description:
+      "A premium portfolio website showcasing creative work with smooth animations and a distinctive design system.",
+    tags: ["Next.js", "Framer Motion", "Tailwind CSS"],
+  },
+  {
+    title: "TechSc0ut",
+    slug: "techsc0ut",
+    description:
+      "Technology scouting platform that helps businesses discover and evaluate emerging tech solutions.",
+    tags: ["Next.js", "TypeScript", "AI"],
   },
 ];
 
 export default function WorkPage() {
   return (
-    <div className="pt-32">
-      <section className="mx-auto max-w-[1200px] px-6">
-        <StampedSectionHeading>Case Studies</StampedSectionHeading>
-        <p className="mt-6 max-w-xl font-sans text-lg font-light leading-relaxed text-steel">
+    <div className="pt-[140px]">
+      <section className="mx-auto max-w-[1200px] px-6 pb-32">
+        <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
+          Our Work
+        </p>
+        <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+          Case Studies
+        </h1>
+        <p className="mt-4 max-w-xl font-sans text-lg text-muted-text">
           Selected projects that demonstrate our approach and outcomes.
         </p>
 
@@ -45,19 +63,19 @@ export default function WorkPage() {
             <Link
               key={study.slug}
               href={`/work/${study.slug}`}
-              className="group rounded-[19.2px] border border-border/20 p-8 transition-colors hover:border-almost-white/40"
+              className="group rounded-[28px] border border-white/[0.06] bg-[#17171F] p-8 transition-all duration-300 hover:-translate-y-0.5 hover:border-signal-violet/30 hover:shadow-[0_0_30px_rgba(175,80,255,0.12)]"
             >
-              <h3 className="font-sans text-xl font-normal leading-tight tracking-tight text-almost-white transition-colors">
+              <h2 className="font-sans text-xl font-medium text-almost-white transition-colors group-hover:text-signal-violet">
                 {study.title}
-              </h3>
-              <p className="mt-3 font-sans text-sm leading-relaxed text-steel">
+              </h2>
+              <p className="mt-3 font-sans text-sm leading-relaxed text-muted-text">
                 {study.description}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {study.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-[6px] bg-iron/50 px-2 py-1 font-sans text-xs text-graphite"
+                    className="rounded-[99px] border border-white/[0.06] px-3 py-1 font-sans text-xs text-muted-text"
                   >
                     {tag}
                   </span>
