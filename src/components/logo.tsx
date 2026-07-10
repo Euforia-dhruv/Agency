@@ -27,19 +27,16 @@ export function Logo({ size = "md", className, monochrome = false }: LogoProps) 
       aria-label="VENTRIEE"
     >
       <span
-        className={cn("font-sans font-bold leading-none", monochrome && "font-normal")}
+        className={cn("font-sans font-extrabold leading-none", monochrome && "font-bold")}
         style={{ letterSpacing: "-0.03em" }}
       >
         VENT
       </span>
       <span
-        className={cn(
-          "font-heading italic leading-none",
-          monochrome && "font-sans not-italic font-bold",
-        )}
+        className={cn("font-sans font-light leading-none", monochrome && "font-bold")}
         style={{
           letterSpacing: "-0.02em",
-          marginLeft: "-0.02em",
+          marginLeft: "-0.03em",
         }}
       >
         RIEE
