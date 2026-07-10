@@ -10,6 +10,7 @@ export interface ServiceDetail {
   techStack: string[];
   idealFor: string[];
   faqs: { q: string; a: string }[];
+  relatedPosts?: { title: string; slug: string }[];
 }
 
 export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
@@ -60,6 +61,9 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
         a: "We can integrate with most popular gym management platforms via their APIs, or build a custom solution tailored to your workflow.",
       },
     ],
+    relatedPosts: [
+      { title: "How Much Does a Gym Website Cost in 2025?", slug: "gym-website-cost-2025" },
+    ],
   },
   "school-website-development": {
     slug: "school-website-development",
@@ -104,6 +108,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
         a: "Absolutely. Accessibility is a core part of our development process. All school sites we build meet WCAG 2.1 AA standards.",
       },
     ],
+    relatedPosts: [
+      {
+        title: "School Website Design: A Complete Guide for 2025",
+        slug: "school-website-design-guide",
+      },
+    ],
   },
   "restaurant-website-development": {
     slug: "restaurant-website-development",
@@ -146,6 +156,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       {
         q: "Do you integrate with Zomato/Swiggy?",
         a: "We can integrate your website with Zomato, Swiggy, and other delivery platforms so orders flow directly into your system.",
+      },
+    ],
+    relatedPosts: [
+      {
+        title: "Restaurant Website Design: Features That Increase Orders",
+        slug: "restaurant-website-design-guide",
       },
     ],
   },
@@ -234,6 +250,12 @@ export const SERVICE_DETAILS: Record<string, ServiceDetail> = {
       {
         q: "Can I migrate from Shopify to a custom site?",
         a: "Yes. We handle data migration from Shopify, WooCommerce, and other platforms to your new custom e-commerce site.",
+      },
+    ],
+    relatedPosts: [
+      {
+        title: "E-Commerce Website Cost in 2025: A Complete Breakdown",
+        slug: "ecommerce-website-cost-2025",
       },
     ],
   },

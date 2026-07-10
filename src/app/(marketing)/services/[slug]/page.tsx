@@ -158,6 +158,29 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
 
+          {/* Related Reading */}
+          {service.relatedPosts && service.relatedPosts.length > 0 && (
+            <div className="mt-20">
+              <h2 className="font-sans text-2xl font-medium text-almost-white">Related Reading</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {service.relatedPosts.map((post) => (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-6 transition-all duration-300 hover:border-signal-violet/30"
+                  >
+                    <p className="font-sans text-sm font-medium text-almost-white group-hover:text-signal-violet transition-colors">
+                      {post.title}
+                    </p>
+                    <div className="mt-3 flex items-center gap-1 font-sans text-xs text-steel">
+                      Read More <ArrowRight className="size-3" />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* CTA */}
           <div className="mt-24 rounded-[19.2px] border border-signal-violet/20 bg-signal-violet/5 p-10 text-center sm:p-14">
             <h2 className="font-sans text-3xl font-medium text-almost-white">
