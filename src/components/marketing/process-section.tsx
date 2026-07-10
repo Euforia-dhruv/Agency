@@ -375,8 +375,10 @@ export function ProcessSection() {
           <SplitFlapText
             text="OUR PROCESS"
             as="p"
-            duration={1.5}
-            delay={0.2}
+            staggerDelay={80}
+            flipInterval={60}
+            minFlips={6}
+            maxFlips={10}
             className="font-mono text-[10px] uppercase tracking-[1.8px] text-steel"
             filledClassName="font-mono text-[10px] uppercase tracking-[1.8px] text-signal-violet"
           />
