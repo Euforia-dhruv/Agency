@@ -9,6 +9,18 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.convex.cloud",
       },
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+      },
+      {
+        protocol: "https",
+        hostname: "v1.screenshot.11ty.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "screenshot.guru",
+      },
     ],
   },
 

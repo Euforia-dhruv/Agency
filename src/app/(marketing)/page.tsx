@@ -10,12 +10,21 @@ import { TechStackSection } from "@/components/marketing/tech-stack-section";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { FAQSection } from "@/components/marketing/faq-section";
 import { ContactForm } from "@/components/marketing/contact-form";
+import { PROJECTS } from "@/lib/projects-data";
+import { getWebsitePreview } from "@/lib/preview";
 
 export default async function HomePage() {
   const [testimonials, faqs] = await Promise.all([
     fetchQuery(api.testimonials.getPublic).catch(() => []),
     fetchQuery(api.faqs.list).catch(() => []),
   ]);
+
+  const projectsWithPreviews = await Promise.all(
+    PROJECTS.map(async (p) => ({
+      ...p,
+      previewUrl: await getWebsitePreview(p.url),
+    })),
+  );
 
   return (
     <>
@@ -25,7 +34,7 @@ export default async function HomePage() {
 
       <ServicesSection />
 
-      <WorkSection />
+      <WorkSection projects={projectsWithPreviews} />
 
       <ProcessSection />
 
