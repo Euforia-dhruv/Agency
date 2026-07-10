@@ -167,17 +167,16 @@ function StepCard({
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className={cn(
-          "cursor-pointer select-none overflow-hidden rounded-[20px] border transition-colors duration-500",
-          isExpanded || isHovered ? "border-signal-violet/30" : "border-[rgba(255,255,255,0.08)]",
-        )}
+        className="rounded-[19.2px] border transition-colors duration-500"
         style={{
-          background: isExpanded || isHovered ? "#1b1b1b" : "#111111",
+          background: isExpanded || isHovered ? "rgba(247, 249, 250, 0.03)" : "transparent",
+          borderColor:
+            isExpanded || isHovered ? "rgba(175, 80, 255, 0.3)" : "rgba(247, 249, 250, 0.2)",
           transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
         }}
       >
         <div
-          className="flex items-center px-8 sm:px-12"
+          className="relative flex cursor-pointer select-none items-center px-8 sm:px-12"
           style={{
             height: "clamp(80px, 10vw, 130px)",
             transform: prefersReducedMotion ? "none" : `translateX(${isHovered ? 20 : 0}px)`,
@@ -186,7 +185,7 @@ function StepCard({
         >
           <span
             className={cn(
-              "mr-6 hidden font-mono text-sm font-medium transition-colors duration-500 sm:block",
+              "mr-8 hidden font-mono text-lg font-medium transition-colors duration-500 sm:block",
               isHovered || isExpanded ? "text-signal-violet" : "text-steel",
             )}
             style={{
@@ -197,7 +196,7 @@ function StepCard({
           </span>
 
           <h3
-            className="flex select-none items-baseline leading-[0.9] text-white"
+            className="flex select-none items-baseline leading-[0.9] text-almost-white"
             style={{
               fontSize: "clamp(40px, 8vw, 130px)",
               letterSpacing: isHovered ? "-0.06em" : "-0.04em",
@@ -215,8 +214,8 @@ function StepCard({
                     ? {
                         WebkitTextStroke: isHovered
                           ? "0px transparent"
-                          : "1px rgba(255,255,255,0.55)",
-                        color: isHovered ? "#ffffff" : "transparent",
+                          : "1px rgba(247,249,250,0.55)",
+                        color: isHovered ? "#f7f9fa" : "transparent",
                         transition:
                           "color 0.5s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
                       }
@@ -242,7 +241,11 @@ function StepCard({
                 isHovered || isExpanded ? "text-signal-violet" : "text-steel",
               )}
               style={
-                isHovered ? { filter: "drop-shadow(0 0 12px rgba(175,80,255,0.4))" } : undefined
+                isHovered
+                  ? {
+                      filter: "drop-shadow(0 0 12px rgba(175,80,255,0.4))",
+                    }
+                  : undefined
               }
             />
           </motion.div>
@@ -251,17 +254,25 @@ function StepCard({
         <AnimatePresence>
           {isExpanded && (
             <motion.div
-              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
-              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, height: "auto" }}
-              exit={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
+              initial={
+                prefersReducedMotion ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }
+              }
+              animate={
+                prefersReducedMotion
+                  ? { opacity: 1, height: "auto" }
+                  : { opacity: 1, height: "auto" }
+              }
+              exit={
+                prefersReducedMotion ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }
+              }
               transition={{ duration: 0.4, ease: easing }}
               className="overflow-hidden"
             >
-              <div className="border-t border-[rgba(255,255,255,0.06)]" />
+              <div className="mx-8 h-px bg-[rgba(247,249,250,0.08)] sm:mx-12" />
               <div className="grid gap-8 px-8 py-10 sm:px-12 sm:grid-cols-2 lg:grid-cols-4">
                 <motion.div
-                  initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
-                  animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                  initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+                  animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.35,
                     delay: prefersReducedMotion ? 0 : 0.05,
@@ -283,7 +294,7 @@ function StepCard({
                     ease: easing,
                   }}
                 >
-                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-steel">
+                  <p className="font-mono text-[10px] uppercase tracking-[1.8px] text-steel">
                     Deliverables
                   </p>
                   <ul className="mt-3 space-y-1.5">
@@ -304,7 +315,7 @@ function StepCard({
                     ease: easing,
                   }}
                 >
-                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-steel">
+                  <p className="font-mono text-[10px] uppercase tracking-[1.8px] text-steel">
                     Timeline
                   </p>
                   <p className="mt-3 font-sans text-sm text-almost-white">{step.timeline}</p>
@@ -320,7 +331,7 @@ function StepCard({
                   }}
                   className="sm:col-span-2 lg:col-span-1"
                 >
-                  <p className="font-mono text-[10px] uppercase tracking-[1.5px] text-steel">
+                  <p className="font-mono text-[10px] uppercase tracking-[1.8px] text-steel">
                     Technologies
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -336,7 +347,7 @@ function StepCard({
                           delay: prefersReducedMotion ? 0 : 0.25 + i * 0.05,
                           ease: easing,
                         }}
-                        className="rounded-full border border-[rgba(255,255,255,0.1)] px-3 py-1 font-mono text-[11px] text-steel"
+                        className="rounded-[6px] border border-[rgba(247,249,250,0.12)] px-2.5 py-1 font-mono text-[11px] text-steel"
                       >
                         {tech}
                       </motion.span>
@@ -357,13 +368,13 @@ export function ProcessSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="w-full bg-[#050505] py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="mx-auto max-w-[1500px] px-6">
-        <div className="mb-20 max-w-2xl">
-          <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
-            Our Process
+    <section className="w-full bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
+      <div className="mx-auto max-w-[1200px] px-6">
+        <div className="mb-20">
+          <p className="font-mono text-[10px] uppercase tracking-[1.8px] text-soft-white">
+            O U R &nbsp; P R O C E S S
           </p>
-          <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+          <h2 className="mt-8 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
             From idea to launch,
             <br />
             every step is intentional.
