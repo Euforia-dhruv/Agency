@@ -15,15 +15,23 @@ const IconMap = {
   leads: MessageSquare,
 } as const;
 
+async function safeFetch<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await fn();
+  } catch {
+    return fallback;
+  }
+}
+
 export default async function AdminDashboardPage() {
   const token = await convexAuthNextjsToken();
   const fetchOptions = token ? { token } : {};
 
   const [services, projects, posts, leads] = await Promise.all([
-    fetchQuery(api.services.list, {}, fetchOptions),
-    fetchQuery(api.projects.list, {}, fetchOptions),
-    fetchQuery(api.blog.list, {}, fetchOptions),
-    fetchQuery(api.leads.count, {}, fetchOptions),
+    safeFetch(() => fetchQuery(api.services.list, {}, fetchOptions), []),
+    safeFetch(() => fetchQuery(api.projects.list, {}, fetchOptions), []),
+    safeFetch(() => fetchQuery(api.blog.list, {}, fetchOptions), []),
+    safeFetch(() => fetchQuery(api.leads.count, {}, fetchOptions), []),
   ]);
 
   const widgets = [
