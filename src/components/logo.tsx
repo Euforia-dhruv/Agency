@@ -8,13 +8,20 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { img: 28 },
-  md: { img: 36 },
-  lg: { img: 44 },
+  sm: { img: 24 },
+  md: { img: 30 },
+  lg: { img: 36 },
+};
+
+const textSizes = {
+  sm: "text-lg",
+  md: "text-2xl",
+  lg: "text-3xl",
 };
 
 export function Logo({ size = "md", className, textOnly = false }: LogoProps) {
   const dims = sizeMap[size];
+  const textSize = textSizes[size];
 
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
@@ -28,14 +35,10 @@ export function Logo({ size = "md", className, textOnly = false }: LogoProps) {
           priority
         />
       )}
-      <Image
-        src="/logo-text.png"
-        alt="VENTRIEE"
-        width={dims.img * 3}
-        height={dims.img}
-        className="size-auto object-contain"
-        priority
-      />
+      <span className={cn("inline-flex items-baseline leading-none", textSize)}>
+        <span className="font-cendrick tracking-tight text-almost-white">VEN</span>
+        <span className="font-heading italic text-almost-white">TRIEE</span>
+      </span>
     </span>
   );
 }

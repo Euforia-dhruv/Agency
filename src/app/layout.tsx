@@ -26,6 +26,13 @@ const grandSlang = localFont({
   style: "normal",
 });
 
+const cendrickNode = localFont({
+  src: "../fonts/CendrickNodeDEMO-Extended.ttf",
+  variable: "--font-cendrick",
+  weight: "400",
+  style: "normal",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "VENTRIEE",
@@ -46,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} ${grandSlang.variable} dark h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} ${grandSlang.variable} ${cendrickNode.variable} dark h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <a
