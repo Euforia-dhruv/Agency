@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Code2, Layers, Smartphone, Sparkles, Palette, Zap, Globe, Wrench } from "lucide-react";
+import CardSwap, { Card } from "@/components/card-swap";
 
 const services = [
   {
@@ -67,16 +68,176 @@ const services = [
 export function ServicesSection() {
   return (
     <section className="mx-auto max-w-[1200px] px-6 py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="mb-16 max-w-2xl">
-        <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
-          Capabilities
-        </p>
-        <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
-          What we build
-        </h2>
-        <p className="mt-4 font-sans text-lg text-steel">
-          Full-stack development, design, and growth services for ambitious teams.
-        </p>
+      <div className="mb-16 flex items-start justify-between gap-12">
+        <div className="max-w-2xl">
+          <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
+            Capabilities
+          </p>
+          <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+            What we build
+          </h2>
+          <p className="mt-4 font-sans text-lg text-steel">
+            Full-stack development, design, and growth services for ambitious teams.
+          </p>
+        </div>
+
+        <div className="relative hidden w-[300px] shrink-0 lg:block" style={{ height: 300 }}>
+          <CardSwap
+            width={260}
+            height={200}
+            cardDistance={40}
+            verticalDistance={50}
+            delay={4000}
+            skewAmount={3}
+            easing="elastic"
+            containerStyle={{ transform: "translate(10%, 10%)" }}
+          >
+            <Card
+              style={{
+                background: "rgba(9,9,9,0.9)",
+                border: "1px solid rgba(175,80,255,0.3)",
+                padding: 24,
+                borderRadius: "19.2px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 12,
+                  color: "#af50ff",
+                  margin: 0,
+                  textTransform: "uppercase",
+                  letterSpacing: "1.8px",
+                }}
+              >
+                Gym Websites
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontSize: 22,
+                  color: "#f7f9fa",
+                  margin: "6px 0 0",
+                  fontStyle: "italic",
+                  lineHeight: 1.1,
+                }}
+              >
+                Member management
+              </p>
+            </Card>
+            <Card
+              style={{
+                background: "rgba(9,9,9,0.9)",
+                border: "1px solid rgba(247,249,250,0.2)",
+                padding: 24,
+                borderRadius: "19.2px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 12,
+                  color: "#af50ff",
+                  margin: 0,
+                  textTransform: "uppercase",
+                  letterSpacing: "1.8px",
+                }}
+              >
+                School Websites
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontSize: 22,
+                  color: "#f7f9fa",
+                  margin: "6px 0 0",
+                  fontStyle: "italic",
+                  lineHeight: 1.1,
+                }}
+              >
+                LMS & parent portals
+              </p>
+            </Card>
+            <Card
+              style={{
+                background: "rgba(9,9,9,0.9)",
+                border: "1px solid rgba(247,249,250,0.2)",
+                padding: 24,
+                borderRadius: "19.2px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 12,
+                  color: "#af50ff",
+                  margin: 0,
+                  textTransform: "uppercase",
+                  letterSpacing: "1.8px",
+                }}
+              >
+                Restaurant Websites
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontSize: 22,
+                  color: "#f7f9fa",
+                  margin: "6px 0 0",
+                  fontStyle: "italic",
+                  lineHeight: 1.1,
+                }}
+              >
+                Online ordering
+              </p>
+            </Card>
+            <Card
+              style={{
+                background: "rgba(9,9,9,0.9)",
+                border: "1px solid rgba(247,249,250,0.2)",
+                padding: 24,
+                borderRadius: "19.2px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 12,
+                  color: "#af50ff",
+                  margin: 0,
+                  textTransform: "uppercase",
+                  letterSpacing: "1.8px",
+                }}
+              >
+                E-Commerce
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  fontSize: 22,
+                  color: "#f7f9fa",
+                  margin: "6px 0 0",
+                  fontStyle: "italic",
+                  lineHeight: 1.1,
+                }}
+              >
+                Online stores that sell
+              </p>
+            </Card>
+          </CardSwap>
+        </div>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

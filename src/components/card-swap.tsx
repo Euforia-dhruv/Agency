@@ -57,6 +57,7 @@ interface CardSwapProps {
   onCardClick?: (idx: number) => void;
   skewAmount?: number;
   easing?: "linear" | "elastic";
+  containerStyle?: React.CSSProperties;
   children: ReactNode;
 }
 
@@ -70,6 +71,7 @@ export default function CardSwap({
   onCardClick,
   skewAmount = 6,
   easing = "elastic",
+  containerStyle,
   children,
 }: CardSwapProps) {
   const config =
@@ -218,7 +220,7 @@ export default function CardSwap({
     <div
       ref={container}
       className="card-swap-container"
-      style={{ width: width, height: height } as React.CSSProperties}
+      style={{ width, height, ...containerStyle } as React.CSSProperties}
     >
       {rendered}
     </div>
