@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Logo } from "@/components/logo";
 import ASCIIText from "@/components/ascii-text";
-import MagnetLines from "@/components/magnet-lines";
+import CardSwap, { Card } from "@/components/card-swap";
 
 const services = [
   "Custom Websites",
@@ -79,16 +79,161 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="absolute right-0 top-1/2 z-0 -translate-y-1/2 opacity-[0.04] pointer-events-none">
-        <MagnetLines
-          rows={7}
-          columns={7}
-          containerSize="50vmin"
-          lineColor="#f7f9fa"
-          lineWidth="0.4vmin"
-          lineHeight="3vmin"
-          baseAngle={0}
-        />
+      <div className="absolute right-0 top-0 z-0 h-full w-1/2 pointer-events-none">
+        <CardSwap
+          width={380}
+          height={280}
+          cardDistance={50}
+          verticalDistance={60}
+          delay={4000}
+          skewAmount={4}
+          easing="elastic"
+        >
+          <Card
+            style={{
+              background: "rgba(9,9,9,0.85)",
+              border: "1px solid rgba(175,80,255,0.3)",
+              padding: "32px",
+              borderRadius: "19.2px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 14,
+                color: "#af50ff",
+                margin: 0,
+                textTransform: "uppercase",
+                letterSpacing: "1.8px",
+              }}
+            >
+              Gym Websites
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: 28,
+                color: "#f7f9fa",
+                margin: "8px 0 0",
+                fontStyle: "italic",
+                lineHeight: 1.1,
+              }}
+            >
+              Member management & class scheduling
+            </p>
+          </Card>
+          <Card
+            style={{
+              background: "rgba(9,9,9,0.85)",
+              border: "1px solid rgba(247,249,250,0.2)",
+              padding: "32px",
+              borderRadius: "19.2px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 14,
+                color: "#af50ff",
+                margin: 0,
+                textTransform: "uppercase",
+                letterSpacing: "1.8px",
+              }}
+            >
+              School Websites
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: 28,
+                color: "#f7f9fa",
+                margin: "8px 0 0",
+                fontStyle: "italic",
+                lineHeight: 1.1,
+              }}
+            >
+              LMS & parent portal integration
+            </p>
+          </Card>
+          <Card
+            style={{
+              background: "rgba(9,9,9,0.85)",
+              border: "1px solid rgba(247,249,250,0.2)",
+              padding: "32px",
+              borderRadius: "19.2px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 14,
+                color: "#af50ff",
+                margin: 0,
+                textTransform: "uppercase",
+                letterSpacing: "1.8px",
+              }}
+            >
+              Restaurant Websites
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: 28,
+                color: "#f7f9fa",
+                margin: "8px 0 0",
+                fontStyle: "italic",
+                lineHeight: 1.1,
+              }}
+            >
+              Online ordering & reservations
+            </p>
+          </Card>
+          <Card
+            style={{
+              background: "rgba(9,9,9,0.85)",
+              border: "1px solid rgba(247,249,250,0.2)",
+              padding: "32px",
+              borderRadius: "19.2px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: 14,
+                color: "#af50ff",
+                margin: 0,
+                textTransform: "uppercase",
+                letterSpacing: "1.8px",
+              }}
+            >
+              E-Commerce
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-heading)",
+                fontSize: 28,
+                color: "#f7f9fa",
+                margin: "8px 0 0",
+                fontStyle: "italic",
+                lineHeight: 1.1,
+              }}
+            >
+              Online stores that sell
+            </p>
+          </Card>
+        </CardSwap>
       </div>
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-6 pt-[140px] pb-[100px] lg:flex-row lg:items-center lg:pt-[120px] lg:pb-[80px]">
