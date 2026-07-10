@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "", // Add Google Search Console verification code here
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
   },
 };
 
