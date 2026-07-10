@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Logo } from "@/components/logo";
+import ASCIIText from "@/components/ascii-text";
 
 const services = [
   "Custom Websites",
@@ -65,6 +66,17 @@ export function HeroSection() {
           background: "radial-gradient(ellipse at center, transparent 0%, #090909 85%)",
         }}
       />
+
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.12]">
+        <ASCIIText
+          text="VENTRIEE"
+          enableWaves={true}
+          asciiFontSize={6}
+          textFontSize={180}
+          textColor="#f7f9fa"
+          planeBaseHeight={6}
+        />
+      </div>
 
       <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-6 pt-[140px] pb-[100px] lg:flex-row lg:items-center lg:pt-[120px] lg:pb-[80px]">
         <motion.div
