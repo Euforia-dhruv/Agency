@@ -20,7 +20,7 @@ export const sendLeadNotification = internalAction({
 
     await resend.emails.send({
       from: "Agency <onboarding@resend.dev>",
-      to: ["dhruv@example.com"],
+      to: ["ventriee.contact@gmail.com"],
       subject: `New Lead: ${args.name}${args.company ? ` (${args.company})` : ""}`,
       html: `
         <h2>New Contact Form Submission</h2>

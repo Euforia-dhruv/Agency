@@ -10,6 +10,7 @@ export function LoginForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isSignUp, setIsSignUp] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,6 +19,7 @@ export function LoginForm() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    formData.set("flow", isSignUp ? "signUp" : "signIn");
 
     try {
       await signIn("password", formData);
@@ -32,7 +34,7 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor="email" className="font-sans text-sm font-medium text-foreground">
+        <label htmlFor="email" className="font-sans text-sm font-medium text-almost-white">
           Email
         </label>
         <input
@@ -40,13 +42,13 @@ export function LoginForm() {
           name="email"
           type="email"
           required
-          className="mt-1 block w-full rounded-[6px] border border-input bg-transparent px-3 py-2 font-sans text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
+          className="mt-1 block w-full rounded-[6px] border border-zinc-700 bg-transparent px-3 py-2 font-sans text-sm text-almost-white placeholder:text-zinc-500 focus:border-signal-violet focus:outline-none focus:ring-1 focus:ring-signal-violet"
           placeholder="admin@example.com"
         />
       </div>
 
       <div>
-        <label htmlFor="password" className="font-sans text-sm font-medium text-foreground">
+        <label htmlFor="password" className="font-sans text-sm font-medium text-almost-white">
           Password
         </label>
         <input
@@ -54,19 +56,30 @@ export function LoginForm() {
           name="password"
           type="password"
           required
-          className="mt-1 block w-full rounded-[6px] border border-input bg-transparent px-3 py-2 font-sans text-sm text-foreground placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-1 focus:ring-ring"
+          className="mt-1 block w-full rounded-[6px] border border-zinc-700 bg-transparent px-3 py-2 font-sans text-sm text-almost-white placeholder:text-zinc-500 focus:border-signal-violet focus:outline-none focus:ring-1 focus:ring-signal-violet"
         />
       </div>
 
-      {error && <p className="font-sans text-xs text-destructive">{error}</p>}
+      {error && <p className="font-sans text-xs text-red-400">{error}</p>}
 
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-almost-white bg-near-black px-4 py-2.5 font-sans text-sm font-normal text-almost-white transition-opacity hover:opacity-90 disabled:opacity-50"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-signal-violet px-4 py-2.5 font-sans text-sm font-medium text-almost-white transition-all hover:bg-signal-violet/90 disabled:opacity-50"
       >
         {loading && <Loader2 className="size-4 animate-spin" />}
-        {loading ? "Signing in..." : "Sign In"}
+        {loading ? "Please wait..." : isSignUp ? "Create Account" : "Sign In"}
+      </button>
+
+      <button
+        type="button"
+        onClick={() => {
+          setIsSignUp(!isSignUp);
+          setError(null);
+        }}
+        className="w-full text-center font-sans text-xs text-zinc-500 hover:text-almost-white transition-colors"
+      >
+        {isSignUp ? "Already have an account? Sign in" : "No account? Create one"}
       </button>
     </form>
   );
