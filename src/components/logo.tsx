@@ -33,8 +33,8 @@ export function Logo({ size = "md", className }: LogoProps) {
         priority
       />
       <span className={cn("inline-flex items-baseline", textSize)}>
-        <span className="font-sans font-extrabold tracking-tight text-almost-white">Ven</span>
-        <span className="font-heading italic text-almost-white">triee</span>
+        <span className="font-sans font-extrabold tracking-tight text-almost-white">VEN</span>
+        <span className="font-heading italic text-almost-white">TRIEE</span>
       </span>
     </span>
   );
