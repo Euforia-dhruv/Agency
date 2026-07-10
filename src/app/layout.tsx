@@ -32,6 +32,9 @@ export const metadata: Metadata = {
   },
   description:
     "VENTRIEE is a freelance software development agency crafting fast, scalable, and premium digital experiences.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
