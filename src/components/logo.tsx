@@ -12,15 +12,8 @@ const sizeMap = {
   lg: { img: 36 },
 };
 
-const textSizeMap = {
-  sm: "text-lg",
-  md: "text-2xl",
-  lg: "text-3xl",
-};
-
 export function Logo({ size = "md", className }: LogoProps) {
   const dims = sizeMap[size];
-  const textSize = textSizeMap[size];
 
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
@@ -32,10 +25,14 @@ export function Logo({ size = "md", className }: LogoProps) {
         className="size-auto object-contain"
         priority
       />
-      <span className={cn("inline-flex items-baseline", textSize)}>
-        <span className="font-sans font-extrabold tracking-tight text-almost-white">VEN</span>
-        <span className="font-heading italic text-almost-white">TRIEE</span>
-      </span>
+      <Image
+        src="/logo-text.png"
+        alt="VENTRIEE"
+        width={dims.img * 4}
+        height={dims.img}
+        className="size-auto object-contain"
+        priority
+      />
     </span>
   );
 }
