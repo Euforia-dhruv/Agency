@@ -4,8 +4,8 @@ import Hyperspeed from "@/components/hyperspeed";
 
 export function SpeedSection() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      <div className="absolute inset-0">
+    <section className="relative min-h-[80svh] w-full overflow-hidden md:min-h-screen">
+      <div className="absolute inset-0 max-md:hidden">
         <Hyperspeed
           effectOptions={{
             distortion: "turbulentDistortion",
@@ -46,14 +46,14 @@ export function SpeedSection() {
       </div>
 
       <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <div className="mx-auto max-w-[1200px] px-6 text-center">
+        <div className="mx-auto max-w-[1280px] px-4 text-center sm:px-6">
           <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
             Built for Speed
           </p>
-          <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+          <h2 className="mt-4 font-sans text-[clamp(1.75rem,3vw+0.5rem,3.75rem)] font-medium tracking-tight text-almost-white">
             Performance you can feel.
           </h2>
-          <p className="mx-auto mt-4 max-w-xl font-sans text-lg text-steel">
+          <p className="mx-auto mt-3 max-w-xl font-sans text-[clamp(0.9375rem,1vw+0.25rem,1.125rem)] text-steel md:mt-4">
             Every millisecond counts. We optimise every asset, query, and render path to deliver
             sub-second load times.
           </p>

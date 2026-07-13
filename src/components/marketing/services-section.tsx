@@ -67,16 +67,16 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section className="mx-auto max-w-[1200px] px-6 py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="mb-16 flex items-start justify-between gap-12">
+    <section className="mx-auto max-w-[1280px] px-4 sm:px-6 py-[64px] sm:py-[80px] lg:py-[120px]">
+      <div className="mb-12 flex items-start justify-between gap-12 lg:mb-16">
         <div className="max-w-2xl">
           <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
             Capabilities
           </p>
-          <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+          <h2 className="mt-3 font-sans text-[clamp(1.75rem,3vw+0.5rem,3.75rem)] font-medium tracking-tight text-almost-white sm:mt-4">
             What we build
           </h2>
-          <p className="mt-4 font-sans text-lg text-steel">
+          <p className="mt-3 font-sans text-[clamp(0.9375rem,1vw+0.25rem,1.125rem)] text-steel sm:mt-4">
             Full-stack development, design, and growth services for ambitious teams.
           </p>
         </div>
@@ -240,7 +240,7 @@ export function ServicesSection() {
         </div>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         {services.map((service, i) => {
           const Icon = service.icon;
           return (
@@ -253,29 +253,31 @@ export function ServicesSection() {
             >
               <Link
                 href="/services"
-                className="group flex h-full flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8 transition-all duration-300 hover:-translate-y-1"
+                className="group flex h-full flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-5 transition-all duration-300 hover:-translate-y-1 sm:p-6 lg:p-8"
               >
-                <div className="mb-6 inline-flex size-12 items-center justify-center rounded-[12px] bg-signal-violet/10 transition-colors group-hover:bg-signal-violet/20">
-                  <Icon className="size-5 text-signal-violet" />
+                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-[10px] bg-signal-violet/10 transition-colors group-hover:bg-signal-violet/20 sm:size-12 sm:rounded-[12px]">
+                  <Icon className="size-4 text-signal-violet sm:size-5" />
                 </div>
 
-                <h3 className="font-sans text-xl font-medium text-almost-white">{service.title}</h3>
-                <p className="mt-2 flex-1 font-sans text-sm leading-relaxed text-steel">
+                <h3 className="font-sans text-lg font-medium text-almost-white sm:text-xl">
+                  {service.title}
+                </h3>
+                <p className="mt-1.5 flex-1 font-sans text-sm leading-relaxed text-steel sm:mt-2">
                   {service.description}
                 </p>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
                   {service.tech.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/[0.06] px-2.5 py-1 font-mono text-[11px] text-steel"
+                      className="rounded-full border border-white/[0.06] px-2 py-0.5 font-mono text-[10px] text-steel sm:px-2.5 sm:py-1 sm:text-[11px]"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center gap-1.5 font-sans text-sm text-signal-violet transition-colors">
+                <div className="mt-4 flex items-center gap-1.5 font-sans text-sm text-signal-violet transition-colors sm:mt-6">
                   Learn More
                   <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>

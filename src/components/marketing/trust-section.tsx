@@ -53,8 +53,11 @@ export function TrustSection() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="mx-auto max-w-[1200px] px-6 py-[140px] md:py-[96px] sm:py-[72px]" ref={ref}>
-      <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+    <section
+      className="mx-auto max-w-[1280px] px-4 py-[64px] sm:px-6 md:py-[80px] lg:py-[120px]"
+      ref={ref}
+    >
+      <div className="grid grid-cols-2 gap-6 md:gap-8 lg:grid-cols-4">
         {stats.map((stat, i) => (
           <motion.div
             key={stat.label}
@@ -63,10 +66,10 @@ export function TrustSection() {
             transition={{ duration: 0.4, delay: i * 0.1 }}
             className="text-center"
           >
-            <p className="font-sans text-5xl font-medium tracking-tight text-almost-white lg:text-6xl">
+            <p className="font-sans text-[clamp(2rem,4vw+0.5rem,3.75rem)] font-medium tracking-tight text-almost-white">
               <AnimatedCounter value={stat.value} suffix={stat.suffix} inView={inView} />
             </p>
-            <p className="mt-2 font-sans text-sm text-steel">{stat.label}</p>
+            <p className="mt-1 font-sans text-xs text-steel md:mt-2 md:text-sm">{stat.label}</p>
           </motion.div>
         ))}
       </div>

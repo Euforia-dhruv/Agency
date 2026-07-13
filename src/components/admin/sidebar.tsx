@@ -10,7 +10,6 @@ import {
   PenLine,
   MessageSquare,
   HelpCircle,
-  Users,
   Settings,
   LogOut,
 } from "lucide-react";
@@ -23,7 +22,6 @@ const NAV_ITEMS = [
   { label: "Blog", href: "/admin/blog", icon: PenLine },
   { label: "Testimonials", href: "/admin/testimonials", icon: MessageSquare },
   { label: "FAQs", href: "/admin/faqs", icon: HelpCircle },
-  { label: "Leads", href: "/admin/leads", icon: Users },
   { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 

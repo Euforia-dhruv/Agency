@@ -115,12 +115,14 @@ export default async function CaseStudyPage({ params }: Props) {
         </section>
 
         <div className="mt-16 flex gap-4">
-          <Link
-            href="/contact"
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm font-normal text-almost-white transition-opacity hover:opacity-90"
           >
             Start Similar Project
-          </Link>
+          </a>
           <Link
             href="/work"
             className="font-sans text-sm text-steel underline-offset-2 hover:text-almost-white hover:underline"

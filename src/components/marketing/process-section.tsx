@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -104,12 +104,14 @@ function StepCard({
   isExpanded,
   onToggle,
   prefersReducedMotion,
+  animDuration,
 }: {
   step: ProcessStep;
   index: number;
   isExpanded: boolean;
   onToggle: () => void;
   prefersReducedMotion: boolean;
+  animDuration: number;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -147,7 +149,7 @@ function StepCard({
       whileInView={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{
-        duration: prefersReducedMotion ? 0 : 0.8,
+        duration: prefersReducedMotion ? 0 : animDuration,
         delay: prefersReducedMotion ? 0 : index * 0.12,
         ease: easing,
       }}
@@ -178,9 +180,9 @@ function StepCard({
         }}
       >
         <div
-          className="relative flex cursor-pointer select-none items-center px-8 sm:px-12"
+          className="relative flex cursor-pointer select-none items-center px-5 sm:px-8 md:px-12"
           style={{
-            height: "clamp(80px, 10vw, 130px)",
+            height: "clamp(64px, 10vw, 130px)",
             transform: prefersReducedMotion ? "none" : `translateX(${isHovered ? 20 : 0}px)`,
             transition: "transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
@@ -270,8 +272,8 @@ function StepCard({
               transition={{ duration: 0.4, ease: easing }}
               className="overflow-hidden"
             >
-              <div className="mx-8 h-px bg-[rgba(247,249,250,0.08)] sm:mx-12" />
-              <div className="grid gap-8 px-8 py-10 sm:px-12 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="mx-5 h-px bg-[rgba(247,249,250,0.08)] sm:mx-8 md:mx-12" />
+              <div className="grid gap-6 px-5 py-6 sm:px-8 sm:py-8 md:gap-8 md:px-12 md:py-10 sm:grid-cols-2 lg:grid-cols-4">
                 <motion.div
                   initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
                   animate={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
@@ -365,13 +367,30 @@ function StepCard({
   );
 }
 
+function getProcessDuration(): number {
+  if (typeof window === "undefined") return 0.8;
+  const w = window.innerWidth;
+  if (w < 768) return 0.35;
+  if (w < 1024) return 0.5;
+  return 0.8;
+}
+
 export function ProcessSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const prefersReducedMotion = useReducedMotion();
+  const [animDuration, setAnimDuration] = useState(getProcessDuration);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    const update = () => setAnimDuration(getProcessDuration());
+    const mq = window.matchMedia("(max-width: 1024px)");
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, [prefersReducedMotion]);
 
   return (
-    <section className="relative w-full overflow-hidden bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="pointer-events-none absolute left-0 top-1/2 z-0 -translate-y-1/2 opacity-[0.03]">
+    <section className="relative w-full overflow-hidden bg-near-black py-[64px] md:py-[80px] lg:py-[120px]">
+      <div className="pointer-events-none absolute left-0 top-1/2 z-0 -translate-y-1/2 opacity-[0.03] max-md:hidden">
         <MagnetLines
           rows={7}
           columns={7}
@@ -382,8 +401,8 @@ export function ProcessSection() {
           baseAngle={0}
         />
       </div>
-      <div className="relative z-10 mx-auto max-w-[1200px] px-6">
-        <div className="mb-20">
+      <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6">
+        <div className="mb-12 md:mb-20">
           <SplitFlapText
             text="OUR PROCESS"
             as="p"
@@ -394,7 +413,7 @@ export function ProcessSection() {
             className="font-mono text-[10px] uppercase tracking-[1.8px] text-steel"
             filledClassName="font-mono text-[10px] uppercase tracking-[1.8px] text-signal-violet"
           />
-          <h2 className="mt-8 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+          <h2 className="mt-6 font-sans text-[clamp(1.75rem,3vw+0.5rem,3.75rem)] font-medium tracking-tight text-almost-white md:mt-8">
             From idea to launch,
             <br />
             every step is intentional.
@@ -410,6 +429,7 @@ export function ProcessSection() {
               isExpanded={expandedIndex === i}
               onToggle={() => setExpandedIndex(expandedIndex === i ? null : i)}
               prefersReducedMotion={!!prefersReducedMotion}
+              animDuration={animDuration}
             />
           ))}
         </div>

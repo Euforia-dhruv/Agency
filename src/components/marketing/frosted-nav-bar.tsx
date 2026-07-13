@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import { Logo } from "@/components/logo";
@@ -78,21 +78,44 @@ interface FrostedNavBarProps {
   links?: NavLink[];
 }
 
+const navItemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.3, delay: 0.1 + i * 0.05, ease: "easeOut" as const },
+  }),
+};
+
 export function FrostedNavBar({
   ctaLabel = "Start Project",
-  ctaHref = "/contact",
+  ctaHref = "https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426",
   links = NAV_LINKS,
 }: FrostedNavBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     return () => {
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  const closeMenu = useCallback(() => setMobileOpen(false), []);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -111,7 +134,7 @@ export function FrostedNavBar({
       className="fixed top-0 right-0 left-0 z-50 border-b border-ash/60"
       style={{ background: "rgba(51, 50, 72, 0.7)", backdropFilter: "blur(10px)" }}
     >
-      <div className="mx-auto flex h-[72px] max-w-[1200px] items-center gap-10 px-6">
+      <div className="mx-auto flex h-[64px] max-w-[1280px] items-center gap-10 px-4 sm:px-6">
         <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
           <Logo size="lg" className="hidden md:inline-flex" />
           <Logo size="md" className="hidden sm:inline-flex md:hidden" />
@@ -153,25 +176,39 @@ export function FrostedNavBar({
           )}
         </nav>
 
-        <Link
+        <a
           href={ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
           className="ml-auto hidden items-center gap-2 rounded-[999px] bg-signal-violet px-6 py-2.5 font-sans text-[13px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.4)] md:inline-flex"
         >
           {ctaLabel}
           <ArrowRight className="size-3.5" />
-        </Link>
+        </a>
 
         <button
           type="button"
-          className="md:hidden"
+          className="relative z-[60] md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
-          {mobileOpen ? (
-            <X className="size-5 text-almost-white" />
-          ) : (
-            <Menu className="size-5 text-almost-white" />
-          )}
+          <div className="relative flex size-6 items-center justify-center">
+            <motion.span
+              className="absolute block h-[1.5px] w-5 bg-almost-white"
+              animate={mobileOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="absolute block h-[1.5px] w-5 bg-almost-white"
+              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.15 }}
+            />
+            <motion.span
+              className="absolute block h-[1.5px] w-5 bg-almost-white"
+              animate={mobileOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
+              transition={{ duration: 0.2 }}
+            />
+          </div>
         </button>
       </div>
 
@@ -190,7 +227,7 @@ export function FrostedNavBar({
               backdropFilter: "blur(20px)",
             }}
           >
-            <div className="mx-auto max-w-[1200px] px-6 py-10">
+            <div className="mx-auto max-w-[1280px] px-6 py-10">
               <div className="grid grid-cols-3 gap-12">
                 {SERVICE_MENU_ITEMS.map((group) => (
                   <div key={group.group}>
@@ -226,34 +263,73 @@ export function FrostedNavBar({
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-border/10 md:hidden"
+          <motion.div
+            ref={menuRef}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[55] flex flex-col md:hidden"
+            style={{
+              background: "rgba(9, 9, 9, 0.97)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              paddingTop: "env(safe-area-inset-top)",
+              paddingBottom: "env(safe-area-inset-bottom)",
+            }}
           >
-            <div className="flex flex-col gap-1 px-6 py-4">
-              {links.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-sans text-base font-medium text-steel transition-colors hover:text-almost-white"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href={ctaHref}
-                className="mt-3 inline-flex items-center gap-2 rounded-[999px] bg-signal-violet px-6 py-3 font-sans text-sm font-medium text-almost-white"
-                onClick={() => setMobileOpen(false)}
+            <div className="flex flex-1 flex-col overflow-y-auto px-4 pb-8 pt-20 sm:px-6">
+              <nav className="flex flex-col gap-2">
+                {links.map((link, i) => (
+                  <motion.div
+                    key={link.href}
+                    custom={i}
+                    variants={navItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    <Link
+                      href={link.href}
+                      className={`flex items-center justify-between rounded-xl px-4 py-3.5 font-sans text-lg font-medium transition-colors ${
+                        pathname === link.href
+                          ? "bg-signal-violet/10 text-signal-violet"
+                          : "text-steel hover:text-almost-white"
+                      }`}
+                      onClick={() => {
+                        closeMenu();
+                        setServicesOpen(false);
+                      }}
+                    >
+                      {link.label}
+                      <ArrowUpRight
+                        className={`size-4 transition-opacity ${
+                          pathname === link.href ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.1 + links.length * 0.05 }}
+                className="mt-auto"
               >
-                {ctaLabel}
-                <ArrowRight className="size-4" />
-              </Link>
+                <a
+                  href={ctaHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenu}
+                  className="mt-8 flex h-[56px] w-full items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all active:scale-[0.98]"
+                >
+                  {ctaLabel}
+                  <ArrowRight className="size-4" />
+                </a>
+              </motion.div>
             </div>
-          </motion.nav>
+          </motion.div>
         )}
       </AnimatePresence>
     </header>

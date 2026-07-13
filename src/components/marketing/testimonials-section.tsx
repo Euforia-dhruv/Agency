@@ -85,17 +85,17 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
 
 function TestimonialsContent({ testimonials }: { testimonials: Testimonial[] }) {
   return (
-    <section className="mx-auto max-w-[1200px] px-6 py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="mb-16 max-w-2xl">
+    <section className="mx-auto max-w-[1280px] px-4 py-[64px] sm:px-6 md:py-[80px] lg:py-[120px]">
+      <div className="mb-10 max-w-2xl md:mb-16">
         <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
           Client Stories
         </p>
-        <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+        <h2 className="mt-3 font-sans text-[clamp(1.75rem,3vw+0.5rem,3.75rem)] font-medium tracking-tight text-almost-white">
           Trusted by founders
         </h2>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((t, i) => (
           <motion.div
             key={t._id}
@@ -103,17 +103,17 @@ function TestimonialsContent({ testimonials }: { testimonials: Testimonial[] }) 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.4, delay: (i % 3) * 0.1 }}
-            className="flex flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-8"
+            className="flex flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-5 md:p-8"
           >
             {t.rating && (
-              <div className="mb-4">
+              <div className="mb-3 md:mb-4">
                 <StarRating rating={t.rating} />
               </div>
             )}
-            <blockquote className="flex-1 font-sans text-base leading-relaxed text-almost-white/90">
+            <blockquote className="flex-1 font-sans text-sm leading-relaxed text-almost-white/90 md:text-base">
               &ldquo;{t.quote}&rdquo;
             </blockquote>
-            <div className="mt-6 flex items-center gap-4 border-t border-white/[0.06] pt-6">
+            <div className="mt-4 flex items-center gap-3 border-t border-white/[0.06] pt-4 md:mt-6 md:gap-4 md:pt-6">
               <Avatar name={t.author} />
               <div>
                 <p className="font-sans text-sm font-medium text-almost-white">{t.author}</p>

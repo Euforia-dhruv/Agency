@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { fetchQuery } from "convex/nextjs";
 import { convexAuthNextjsToken } from "@convex-dev/auth/nextjs/server";
 import { api } from "@/lib/convex/api";
-import { FileText, Briefcase, PenLine, MessageSquare } from "lucide-react";
+import { FileText, Briefcase, PenLine } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -12,7 +12,6 @@ const IconMap = {
   services: Briefcase,
   projects: FileText,
   blogPosts: PenLine,
-  leads: MessageSquare,
 } as const;
 
 async function safeFetch<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
@@ -27,11 +26,10 @@ export default async function AdminDashboardPage() {
   const token = await convexAuthNextjsToken();
   const fetchOptions = token ? { token } : {};
 
-  const [services, projects, posts, leads] = await Promise.all([
+  const [services, projects, posts] = await Promise.all([
     safeFetch(() => fetchQuery(api.services.list, {}, fetchOptions), []),
     safeFetch(() => fetchQuery(api.projects.list, {}, fetchOptions), []),
     safeFetch(() => fetchQuery(api.blog.list, {}, fetchOptions), []),
-    safeFetch(() => fetchQuery(api.leads.count, {}, fetchOptions), []),
   ]);
 
   const widgets = [
@@ -48,7 +46,6 @@ export default async function AdminDashboardPage() {
       href: "/admin/case-studies",
     },
     { label: "Blog Posts", value: posts.length, key: "blogPosts" as const, href: "/admin/blog" },
-    { label: "Leads", value: leads.length, key: "leads" as const, href: "/admin/leads" },
   ];
 
   return (
@@ -56,7 +53,7 @@ export default async function AdminDashboardPage() {
       <h1 className="font-sans text-2xl font-normal text-almost-white">Dashboard</h1>
       <p className="mt-1 font-sans text-sm text-steel">Overview of your site content.</p>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {widgets.map((widget) => {
           const Icon = IconMap[widget.key];
           return (

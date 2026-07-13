@@ -52,13 +52,13 @@ export function FAQSection({ faqs }: FAQSectionProps) {
   const items = faqs.length > 0 ? faqs : defaultFAQs;
 
   return (
-    <section className="bg-near-black py-[140px] md:py-[96px] sm:py-[72px]">
-      <div className="mx-auto max-w-[1200px] px-6">
-        <div className="mb-16 max-w-2xl">
+    <section className="bg-near-black py-[64px] md:py-[80px] lg:py-[120px]">
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
+        <div className="mb-10 max-w-2xl md:mb-16">
           <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
             Questions
           </p>
-          <h2 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
+          <h2 className="mt-3 font-sans text-[clamp(1.75rem,3vw+0.5rem,3.75rem)] font-medium tracking-tight text-almost-white md:mt-4">
             Frequently asked
           </h2>
         </div>
@@ -74,10 +74,10 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                 <button
                   type="button"
                   onClick={() => setOpenId(isOpen ? null : faq._id)}
-                  className="flex w-full items-center justify-between p-6 text-left"
+                  className="flex w-full items-center justify-between p-4 text-left md:p-6"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-sans text-lg font-medium text-almost-white">
+                  <span className="font-sans text-base font-medium text-almost-white md:text-lg">
                     {faq.question}
                   </span>
                   <ChevronDown

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Logo } from "@/components/logo";
@@ -28,7 +27,7 @@ const floatingOrbs = [
 
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden">
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden md:min-h-[82svh]">
       <div
         className="absolute inset-0 -z-20"
         style={{
@@ -39,7 +38,7 @@ export function HeroSection() {
       {floatingOrbs.map((orb, i) => (
         <motion.div
           key={i}
-          className="absolute -z-10 rounded-full blur-3xl"
+          className="absolute -z-10 rounded-full blur-3xl max-md:opacity-50"
           style={{
             width: orb.size,
             height: orb.size,
@@ -67,7 +66,7 @@ export function HeroSection() {
         }}
       />
 
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.12]">
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.12] max-md:hidden">
         <ASCIIText
           text="VENTRIEE"
           enableWaves={true}
@@ -78,7 +77,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-16 px-6 pt-[140px] pb-[100px] lg:flex-row lg:items-center lg:pt-[120px] lg:pb-[80px]">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-12 px-4 pt-[88px] pb-16 sm:px-6 sm:pt-[100px] sm:pb-20 lg:flex-row lg:items-center lg:gap-16 lg:pt-[120px] lg:pb-[80px]">
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, y: 40 }}
@@ -86,7 +85,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.p
-            className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet"
+            className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet max-sm:text-[10px]"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -94,9 +93,10 @@ export function HeroSection() {
             VENTRIEE &mdash; Software Development Agency
           </motion.p>
 
-          <div className="mt-6">
+          <div className="mt-4 sm:mt-6">
             <motion.span
-              className="block font-heading text-5xl italic leading-[0.95] tracking-tight text-almost-white sm:text-6xl lg:text-7xl"
+              className="block font-heading italic leading-[0.95] tracking-tight text-almost-white"
+              style={{ fontSize: "clamp(1.75rem, 5vw + 0.5rem, 4.5rem)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -104,7 +104,8 @@ export function HeroSection() {
               We build
             </motion.span>
             <motion.h1
-              className="mt-2 font-sans text-5xl font-medium leading-[1.05] tracking-[-0.03em] text-almost-white sm:text-6xl lg:text-7xl"
+              className="mt-2 font-sans font-medium leading-[1.05] tracking-[-0.03em] text-almost-white"
+              style={{ fontSize: "clamp(2rem, 5vw + 0.5rem, 4.5rem)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -112,7 +113,8 @@ export function HeroSection() {
               software that
             </motion.h1>
             <motion.h1
-              className="font-sans text-5xl font-medium leading-[1.05] tracking-[-0.03em] text-almost-white sm:text-6xl lg:text-7xl"
+              className="font-sans font-medium leading-[1.05] tracking-[-0.03em] text-almost-white"
+              style={{ fontSize: "clamp(2rem, 5vw + 0.5rem, 4.5rem)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
@@ -122,7 +124,8 @@ export function HeroSection() {
           </div>
 
           <motion.p
-            className="mt-8 max-w-lg font-sans text-lg font-light leading-relaxed text-steel lg:text-xl"
+            className="mt-6 max-w-lg font-sans font-light leading-relaxed text-steel sm:mt-8"
+            style={{ fontSize: "clamp(1rem, 1.2vw + 0.25rem, 1.375rem)" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -132,21 +135,23 @@ export function HeroSection() {
           </motion.p>
 
           <motion.div
-            className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <Link
-              href="/contact"
-              className="inline-flex h-[52px] items-center justify-center gap-2 rounded-[999px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)]"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-[56px] w-full items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)] sm:w-auto"
             >
               Start Your Project
               <ArrowRight className="size-4" />
-            </Link>
+            </a>
             <a
               href="mailto:ventriee.contact@gmail.com"
-              className="inline-flex h-[52px] items-center font-sans text-[15px] font-medium text-steel transition-colors hover:text-almost-white"
+              className="inline-flex h-[56px] items-center justify-center font-sans text-[15px] font-medium text-steel transition-colors hover:text-almost-white max-sm:w-full"
             >
               Email Us Directly
             </a>
@@ -160,7 +165,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
         >
           <div
-            className="rounded-[19.2px] p-8 backdrop-blur-[12px] sm:p-10"
+            className="rounded-[19.2px] p-6 backdrop-blur-[12px] sm:p-8 lg:p-10"
             style={{
               background: "rgba(66, 55, 56, 0.3)",
               border: "1px solid rgba(247, 249, 250, 0.2)",
@@ -171,7 +176,7 @@ export function HeroSection() {
               <p className="mt-1 font-sans text-sm text-steel">Software Development Agency</p>
             </div>
 
-            <div className="mt-6 space-y-3">
+            <div className="mt-5 space-y-2.5 sm:mt-6 sm:space-y-3">
               {services.map((service, i) => (
                 <motion.div
                   key={service}
@@ -186,7 +191,7 @@ export function HeroSection() {
               ))}
             </div>
 
-            <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/[0.06] pt-6">
+            <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/[0.06] pt-5 sm:mt-8 sm:pt-6">
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-sans text-2xl font-medium text-almost-white">{stat.value}</p>
@@ -195,15 +200,17 @@ export function HeroSection() {
               ))}
             </div>
 
-            <p className="mt-4 font-sans text-xs text-steel">Available Worldwide</p>
+            <p className="mt-3 font-sans text-xs text-steel sm:mt-4">Available Worldwide</p>
 
-            <Link
-              href="/contact"
-              className="mt-6 inline-flex h-[44px] w-full items-center justify-center gap-2 rounded-[999px] bg-signal-violet font-sans text-[14px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.3)]"
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-7 font-sans text-[14px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.3)] sm:mt-6 sm:h-[44px]"
             >
               Let&rsquo;s Build
               <ArrowRight className="size-4" />
-            </Link>
+            </a>
           </div>
         </motion.div>
       </div>

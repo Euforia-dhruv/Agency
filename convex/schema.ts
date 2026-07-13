@@ -57,31 +57,6 @@ export default defineSchema({
     quote: v.string(),
   }),
 
-  leads: defineTable({
-    name: v.string(),
-    email: v.string(),
-    company: v.optional(v.string()),
-    phone: v.optional(v.string()),
-    budget: v.optional(v.string()),
-    timeline: v.optional(v.string()),
-    message: v.string(),
-    status: v.union(
-      v.literal("NEW"),
-      v.literal("CONTACTED"),
-      v.literal("QUALIFIED"),
-      v.literal("WON"),
-      v.literal("LOST"),
-    ),
-    score: v.optional(v.number()),
-  }),
-
-  meetings: defineTable({
-    leadId: v.id("leads"),
-    meetingDate: v.number(),
-    meetingUrl: v.optional(v.string()),
-    notes: v.optional(v.string()),
-  }),
-
   blogPosts: defineTable({
     title: v.string(),
     slug: v.string(),
