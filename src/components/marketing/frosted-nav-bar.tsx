@@ -2,68 +2,16 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowRight, ChevronDown, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS } from "@/lib/constants";
 import { Logo } from "@/components/logo";
 
-const SERVICE_MENU_ITEMS = [
-  {
-    group: "Development",
-    items: [
-      {
-        label: "Web Development",
-        href: "/services",
-        description: "Full-stack applications with modern frameworks",
-      },
-      {
-        label: "SaaS Applications",
-        href: "/services",
-        description: "Scalable multi-tenant platforms",
-      },
-      {
-        label: "Mobile Apps",
-        href: "/services",
-        description: "Native and cross-platform experiences",
-      },
-      {
-        label: "AI Integrations",
-        href: "/services",
-        description: "LLMs, embeddings, and intelligent automation",
-      },
-    ],
-  },
-  {
-    group: "Design",
-    items: [
-      {
-        label: "UI/UX Design",
-        href: "/services",
-        description: "Research-driven product interfaces",
-      },
-      {
-        label: "Brand Identity",
-        href: "/services",
-        description: "Distinct visual systems and guidelines",
-      },
-      { label: "Landing Pages", href: "/services", description: "High-conversion marketing sites" },
-      { label: "Design Systems", href: "/services", description: "Scalable component libraries" },
-    ],
-  },
-  {
-    group: "Growth",
-    items: [
-      { label: "SEO", href: "/services", description: "Technical and on-page optimization" },
-      {
-        label: "Performance Optimization",
-        href: "/services",
-        description: "Sub-second load times and Core Web Vitals",
-      },
-      { label: "Analytics", href: "/services", description: "Data-driven insights and reporting" },
-      { label: "Maintenance", href: "/services", description: "Ongoing support and monitoring" },
-    ],
-  },
+const SOCIAL_LINKS = [
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "GitHub", href: "https://github.com/Euforia-dhruv" },
 ];
 
 interface NavLink {
@@ -78,12 +26,12 @@ interface FrostedNavBarProps {
   links?: NavLink[];
 }
 
-const navItemVariants = {
-  hidden: { opacity: 0, x: -20 },
+const menuItemVariants = {
+  hidden: { opacity: 0, x: 30 },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,
-    transition: { duration: 0.3, delay: 0.1 + i * 0.05, ease: "easeOut" as const },
+    transition: { duration: 0.3, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] as const },
   }),
 };
 
@@ -93,22 +41,27 @@ export function FrostedNavBar({
   links = NAV_LINKS,
 }: FrostedNavBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const menuRef = useRef<HTMLDivElement>(null);
+  const lastFocusedRef = useRef<HTMLElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
+      lastFocusedRef.current = document.activeElement as HTMLElement;
+      setTimeout(() => closeButtonRef.current?.focus(), 350);
     } else {
       document.body.style.overflow = "";
+      lastFocusedRef.current?.focus();
     }
     return () => {
       document.body.style.overflow = "";
@@ -117,94 +70,114 @@ export function FrostedNavBar({
 
   const closeMenu = useCallback(() => setMobileOpen(false), []);
 
-  const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    setServicesOpen(true);
-  };
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+      if (e.key === "Tab" && menuRef.current) {
+        const focusable = menuRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button, [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    },
+    [closeMenu],
+  );
 
-  const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setServicesOpen(false), 150);
-  };
-
-  const navLinks = links.filter((l) => l.label !== "Services");
-  const servicesLink = links.find((l) => l.label === "Services");
+  const isActive = (href: string) => pathname === href;
 
   return (
     <header
-      className="fixed top-0 right-0 left-0 z-50 border-b border-ash/60"
-      style={{ background: "rgba(51, 50, 72, 0.7)", backdropFilter: "blur(10px)" }}
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "shadow-[0_1px_12px_rgba(0,0,0,0.3)] border-b border-white/[0.06]"
+          : "border-b border-transparent"
+      }`}
+      style={{
+        height: "clamp(64px, 8vw, 72px)",
+        background: "rgba(9, 9, 9, 0.75)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+      }}
     >
-      <div className="mx-auto flex h-[64px] max-w-[1280px] items-center gap-10 px-4 sm:px-6">
-        <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
-          <Logo size="lg" className="hidden md:inline-flex" />
-          <Logo size="md" className="hidden sm:inline-flex md:hidden" />
+      <div className="mx-auto flex h-full max-w-[1280px] items-center px-4 sm:px-6">
+        {/* Logo */}
+        <Link href="/" className="shrink-0 transition-opacity hover:opacity-85" aria-label="Home">
+          <Logo size="md" className="hidden sm:inline-flex" />
           <Logo size="sm" className="sm:hidden" />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="group relative font-sans text-[13px] font-medium text-steel transition-colors hover:text-almost-white"
-            >
-              {link.label}
-              <span
-                className="absolute -bottom-1.5 left-0 h-px bg-signal-violet transition-all duration-300 group-hover:w-full"
-                style={{ width: pathname === link.href ? "100%" : "0%" }}
-              />
-            </Link>
-          ))}
-
-          {servicesLink && (
-            <button
-              type="button"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => setServicesOpen(!servicesOpen)}
-              className="group relative flex items-center gap-1.5 font-sans text-[13px] font-medium text-steel transition-colors hover:text-almost-white"
-            >
-              Services
-              <ChevronDown
-                className={`size-3.5 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
-              />
-              <span
-                className="absolute -bottom-1.5 left-0 h-px bg-signal-violet transition-all duration-300"
-                style={{ width: servicesOpen ? "100%" : "0%" }}
-              />
-            </button>
-          )}
+        {/* Desktop nav */}
+        <nav
+          className="mx-auto hidden items-center justify-center gap-8 md:flex lg:gap-9"
+          aria-label="Main navigation"
+        >
+          {links.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`group relative font-sans text-[13px] font-medium transition-all duration-200 ${
+                  active ? "text-almost-white" : "text-steel hover:text-almost-white"
+                }`}
+              >
+                {link.label}
+                <span
+                  className="absolute -bottom-1.5 left-1/2 h-px bg-signal-violet transition-all duration-200 -translate-x-1/2"
+                  style={{
+                    width: active ? "100%" : "0%",
+                    opacity: active ? 1 : 0,
+                  }}
+                />
+                {!active && (
+                  <span className="absolute -bottom-1.5 left-1/2 h-px w-0 bg-signal-violet transition-all duration-200 group-hover:w-full -translate-x-1/2" />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
+        {/* Desktop CTA */}
         <a
           href={ctaHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto hidden items-center gap-2 rounded-[999px] bg-signal-violet px-6 py-2.5 font-sans text-[13px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.4)] md:inline-flex"
+          className="ml-auto hidden h-[46px] items-center gap-2 rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] px-6 font-sans text-[13px] font-medium text-almost-white shadow-[0_0_0px_rgba(175,80,255,0)] transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(175,80,255,0.4)] md:inline-flex"
         >
           {ctaLabel}
-          <ArrowRight className="size-3.5" />
+          <ArrowRight className="size-3.5 transition-all duration-200 group-hover:translate-x-0.5" />
         </a>
 
+        {/* Hamburger */}
         <button
           type="button"
-          className="relative z-[60] md:hidden"
+          className="relative z-[60] ml-auto flex size-10 items-center justify-center md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
         >
-          <div className="relative flex size-6 items-center justify-center">
+          <div className="relative flex size-5 items-center justify-center">
             <motion.span
-              className="absolute block h-[1.5px] w-5 bg-almost-white"
+              className="absolute block h-[1.5px] w-5 rounded-full bg-almost-white"
               animate={mobileOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -4 }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
-              className="absolute block h-[1.5px] w-5 bg-almost-white"
-              animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="absolute block h-[1.5px] w-5 rounded-full bg-almost-white"
+              animate={mobileOpen ? { opacity: 0, x: -8 } : { opacity: 1, x: 0 }}
               transition={{ duration: 0.15 }}
             />
             <motion.span
-              className="absolute block h-[1.5px] w-5 bg-almost-white"
+              className="absolute block h-[1.5px] w-5 rounded-full bg-almost-white"
               animate={mobileOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 4 }}
               transition={{ duration: 0.2 }}
             />
@@ -212,55 +185,7 @@ export function FrostedNavBar({
         </button>
       </div>
 
-      <AnimatePresence>
-        {servicesOpen && (
-          <motion.div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute left-0 right-0 hidden border-b border-border/10 md:block"
-            style={{
-              background: "rgba(9, 9, 9, 0.95)",
-              backdropFilter: "blur(20px)",
-            }}
-          >
-            <div className="mx-auto max-w-[1280px] px-6 py-10">
-              <div className="grid grid-cols-3 gap-12">
-                {SERVICE_MENU_ITEMS.map((group) => (
-                  <div key={group.group}>
-                    <p className="font-mono text-[10px] uppercase tracking-[1.8px] text-signal-violet">
-                      {group.group}
-                    </p>
-                    <div className="mt-4 space-y-3">
-                      {group.items.map((item) => (
-                        <Link
-                          key={item.label}
-                          href={item.href}
-                          className="group/link flex items-start justify-between rounded-lg p-2 transition-all hover:bg-signal-violet/5"
-                        >
-                          <div>
-                            <p className="font-sans text-sm text-almost-white transition-colors group-hover/link:text-signal-violet">
-                              {item.label}
-                            </p>
-                            <p className="mt-0.5 font-sans text-xs text-steel">
-                              {item.description}
-                            </p>
-                          </div>
-                          <ArrowUpRight className="mt-1 size-3 shrink-0 text-steel opacity-0 transition-all group-hover/link:opacity-100 group-hover/link:text-signal-violet" />
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
+      {/* Mobile menu overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -269,66 +194,137 @@ export function FrostedNavBar({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[55] flex flex-col md:hidden"
-            style={{
-              background: "rgba(9, 9, 9, 0.97)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              paddingTop: "env(safe-area-inset-top)",
-              paddingBottom: "env(safe-area-inset-bottom)",
-            }}
+            className="fixed inset-0 z-[55] md:hidden"
+            onClick={closeMenu}
+            onKeyDown={handleKeyDown}
+            aria-modal="true"
+            role="dialog"
+            aria-label="Navigation menu"
           >
-            <div className="flex flex-1 flex-col overflow-y-auto px-4 pb-8 pt-20 sm:px-6">
-              <nav className="flex flex-col gap-2">
-                {links.map((link, i) => (
-                  <motion.div
-                    key={link.href}
-                    custom={i}
-                    variants={navItemVariants}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <Link
-                      href={link.href}
-                      className={`flex items-center justify-between rounded-xl px-4 py-3.5 font-sans text-lg font-medium transition-colors ${
-                        pathname === link.href
-                          ? "bg-signal-violet/10 text-signal-violet"
-                          : "text-steel hover:text-almost-white"
-                      }`}
-                      onClick={() => {
-                        closeMenu();
-                        setServicesOpen(false);
-                      }}
+            {/* Backdrop */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+
+            {/* Slide panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-0 right-0 flex h-full w-full max-w-[400px] flex-col border-l border-white/[0.06] bg-near-black shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                paddingTop: "env(safe-area-inset-top)",
+                paddingBottom: "env(safe-area-inset-bottom)",
+              }}
+            >
+              {/* Top bar */}
+              <div className="flex h-[68px] shrink-0 items-center justify-between border-b border-white/[0.06] px-5">
+                <Link
+                  href="/"
+                  className="transition-opacity hover:opacity-85"
+                  onClick={closeMenu}
+                  aria-label="Home"
+                >
+                  <Logo size="sm" />
+                </Link>
+                <button
+                  ref={closeButtonRef}
+                  type="button"
+                  onClick={closeMenu}
+                  className="relative flex size-10 items-center justify-center rounded-full transition-colors hover:bg-white/[0.06]"
+                  aria-label="Close menu"
+                >
+                  <motion.span
+                    className="absolute block h-[1.5px] w-4 rounded-full bg-almost-white"
+                    animate={{ rotate: 45 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                  <motion.span
+                    className="absolute block h-[1.5px] w-4 rounded-full bg-almost-white"
+                    animate={{ rotate: -45 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                </button>
+              </div>
+
+              {/* Nav links */}
+              <nav
+                className="flex-1 space-y-1 overflow-y-auto px-5 pt-8"
+                aria-label="Mobile navigation"
+              >
+                {links.map((link) => {
+                  const active = isActive(link.href);
+                  return (
+                    <motion.div
+                      key={link.href}
+                      custom={links.indexOf(link)}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate="visible"
                     >
-                      {link.label}
-                      <ArrowUpRight
-                        className={`size-4 transition-opacity ${
-                          pathname === link.href ? "opacity-100" : "opacity-0"
+                      <Link
+                        href={link.href}
+                        onClick={closeMenu}
+                        className={`group flex items-center justify-between rounded-xl px-4 py-3 font-sans text-[28px] font-medium leading-tight tracking-tight transition-all duration-200 hover:translate-x-1 sm:text-[32px] ${
+                          active ? "text-signal-violet" : "text-steel hover:text-almost-white"
                         }`}
-                      />
-                    </Link>
-                  </motion.div>
-                ))}
+                      >
+                        {link.label}
+                        <ExternalLink
+                          className={`size-5 transition-opacity ${
+                            active ? "opacity-100 text-signal-violet" : "opacity-0"
+                          }`}
+                        />
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </nav>
 
+              {/* Bottom section */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 + links.length * 0.05 }}
-                className="mt-auto"
+                transition={{ duration: 0.3, delay: 0.1 + links.length * 0.04 }}
+                className="shrink-0 border-t border-white/[0.06] px-5 pt-6 pb-8"
               >
+                {/* Primary CTA */}
                 <a
                   href={ctaHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
-                  className="mt-8 flex h-[56px] w-full items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all active:scale-[0.98]"
+                  className="flex h-[56px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] font-sans text-[15px] font-medium text-almost-white shadow-[0_0_0px_rgba(175,80,255,0)] transition-all duration-200 active:scale-[0.98]"
                 >
                   {ctaLabel}
                   <ArrowRight className="size-4" />
                 </a>
+
+                {/* Email */}
+                <a
+                  href="mailto:ventriee.contact@gmail.com"
+                  onClick={closeMenu}
+                  className="mt-3 flex h-[48px] w-full items-center justify-center rounded-full border border-white/[0.1] font-sans text-sm text-steel transition-colors hover:border-almost-white/20 hover:text-almost-white"
+                >
+                  ventriee.contact@gmail.com
+                </a>
+
+                {/* Social links */}
+                <div className="mt-6 flex items-center justify-center gap-6">
+                  {SOCIAL_LINKS.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-sans text-xs text-steel transition-colors hover:text-almost-white"
+                    >
+                      {s.label}
+                    </a>
+                  ))}
+                </div>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
