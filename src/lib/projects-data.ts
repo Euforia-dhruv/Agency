@@ -25,6 +25,13 @@ export const PROJECTS: ProjectCard[] = [
     status: "Live",
   },
   {
+    name: "Donayan",
+    url: "https://donayan.com/",
+    category: "Portfolio Website",
+    description: "Creative portfolio showcasing advertising, marketing, and production work.",
+    status: "Live",
+  },
+  {
     name: "Dhruv Portfolio",
     url: "https://dhruvnyx.vercel.app/",
     category: "Portfolio Website",
