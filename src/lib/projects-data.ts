@@ -25,13 +25,6 @@ export const PROJECTS: ProjectCard[] = [
     status: "Live",
   },
   {
-    name: "Policy Adda",
-    url: "https://policyadda.co.in/",
-    category: "Insurance Platform",
-    description: "Insurance platform for comparing and purchasing insurance policies online.",
-    status: "Live",
-  },
-  {
     name: "Dhruv Portfolio",
     url: "https://dhruvnyx.vercel.app/",
     category: "Portfolio Website",
