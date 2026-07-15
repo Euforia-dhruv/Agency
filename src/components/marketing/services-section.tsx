@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { Code2, Layers, Smartphone, Sparkles, Palette, Zap, Globe, Wrench } from "lucide-react";
 import CardSwap, { Card } from "@/components/card-swap";
+import ExpandableProfileCard from "@/components/ui/expandable-profile-card";
 
 const services = [
   {
@@ -243,6 +244,18 @@ export function ServicesSection() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         {services.map((service, i) => {
           const Icon = service.icon;
+          const techTags = (
+            <div className="flex flex-wrap gap-1.5 sm:gap-2">
+              {service.tech.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-white/[0.06] px-2 py-0.5 font-mono text-[10px] text-steel sm:px-2.5 sm:py-1 sm:text-[11px]"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          );
           return (
             <motion.div
               key={service.title}
@@ -251,37 +264,35 @@ export function ServicesSection() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.4, delay: (i % 3) * 0.1 }}
             >
-              <Link
-                href="/services"
-                className="group flex h-full flex-col rounded-[19.2px] border border-[rgba(247,249,250,0.2)] p-5 transition-all duration-300 hover:-translate-y-1 sm:p-6 lg:p-8"
-              >
-                <div className="mb-4 inline-flex size-10 items-center justify-center rounded-[10px] bg-signal-violet/10 transition-colors group-hover:bg-signal-violet/20 sm:size-12 sm:rounded-[12px]">
-                  <Icon className="size-4 text-signal-violet sm:size-5" />
-                </div>
-
-                <h3 className="font-sans text-lg font-medium text-almost-white sm:text-xl">
-                  {service.title}
-                </h3>
-                <p className="mt-1.5 flex-1 font-sans text-sm leading-relaxed text-steel sm:mt-2">
-                  {service.description}
-                </p>
-
-                <div className="mt-4 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
-                  {service.tech.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full border border-white/[0.06] px-2 py-0.5 font-mono text-[10px] text-steel sm:px-2.5 sm:py-1 sm:text-[11px]"
+              <ExpandableProfileCard
+                layoutKey={`service-${service.title}`}
+                eyebrow="Capability"
+                title={service.title}
+                icon={<Icon />}
+                preview={
+                  <p className="line-clamp-2 font-sans text-sm leading-relaxed text-steel">
+                    {service.description}
+                  </p>
+                }
+                content={
+                  <div className="flex flex-col gap-6">
+                    <p className="text-almost-white/80">{service.description}</p>
+                    <div>
+                      <h4 className="mb-3 font-sans text-sm font-medium text-almost-white">
+                        Tech Stack
+                      </h4>
+                      {techTags}
+                    </div>
+                    <Link
+                      href="/services"
+                      className="inline-flex items-center gap-1.5 font-sans text-sm text-signal-violet transition-transform hover:translate-x-0.5"
                     >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="mt-4 flex items-center gap-1.5 font-sans text-sm text-signal-violet transition-colors sm:mt-6">
-                  Learn More
-                  <ArrowUpRight className="size-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
-              </Link>
+                      Learn More
+                      <ArrowUpRight className="size-3.5" />
+                    </Link>
+                  </div>
+                }
+              />
             </motion.div>
           );
         })}
