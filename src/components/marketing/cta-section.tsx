@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AnimatedSection } from "./animated-section";
+import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 export function CTASection() {
   return (
@@ -21,7 +22,7 @@ export function CTASection() {
         </p>
         <div className="mt-6 flex flex-col items-center gap-4 md:mt-8 sm:flex-row sm:justify-center">
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+            href={GOOGLE_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"

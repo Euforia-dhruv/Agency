@@ -1,9 +1,10 @@
 import { FrostedNavBar } from "@/components/marketing/frosted-nav-bar";
 import { Footer } from "@/components/marketing/footer";
+import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 const VENTRIEE_LINKS = [
   { label: "Home", href: "/" },
-  { label: "Capabilities", href: "/#capabilities" },
+  { label: "Capabilities", href: "/ventriee#capabilities" },
   { label: "Work", href: "/work" },
   { label: "Contact", href: "/contact" },
 ];
@@ -11,12 +12,8 @@ const VENTRIEE_LINKS = [
 export default function VentrieeLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <FrostedNavBar
-        ctaLabel="Start a Project"
-        ctaHref="mailto:ventriee.contact@gmail.com"
-        links={VENTRIEE_LINKS}
-      />
-      <main className="flex-1">{children}</main>
+      <FrostedNavBar ctaLabel="Start a Project" ctaHref={GOOGLE_FORM_URL} links={VENTRIEE_LINKS} />
+      <main id="main-content" className="flex-1">{children}</main>
       <Footer />
     </>
   );

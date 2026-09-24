@@ -5,13 +5,8 @@ import { usePathname } from "next/navigation";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS } from "@/lib/constants";
+import { NAV_LINKS, GOOGLE_FORM_URL } from "@/lib/constants";
 import { Logo } from "@/components/logo";
-
-const SOCIAL_LINKS = [
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
-];
 
 interface NavLink {
   readonly label: string;
@@ -36,7 +31,7 @@ const menuItemVariants = {
 
 export function FrostedNavBar({
   ctaLabel = "Start Project",
-  ctaHref = "https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426",
+  ctaHref = GOOGLE_FORM_URL,
   links = NAV_LINKS,
 }: FrostedNavBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -307,21 +302,6 @@ export function FrostedNavBar({
                 >
                   ventriee.contact@gmail.com
                 </a>
-
-                {/* Social links */}
-                <div className="mt-6 flex items-center justify-center gap-6">
-                  {SOCIAL_LINKS.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-sans text-xs text-steel transition-colors hover:text-almost-white"
-                    >
-                      {s.label}
-                    </a>
-                  ))}
-                </div>
               </motion.div>
             </motion.div>
           </motion.div>

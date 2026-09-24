@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 
-const socialLinks = [
-  { label: "LinkedIn", href: "#" },
-  { label: "Instagram", href: "#" },
-];
-
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -73,15 +68,6 @@ export function Footer() {
               Connect
             </p>
             <div className="mt-3 flex flex-col gap-2 md:mt-4 md:gap-2.5">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
-                >
-                  {link.label}
-                </a>
-              ))}
               <a
                 href="mailto:ventriee.contact@gmail.com"
                 className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"

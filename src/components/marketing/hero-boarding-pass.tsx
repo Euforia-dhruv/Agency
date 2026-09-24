@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 export function HeroBoardingPass() {
   return (
@@ -34,7 +35,7 @@ export function HeroBoardingPass() {
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+              href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
@@ -91,7 +92,7 @@ export function HeroBoardingPass() {
 
             <div className="mt-6">
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+                href={GOOGLE_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block rounded-[8px] border border-almost-white bg-near-black px-5 py-2.5 text-center font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"

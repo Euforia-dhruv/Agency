@@ -181,8 +181,8 @@ export default function ExpandableProfileCard({
                 {cta && (
                   <motion.a
                     href={cta.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={cta.href.startsWith("http") ? "_blank" : undefined}
+                    rel={cta.href.startsWith("http") ? "noopener noreferrer" : undefined}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.25 }}

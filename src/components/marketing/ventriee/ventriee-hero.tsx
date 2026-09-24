@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 export function VentrieeHero() {
   return (
@@ -19,12 +20,14 @@ export function VentrieeHero() {
             template.
           </p>
           <div className="mt-10 flex items-center gap-4">
-            <Link
-              href="mailto:ventriee.contact@gmail.com"
+            <a
+              href={GOOGLE_FORM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-base font-normal text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
             >
               Start a Project
-            </Link>
+            </a>
             <Link
               href="#capabilities"
               className="font-sans text-sm text-steel transition-colors hover:text-almost-white"

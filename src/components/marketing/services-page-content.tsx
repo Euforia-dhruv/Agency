@@ -14,9 +14,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react";
 import { ProjectCTA } from "./project-cta";
-
-const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426";
+import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 const SERVICES = [
   {

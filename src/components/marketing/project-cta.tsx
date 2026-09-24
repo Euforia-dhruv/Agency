@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Target, Shield, Sparkles } from "lucide-react";
-
-const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426";
+import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 const cards = [
   {

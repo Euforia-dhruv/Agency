@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ProjectCTA } from "@/components/marketing/project-cta";
 import GlobeDemo from "@/components/globe-demo";
+import { ContactCrtWarp } from "@/components/marketing/contact-crt-warp";
 
 export const metadata: Metadata = {
   title: "Contact — Start Your Web Development Project | VENTRIEE",
@@ -14,9 +15,12 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="pt-[100px] sm:pt-[120px]">
-      <ProjectCTA />
-      <GlobeDemo />
+    <div className="relative pt-[100px] sm:pt-[120px]">
+      <ContactCrtWarp />
+      <div className="relative z-10">
+        <ProjectCTA />
+        <GlobeDemo />
+      </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Logo } from "@/components/logo";
 import ASCIIText from "@/components/ascii-text";
+import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 const services = [
   "Custom Websites",
@@ -151,7 +152,7 @@ export function HeroSection() {
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+              href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-[56px] w-full items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)] sm:w-auto"
@@ -213,7 +214,7 @@ export function HeroSection() {
             <p className="mt-3 font-sans text-xs text-steel sm:mt-4">Available Worldwide</p>
 
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426"
+              href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex h-[48px] w-full items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-7 font-sans text-[14px] font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_20px_rgba(175,80,255,0.3)] sm:mt-6 sm:h-[44px]"
