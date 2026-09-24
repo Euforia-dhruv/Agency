@@ -38,13 +38,13 @@ export function HeroBoardingPass() {
               href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
+              className="inline-flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-almost-white bg-near-black px-8 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
             >
               Start a Project
             </a>
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 font-sans text-sm text-steel transition-colors hover:text-almost-white"
+              className="inline-flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap font-sans text-sm text-steel transition-colors hover:text-almost-white"
             >
               View Our Work &rarr;
             </Link>
@@ -95,7 +95,7 @@ export function HeroBoardingPass() {
                 href={GOOGLE_FORM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-[8px] border border-almost-white bg-near-black px-5 py-2.5 text-center font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
+                className="inline-block min-h-[44px] rounded-[8px] border border-almost-white bg-near-black px-6 py-3 text-center font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
               >
                 Get a Quote
               </a>

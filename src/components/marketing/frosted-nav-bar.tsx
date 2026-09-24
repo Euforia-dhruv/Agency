@@ -149,7 +149,7 @@ export function FrostedNavBar({
           href={ctaHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto hidden h-[46px] items-center gap-2 rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] px-6 font-sans text-[13px] font-medium text-almost-white shadow-[0_0_0px_rgba(175,80,255,0)] transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(175,80,255,0.4)] md:inline-flex"
+          className="ml-auto hidden h-[50px] items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] px-7 font-sans text-sm font-medium text-almost-white shadow-[0_0_0px_rgba(175,80,255,0)] transition-all duration-200 hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(175,80,255,0.4)] md:inline-flex"
         >
           {ctaLabel}
           <ArrowRight className="size-3.5 transition-all duration-200 group-hover:translate-x-0.5" />
@@ -292,7 +292,7 @@ export function FrostedNavBar({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={closeMenu}
-                  className="flex h-[56px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] font-sans text-[15px] font-medium text-almost-white shadow-[0_0_0px_rgba(175,80,255,0)] transition-all duration-200 active:scale-[0.98]"
+                  className="flex h-[56px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] font-sans text-[15px] font-medium text-almost-white shadow-[0_0_0px_rgba(175,80,255,0)] transition-all duration-200 active:scale-[0.98]"
                 >
                   {ctaLabel}
                   <ArrowRight className="size-4" />

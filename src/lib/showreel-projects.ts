@@ -41,7 +41,7 @@ const FACTS: ShowreelFacts[] = [
       "Google Analytics 4",
     ],
     accent: "#DC2626",
-    previewMode: "iframe",
+    previewMode: "screenshot",
   },
   {
     slug: "gym-56",
@@ -65,7 +65,7 @@ const FACTS: ShowreelFacts[] = [
       "Service Worker",
     ],
     accent: "#DC2626",
-    previewMode: "hybrid",
+    previewMode: "screenshot",
   },
   {
     slug: "donayan",
@@ -88,7 +88,7 @@ const FACTS: ShowreelFacts[] = [
       "Google Forms",
     ],
     accent: "#C8A24D",
-    previewMode: "hybrid",
+    previewMode: "screenshot",
   },
   {
     slug: "policyadda",
@@ -112,7 +112,7 @@ const FACTS: ShowreelFacts[] = [
       "Lead capture",
     ],
     accent: "#0B1120",
-    previewMode: "hybrid",
+    previewMode: "screenshot",
   },
   {
     slug: "techsc0ut",
@@ -138,7 +138,7 @@ const FACTS: ShowreelFacts[] = [
       "Vercel",
     ],
     accent: "#3B82F6",
-    previewMode: "hybrid",
+    previewMode: "screenshot",
   },
 ];
 

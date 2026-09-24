@@ -14,6 +14,7 @@ import {
   UtensilsCrossed,
 } from "lucide-react";
 import { ProjectCTA } from "./project-cta";
+import { ServicesMoltenMetal } from "./services-molten-metal";
 import { GOOGLE_FORM_URL } from "@/lib/constants";
 
 const SERVICES = [
@@ -109,9 +110,11 @@ const process = [
 
 export function ServicesPageContent() {
   return (
-    <div className="pt-[120px]">
+    <div className="relative pt-[120px]">
+      <ServicesMoltenMetal />
+
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section className="relative z-10 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute left-1/2 top-0 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-signal-violet/12 blur-[130px]" />
           <div className="absolute right-[-10%] top-[20%] h-[280px] w-[280px] rounded-full bg-[#7c3aed]/10 blur-[100px]" />
@@ -160,14 +163,14 @@ export function ServicesPageContent() {
               href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-full bg-signal-violet px-7 py-3.5 font-sans text-sm font-medium text-almost-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(175,80,255,0.45)]"
+              className="group inline-flex min-h-[52px] items-center justify-center gap-2 whitespace-nowrap rounded-full bg-signal-violet px-8 font-sans text-sm font-medium text-almost-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(175,80,255,0.45)]"
             >
               Start Your Project
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </a>
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-white/[0.03] px-7 py-3.5 font-sans text-sm text-steel transition-all duration-300 hover:-translate-y-0.5 hover:border-almost-white/30 hover:text-almost-white"
+              className="inline-flex min-h-[52px] items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-8 font-sans text-sm text-steel transition-all duration-300 hover:-translate-y-0.5 hover:border-almost-white/30 hover:text-almost-white"
             >
               See Our Work
               <ArrowUpRight className="size-4" />
@@ -194,7 +197,7 @@ export function ServicesPageContent() {
       </section>
 
       {/* Services grid */}
-      <section className="mx-auto max-w-[1200px] px-6 pb-8">
+      <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-8">
         <div className="mb-8 flex items-end justify-between gap-6 border-b border-white/[0.06] pb-6">
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
@@ -269,7 +272,7 @@ export function ServicesPageContent() {
       </section>
 
       {/* Process strip */}
-      <section className="mx-auto max-w-[1200px] px-6 py-20 sm:py-24">
+      <section className="relative z-10 mx-auto max-w-[1200px] px-6 py-20 sm:py-24">
         <div className="rounded-[19.2px] border border-white/[0.08] bg-white/[0.02] p-8 sm:p-10">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-sm">
@@ -315,7 +318,9 @@ export function ServicesPageContent() {
         </div>
       </section>
 
-      <ProjectCTA />
+      <div className="relative z-10">
+        <ProjectCTA />
+      </div>
     </div>
   );
 }

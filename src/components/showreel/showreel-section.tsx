@@ -89,19 +89,19 @@ function ProjectActions({ project }: { project: ShowreelProject }) {
     <div className="mt-8 flex flex-wrap items-center gap-4">
       <Link
         href={`/work/${project.slug}`}
-        className="group inline-flex h-12 items-center gap-2 rounded-full bg-signal-violet px-6 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(175,80,255,0.35)]"
+        className="group inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-signal-violet px-7 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(175,80,255,0.35)]"
       >
         View case study
-        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+        <ArrowRight className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
       </Link>
       <a
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-12 items-center gap-2 rounded-full border border-white/[0.12] px-5 font-sans text-sm text-steel transition-colors hover:border-almost-white/30 hover:text-almost-white"
+        className="inline-flex h-12 max-w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border border-white/[0.12] px-6 font-sans text-sm text-steel transition-colors hover:border-almost-white/30 hover:text-almost-white"
       >
-        <ExternalLink className="size-3.5" />
-        {project.displayUrl}
+        <ExternalLink className="size-3.5 shrink-0" />
+        <span className="truncate">{project.displayUrl}</span>
       </a>
     </div>
   );

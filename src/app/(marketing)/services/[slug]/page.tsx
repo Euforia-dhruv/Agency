@@ -196,7 +196,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2 rounded-[999px] bg-signal-violet px-8 py-3.5 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(175,80,255,0.4)]"
+            className="mt-8 inline-flex min-h-[52px] items-center justify-center gap-2 whitespace-nowrap rounded-[999px] bg-signal-violet px-9 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(175,80,255,0.4)]"
             >
               Start Your Project
               <ArrowRight className="size-4" />

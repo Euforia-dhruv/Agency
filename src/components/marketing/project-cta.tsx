@@ -74,15 +74,15 @@ export function ProjectCTA() {
             href={GOOGLE_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex h-[60px] w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] px-10 font-sans text-[15px] font-medium text-almost-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(175,80,255,0.4)] sm:w-auto"
+            className="group relative inline-flex h-[60px] w-full items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] px-12 font-sans text-[15px] font-medium text-almost-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(175,80,255,0.4)] sm:w-auto"
           >
             Start Your Project
-            <ArrowRight className="size-4 transition-all duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="size-4 shrink-0 transition-all duration-300 group-hover:translate-x-1" />
           </a>
 
           <a
             href="mailto:ventriee.contact@gmail.com"
-            className="inline-flex h-[60px] w-full items-center justify-center rounded-full border border-white/[0.12] bg-white/[0.03] px-8 font-sans text-[15px] text-steel transition-all duration-300 hover:-translate-y-0.5 hover:border-almost-white/30 hover:text-almost-white sm:w-auto"
+            className="inline-flex h-[60px] w-full items-center justify-center whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-10 font-sans text-[15px] text-steel transition-all duration-300 hover:-translate-y-0.5 hover:border-almost-white/30 hover:text-almost-white sm:w-auto"
           >
             Email Us
           </a>

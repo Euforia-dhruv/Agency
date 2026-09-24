@@ -155,14 +155,14 @@ export function HeroSection() {
               href={GOOGLE_FORM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-[56px] w-full items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-7 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)] sm:w-auto"
+              className="inline-flex h-[56px] w-full items-center justify-center gap-2 whitespace-nowrap rounded-[16px] bg-signal-violet px-8 font-sans text-[15px] font-medium text-almost-white transition-all duration-250 hover:-translate-y-0.5 hover:bg-signal-violet hover:shadow-[0_0_30px_rgba(175,80,255,0.35)] sm:w-auto"
             >
               Start Your Project
-              <ArrowRight className="size-4" />
+              <ArrowRight className="size-4 shrink-0" />
             </a>
             <a
               href="mailto:ventriee.contact@gmail.com"
-              className="inline-flex h-[56px] items-center justify-center font-sans text-[15px] font-medium text-steel transition-colors hover:text-almost-white max-sm:w-full"
+              className="inline-flex h-[56px] items-center justify-center whitespace-nowrap font-sans text-[15px] font-medium text-steel transition-colors hover:text-almost-white max-sm:w-full"
             >
               Email Us Directly
             </a>

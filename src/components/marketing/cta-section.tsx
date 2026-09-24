@@ -25,14 +25,14 @@ export function CTASection() {
             href={GOOGLE_FORM_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-almost-white bg-near-black px-8 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
           >
             Start a Project
             <span>&rarr;</span>
           </a>
           <Link
             href="/work"
-            className="inline-flex items-center gap-2 font-sans text-sm text-steel transition-colors hover:text-almost-white"
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap font-sans text-sm text-steel transition-colors hover:text-almost-white"
           >
             View Our Work
             <span>&rarr;</span>
