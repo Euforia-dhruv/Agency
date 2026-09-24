@@ -8,7 +8,7 @@ export function ServicesMoltenMetal() {
       className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       aria-hidden
     >
-      <div className="absolute inset-0 opacity-55 mix-blend-screen">
+      <div className="absolute inset-0 opacity-100 mix-blend-screen">
         <MoltenMetal
           color1="#5227FF"
           color2="#FF9FFC"
@@ -30,7 +30,6 @@ export function ServicesMoltenMetal() {
           opacity={1.0}
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-near-black/80 via-near-black/55 to-near-black/90" />
     </div>
   );
 }

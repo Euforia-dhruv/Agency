@@ -39,6 +39,7 @@ export function HeroSection() {
       {floatingOrbs.map((orb, i) => (
         <motion.div
           key={i}
+          pointer-events-none
           className="absolute -z-10 rounded-full blur-3xl max-md:opacity-50"
           style={{
             width: orb.size,
@@ -61,7 +62,7 @@ export function HeroSection() {
       ))}
 
       <div
-        className="absolute inset-0 -z-[15] opacity-[0.15] mix-blend-screen"
+        className="pointer-events-none absolute inset-0 -z-[15] opacity-[0.15] mix-blend-screen"
         style={{
           backgroundImage:
             "url(\"data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='48' height='96' patternTransform='scale(1) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='%23000000ff'/><path d='M0 0v8h4v4h4v4h4v4h4v-4h4v-4h4V8h4V4h4V0H0zm40 0v4h-4v4h-4v4h-4v4h-4v4h-4v4h-4v4h-4v4H4v-4H0v8h4v4h4v4h4v4h36v-8h-4v-4h-4v-4h-4v-4h-4v4h-4v4h-4v4h-4v4h-4v-4h-4v-4h4v-4h4v-4h4v-4h4v-4h8v4h4v4h4v4h4v-8h-4v-4h-4v-4h-4v-4h4V8h4V4h4V0h-8zM8 4h12v4h-4v4h-4V8H8V4zm24 32h4v4h4v4H28v-4h4v-4zM0 44v4h4v-4H0zm0 8v12h4v4h8v-4h4v-4h4v-4h4v-4H0zm40 0v4h4v4h4v-8h-8zM4 56h8v4H4v-4zm24 4v8h8v-8h-8zm8 8v4h8v-4h-8zm8 4v4h4v-4h-4zm-16-4h-8v4h8v-4zm-8 4h-8v4h8v-4zm-8 4H4v8h8v-8zm-8 0v-4H0v4h4zm24 0v4h-4v4h-4v4h-4v4h32v-4h-4v-4h-4v-4h-4v-4h-8zm0 8h8v4h-8v-4z' stroke-width='1' stroke='none' fill='%236d0081ff'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,-99)' fill='url(%23a)'/></svg>\")",
@@ -71,13 +72,13 @@ export function HeroSection() {
       />
 
       <div
-        className="absolute inset-0 -z-10"
+        className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background: "radial-gradient(ellipse at center, transparent 0%, #090909 85%)",
         }}
       />
 
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-[0.12] max-md:hidden">
+      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center opacity-[0.12] max-md:hidden">
         <ASCIIText
           text="VENTRIEE"
           enableWaves={true}
@@ -88,7 +89,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-12 px-4 pt-[88px] pb-16 sm:px-6 sm:pt-[100px] sm:pb-20 lg:flex-row lg:items-center lg:gap-16 lg:pt-[120px] lg:pb-[80px]">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-col gap-12 px-4 pt-[88px] pb-16 sm:px-6 sm:pt-[100px] sm:pb-20 lg:flex-row lg:items-center lg:gap-16 lg:pt-[120px] lg:pb-[80px]">
         <motion.div
           className="flex-1"
           initial={{ opacity: 0, y: 40 }}
