@@ -91,7 +91,7 @@ function ProjectActions({ project }: { project: ShowreelProject }) {
         href={`/work/${project.slug}`}
         className="group inline-flex h-12 items-center gap-2 rounded-full bg-signal-violet px-6 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(175,80,255,0.35)]"
       >
-        Read case study
+        View case study
         <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
       </Link>
       <a
@@ -104,6 +104,29 @@ function ProjectActions({ project }: { project: ShowreelProject }) {
         {project.displayUrl}
       </a>
     </div>
+  );
+}
+
+function ProjectCopy({ project, index }: { project: ShowreelProject; index: number }) {
+  return (
+    <>
+      <div className="flex flex-wrap items-center gap-3">
+        <span className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
+          {String(index + 1).padStart(2, "0")} — {project.category}
+        </span>
+        <StatusBadge status={project.status} />
+      </div>
+      <h3 className="mt-3 font-sans text-[clamp(1.75rem,3vw+0.4rem,3rem)] font-medium leading-[1.08] tracking-tight text-almost-white">
+        {project.name}
+      </h3>
+      <p className="mt-2 font-heading text-lg italic text-almost-white/80">{project.tagline}</p>
+      <p className="mt-4 max-w-xl font-sans text-[15px] leading-relaxed text-steel">
+        {project.summary}
+      </p>
+      <ProjectFacts project={project} />
+      <ProjectMeta project={project} />
+      <ProjectActions project={project} />
+    </>
   );
 }
 
@@ -126,22 +149,7 @@ function StaticShowreelCard({
     >
       <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
         <div>
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
-              {String(index + 1).padStart(2, "0")} — {project.category}
-            </span>
-            <StatusBadge status={project.status} />
-          </div>
-          <h3 className="mt-3 font-sans text-[clamp(1.75rem,3vw+0.4rem,3rem)] font-medium leading-[1.08] tracking-tight text-almost-white">
-            {project.name}
-          </h3>
-          <p className="mt-2 font-heading text-lg italic text-almost-white/80">{project.tagline}</p>
-          <p className="mt-4 max-w-xl font-sans text-[15px] leading-relaxed text-steel">
-            {project.summary}
-          </p>
-          <ProjectFacts project={project} />
-          <ProjectMeta project={project} />
-          <ProjectActions project={project} />
+          <ProjectCopy project={project} index={index} />
         </div>
         <LivePreview
           url={project.url}
@@ -166,10 +174,10 @@ export function ShowreelSection({
 }: ShowreelSectionProps) {
   const prefersReduced = useReducedMotion();
   const isDesktop = useIsDesktop();
-  const cinematic = isDesktop && !prefersReduced;
+  const cinematic = isDesktop && !prefersReduced && projects.length > 0;
   const stackRef = useRef<HTMLDivElement>(null);
   const [scrolledIndex, setScrolledIndex] = useState(0);
-  const activeIndex = cinematic ? scrolledIndex : 0;
+  const activeIndex = Math.min(scrolledIndex, Math.max(0, projects.length - 1));
 
   const { scrollYProgress } = useScroll({
     target: cinematic ? stackRef : undefined,
@@ -177,7 +185,7 @@ export function ShowreelSection({
   });
 
   const raw = useTransform(scrollYProgress, [0, 1], [0, projects.length - 0.001]);
-  const segment = 1 / projects.length;
+  const segment = projects.length > 0 ? 1 / projects.length : 1;
   const segmentProgress = useTransform(
     scrollYProgress,
     [activeIndex * segment, (activeIndex + 1) * segment],
@@ -190,7 +198,7 @@ export function ShowreelSection({
     setScrolledIndex((prev) => (prev === next ? prev : next));
   });
 
-  const active = projects[activeIndex] ?? projects[0];
+  if (projects.length === 0) return null;
 
   return (
     <section
@@ -222,10 +230,10 @@ export function ShowreelSection({
 
       {cinematic ? (
         <div ref={stackRef} className="relative" style={{ height: `${projects.length * 100}vh` }}>
-          <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden pt-[72px]">
-            <div className="mx-auto flex w-full max-w-[1280px] flex-1 flex-col px-4 sm:px-6">
-              <div className="grid min-h-0 flex-1 items-center gap-8 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12 lg:py-6">
-                <div className="relative min-h-0">
+          <div className="sticky top-0 h-[100svh] overflow-hidden pt-[72px]">
+            <div className="mx-auto flex h-full w-full max-w-[1280px] flex-col px-4 sm:px-6">
+              <div className="grid min-h-0 flex-1 gap-8 py-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12 lg:py-6">
+                <div className="relative h-full min-h-0 overflow-hidden">
                   {projects.map((project, index) => (
                     <motion.div
                       key={project.slug}
@@ -239,32 +247,15 @@ export function ShowreelSection({
                       className="absolute inset-0 overflow-y-auto pr-1"
                       aria-hidden={activeIndex !== index}
                     >
-                      <div className="flex flex-col justify-center">
-                        <div className="flex flex-wrap items-center gap-3">
-                          <span className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
-                            {String(index + 1).padStart(2, "0")} — {project.category}
-                          </span>
-                          <StatusBadge status={project.status} />
-                        </div>
-                        <h3 className="mt-3 font-sans text-[clamp(2rem,4vw+0.25rem,3.75rem)] font-medium leading-[1.05] tracking-tight text-almost-white">
-                          {project.name}
-                        </h3>
-                        <p className="mt-2 font-heading text-xl italic text-almost-white/85">
-                          {project.tagline}
-                        </p>
-                        <p className="mt-4 max-w-xl font-sans text-[15px] leading-relaxed text-steel">
-                          {project.summary}
-                        </p>
-                        <ProjectFacts project={project} />
-                        <ProjectMeta project={project} />
-                        <ProjectActions project={project} />
+                      <div className="flex min-h-full flex-col justify-center py-2">
+                        <ProjectCopy project={project} index={index} />
                       </div>
                     </motion.div>
                   ))}
                 </div>
 
-                <div className="relative min-h-0">
-                  <div className="relative h-full max-h-[min(72vh,720px)] w-full">
+                <div className="relative h-full min-h-[320px]">
+                  <div className="relative h-full w-full">
                     {projects.map((project, index) => {
                       const distance = Math.abs(index - activeIndex);
                       if (distance > 1) return null;
@@ -288,7 +279,8 @@ export function ShowreelSection({
                             accent={project.accent}
                             active={activeIndex === index}
                             priority={index === 0}
-                            className="h-full [&>div:last-child]:aspect-auto [&>div:last-child]:h-[calc(100%-41px)]"
+                            fill
+                            className="h-full"
                           />
                         </motion.div>
                       );
@@ -298,7 +290,7 @@ export function ShowreelSection({
               </div>
 
               <nav
-                className="flex items-center gap-2 overflow-x-auto border-t border-white/[0.06] py-4"
+                className="flex shrink-0 items-center gap-2 overflow-x-auto border-t border-white/[0.06] py-4"
                 aria-label="Showreel projects"
               >
                 <span className="mr-2 hidden shrink-0 items-center gap-2 font-mono text-[10px] uppercase tracking-[1.6px] text-graphite sm:flex">
@@ -367,9 +359,9 @@ export function ShowreelSection({
         </div>
       )}
 
-      {cinematic && active && (
+      {cinematic && (
         <p className="sr-only" aria-live="polite">
-          Showing {active.name}
+          Showing {projects[activeIndex]?.name}
         </p>
       )}
     </section>

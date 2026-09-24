@@ -12,6 +12,7 @@ interface LivePreviewProps {
   accent: string;
   active?: boolean;
   priority?: boolean;
+  fill?: boolean;
   className?: string;
 }
 
@@ -32,6 +33,7 @@ export function LivePreview({
   accent,
   active = false,
   priority = false,
+  fill = false,
   className,
 }: LivePreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -99,6 +101,7 @@ export function LivePreview({
     <div
       className={cn(
         "relative overflow-hidden rounded-[20px] border border-white/[0.08] bg-[#0c0c12]",
+        fill && "flex h-full min-h-0 flex-col",
         className,
       )}
       style={
@@ -107,7 +110,7 @@ export function LivePreview({
         } as React.CSSProperties
       }
     >
-      <div className="flex items-center gap-2 border-b border-white/[0.06] bg-white/[0.02] px-4 py-2.5">
+      <div className="flex shrink-0 items-center gap-2 border-b border-white/[0.06] bg-white/[0.02] px-4 py-2.5">
         <span className="size-2 rounded-full bg-white/15" />
         <span className="size-2 rounded-full bg-white/15" />
         <span className="size-2 rounded-full bg-white/15" />
@@ -130,7 +133,12 @@ export function LivePreview({
         </span>
       </div>
 
-      <div className="relative aspect-[16/10] w-full">
+      <div
+        className={cn(
+          "relative w-full",
+          fill ? "min-h-[220px] flex-1" : "aspect-[16/10]",
+        )}
+      >
         {showShot && currentShot && !shotFailed && (
           <img
             src={currentShot}
