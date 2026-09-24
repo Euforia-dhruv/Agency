@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import ExpandableProfileCard from "@/components/ui/expandable-profile-card";
 
 interface WorkCardData {
+  slug: string;
   name: string;
   url: string;
   category: string;
@@ -58,9 +59,17 @@ export function WorkCard({ project, index }: { project: WorkCardData; index: num
               <Globe className="size-4 text-signal-violet" />
               <span className="truncate">{cleanUrl}</span>
             </div>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-sm text-signal-violet transition-transform hover:translate-x-0.5"
+            >
+              Visit Live Site &rarr;
+            </a>
           </div>
         }
-        cta={{ label: "Visit Website", href: project.url }}
+        cta={{ label: "View Case Study", href: `/work/${project.slug}` }}
       />
     </motion.div>
   );

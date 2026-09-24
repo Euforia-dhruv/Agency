@@ -1,4 +1,5 @@
 export interface ProjectCard {
+  slug: string;
   name: string;
   url: string;
   category: string;
@@ -10,6 +11,7 @@ export interface ProjectCard {
 
 export const PROJECTS: ProjectCard[] = [
   {
+    slug: "ramagya-sports-academy",
     name: "Ramagya Sports Academy",
     url: "https://ramagyasportsacademy.com/",
     category: "Sports Academy",
@@ -18,6 +20,7 @@ export const PROJECTS: ProjectCard[] = [
     status: "Live",
   },
   {
+    slug: "gym-56",
     name: "Gym 56",
     url: "https://gym-56.vercel.app/",
     category: "Fitness Website",
@@ -25,6 +28,7 @@ export const PROJECTS: ProjectCard[] = [
     status: "Live",
   },
   {
+    slug: "donayan",
     name: "Donayan",
     url: "https://donayan.com/",
     category: "Portfolio Website",
@@ -32,6 +36,7 @@ export const PROJECTS: ProjectCard[] = [
     status: "Live",
   },
   {
+    slug: "policyadda",
     name: "PolicyAdda",
     url: "https://policyadda.co.in/",
     category: "Insurance Website",
@@ -40,6 +45,7 @@ export const PROJECTS: ProjectCard[] = [
     status: "Live",
   },
   {
+    slug: "techsc0ut",
     name: "TechSc0ut",
     url: "https://techsc0ut.vercel.app/",
     category: "Tech Community",

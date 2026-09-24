@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "@/lib/convex/api";
+import { PROJECTS } from "@/lib/projects-data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = "https://ventriee.in";
@@ -99,6 +100,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // blog query fails silently
   }
 
+  const projectWorkRoutes: MetadataRoute.Sitemap = PROJECTS.map((project) => ({
+    url: `${baseUrl}/work/${project.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   let workRoutes: MetadataRoute.Sitemap = [];
   try {
     const projects = await fetchQuery(api.projects.list).catch(() => []);
@@ -112,5 +120,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // work query fails silently
   }
 
-  return [...staticRoutes, ...servicePages, ...blogRoutes, ...workRoutes];
+  const seenWorkUrls = new Set<string>();
+  const allWorkRoutes = [...projectWorkRoutes, ...workRoutes].filter((route) => {
+    if (seenWorkUrls.has(route.url)) return false;
+    seenWorkUrls.add(route.url);
+    return true;
+  });
+
+  return [...staticRoutes, ...servicePages, ...blogRoutes, ...allWorkRoutes];
 }
