@@ -63,7 +63,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const nextProject = PROJECTS[(projectIndex + 1) % PROJECTS.length];
 
   return (
-    <div className="relative pt-[140px]">
+    <div className="relative min-h-screen pt-[140px]">
       <CaseStudyPillar />
       <article className="relative z-10 pb-32">
         <header className="mx-auto mb-12 max-w-[800px] px-6">

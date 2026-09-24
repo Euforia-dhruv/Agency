@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { DitherLabSection } from "@/components/marketing/dither-lab-section";
 import { AboutGradientWaves } from "@/components/marketing/about-gradient-waves";
 import { AboutDitherBg } from "@/components/marketing/about-dither-bg";
 
@@ -75,10 +74,6 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      <div className="relative z-10">
-        <DitherLabSection />
-      </div>
     </div>
   );
 }

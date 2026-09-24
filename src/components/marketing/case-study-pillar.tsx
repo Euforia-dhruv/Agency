@@ -13,10 +13,10 @@ export function CaseStudyPillar({
 }: CaseStudyPillarProps) {
   return (
     <div
-      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       aria-hidden
     >
-      <div className="absolute left-1/2 top-[10%] h-[min(90vh,820px)] w-[min(100vw,980px)] -translate-x-1/2">
+      <div className="absolute inset-0">
         <LightPillar
           topColor={topColor}
           bottomColor={bottomColor}
@@ -32,6 +32,7 @@ export function CaseStudyPillar({
           quality="high"
         />
       </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-near-black/40 via-transparent to-near-black/70" />
     </div>
   );
 }
