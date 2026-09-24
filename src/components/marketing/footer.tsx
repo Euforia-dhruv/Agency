@@ -69,6 +69,14 @@ export function Footer() {
             </p>
             <div className="mt-3 flex flex-col gap-2 md:mt-4 md:gap-2.5">
               <a
+                href="https://www.instagram.com/ventriee.in?stkn=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
+              >
+                Instagram
+              </a>
+              <a
                 href="mailto:ventriee.contact@gmail.com"
                 className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
               >

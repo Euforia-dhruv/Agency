@@ -8,6 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { NAV_LINKS, GOOGLE_FORM_URL } from "@/lib/constants";
 import { Logo } from "@/components/logo";
 
+const INSTAGRAM_URL =
+  "https://www.instagram.com/ventriee.in?stkn=ZDNlZDc0MzIxNw==";
+
 interface NavLink {
   readonly label: string;
   readonly href: string;
@@ -302,6 +305,18 @@ export function FrostedNavBar({
                 >
                   ventriee.contact@gmail.com
                 </a>
+
+                {/* Social links */}
+                <div className="mt-6 flex items-center justify-center gap-6">
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-xs text-steel transition-colors hover:text-almost-white"
+                  >
+                    Instagram
+                  </a>
+                </div>
               </motion.div>
             </motion.div>
           </motion.div>
