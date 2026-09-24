@@ -42,7 +42,12 @@ export const metadata: Metadata = {
   description:
     "VENTRIEE builds fast, modern websites for gyms, schools, restaurants, startups, clinics, hotels, and local businesses. Custom web development with Next.js, Tailwind CSS, and Framer Motion.",
   icons: {
-    icon: "/logo.png",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: "/logo.png",
+    shortcut: "/favicon.svg",
   },
   openGraph: {
     title: "VENTRIEE — Web Development Agency",

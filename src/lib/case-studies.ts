@@ -73,14 +73,14 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   },
   donayan: {
     intro:
-      "A creative portfolio for an advertising, marketing, and production house — the work leads, everything else gets out of the way.",
+      "A personal portfolio for Donayan Sahdev — freelance director's assistant and creative producer — where the work leads and everything else gets out of the way.",
     sections: [
       {
         badge: "Brief",
         title: "Show the work, not the template.",
         paragraphs: [
-          "Donayan operates across advertising, marketing, and production. Their portfolio had to carry that range — campaigns, films, and brand work presented with the confidence of a creative studio, not a generic agency theme.",
-          "The site needed to feel editorial and bold while staying fast and easy to update as new projects shipped.",
+          "Donayan works across commercials, brand films, music videos, and fashion campaigns. The portfolio had to carry that range with the confidence of a production log — not a generic agency theme.",
+          "The site needed to feel editorial and bold while staying fast, searchable, and easy to update as new projects shipped.",
         ],
       },
       {
@@ -95,7 +95,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         badge: "Outcome",
         title: "A portfolio that closes the gap between reel and reputation.",
         paragraphs: [
-          "Donayan launched with a distinctive online presence that showcases advertising, marketing, and production work in a format clients and collaborators actually enjoy exploring — live, responsive, and simple to extend.",
+          "Donayan launched with a distinctive online presence that showcases commercial, brand-film, and production work in a format clients and collaborators actually enjoy exploring — live, responsive, and simple to extend.",
         ],
       },
     ],
@@ -103,14 +103,14 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   },
   policyadda: {
     intro:
-      "An insurance discovery and advisory platform — complex product categories, plain-language guidance, and lead capture across a multilingual audience.",
+      "An insurance discovery and advisory platform — complex product categories, plain-language guidance, and lead capture across a language-switching audience.",
     sections: [
       {
         badge: "Brief",
         title: "Insurance without the intimidation.",
         paragraphs: [
-          "PolicyAdda helps people understand, compare, and get assistance with insurance — health, motor, life, business, property, and travel — with tie-ups across 20+ insurers.",
-          "The challenge was density: dozens of product pages, renewal flows, claims guidance, and FAQs, all of which had to feel clear and trustworthy to a first-time buyer, in English and Hindi.",
+          "PolicyAdda helps people understand, compare, and get assistance with insurance — health, motor, life, business, property, and travel — with an insurer partner wall and paths from enquiry to support.",
+          "The challenge was density: dozens of product pages, renewal flows, claims guidance, and FAQs, all of which had to feel clear and trustworthy to a first-time buyer, with an English UI plus a second-locale switcher.",
         ],
       },
       {
@@ -118,7 +118,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
         title: "Structure the complexity out of the experience.",
         paragraphs: [
           "We organized the catalog into deep but navigable category trees, with every product page following the same rhythm — what it covers, why it matters, how to enquire — so users learn the pattern once.",
-          "Enquiry forms, WhatsApp and call CTAs, partner and claims content, and trust signals (testimonials, insurer logos, IRDAI-aware disclosures) were woven in without turning the site into a form farm. Bilingual support and a responsive mobile-first build met the audience where they are.",
+          "Enquiry forms, WhatsApp and call CTAs, partner and claims content, and trust signals (testimonials, insurer logos, IRDAI-aware disclosures) were woven in without turning the site into a form farm. Language switching and a responsive mobile-first build met the audience where they are.",
         ],
       },
       {
@@ -133,33 +133,33 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   },
   techsc0ut: {
     intro:
-      "A community platform for technology enthusiasts — currently in development, designed to make discovery and discussion feel native to the web.",
+      "A custom PC builder web app — component catalogs, compatibility checking, comparison, and shareable builds — currently in development.",
     sections: [
       {
         badge: "Brief",
-        title: "Give tech culture a place to gather.",
+        title: "Make PC building feel guided, not guesswork.",
         paragraphs: [
-          "TechSc0ut set out to build a community platform for technology enthusiasts — a space for discovery, content, and conversation that feels native to modern web products rather than another forum skin.",
-          "The work is underway: foundations first, features layered in as the product finds its voice.",
+          "TechScout set out to help people assemble custom PCs with real-time compatibility checking, product comparison, and clearer guidance for gaming and workstation builds.",
+          "The work is underway: frontend foundations first, data and deploy endpoints layered in as the product stabilizes.",
         ],
       },
       {
         badge: "Approach",
-        title: "Build the skeleton before the spectacle.",
+        title: "Build the builder before the polish.",
         paragraphs: [
-          "We're shaping the information architecture and core loops early — how members find content, engage with it, and return — before investing in surface-level polish.",
-          "The stack favors speed and iteration so the product can evolve with its community instead of against it.",
+          "Information architecture and core loops come first — how builders find components, validate compatibility, estimate power, and save a configuration — before surface-level spectacle.",
+          "The stack favors fast iteration (Vite + React) so the product can evolve with its catalog instead of against it.",
         ],
       },
       {
         badge: "Status",
         title: "Work in progress.",
         paragraphs: [
-          "TechSc0ut is marked WIP. The platform is actively being built, with the public experience taking shape toward launch.",
+          "TechSc0ut is marked WIP. The public deploy is a live frontend shell; backend data endpoints are not yet available on this URL, so catalog-backed features are incomplete in production.",
         ],
       },
     ],
-    techStack: ["Next.js", "TypeScript", "Community Platform"],
+    techStack: ["Vite", "React", "TanStack Query", "Radix UI", "Vercel"],
   },
 };
 

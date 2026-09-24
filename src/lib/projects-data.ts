@@ -41,15 +41,16 @@ export const PROJECTS: ProjectCard[] = [
     url: "https://policyadda.co.in/",
     category: "Insurance Website",
     description:
-      "Insurance discovery and advisory platform with 20+ insurer tie-ups, multilingual support, and lead capture.",
+      "Insurance discovery and advisory platform with multi-category browsing, bilingual UI, and lead capture.",
     status: "Live",
   },
   {
     slug: "techsc0ut",
     name: "TechSc0ut",
     url: "https://techsc0ut.vercel.app/",
-    category: "Tech Community",
-    description: "Community platform for technology enthusiasts.",
+    category: "PC Builder",
+    description:
+      "Custom PC building platform with component filters, compatibility checks, and shareable builds (WIP).",
     status: "WIP",
   },
 ];

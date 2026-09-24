@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { PROJECTS } from "@/lib/projects-data";
+import { ShowreelSection } from "@/components/showreel";
 import { getWebsitePreview } from "@/lib/preview";
-import { WorkCard } from "@/components/marketing/work-card";
+import { buildShowreelProjects } from "@/lib/showreel-projects";
 
 export const metadata: Metadata = {
   title: "Our Work — Web Development Portfolio | VENTRIEE",
   description:
-    "See our portfolio of websites for gyms, schools, restaurants, startups, and local businesses. Real projects, real results.",
+    "See our portfolio of websites for gyms, sports academies, insurance platforms, and local businesses. Real projects, real results.",
   openGraph: {
     title: "Our Work | VENTRIEE",
     description: "Portfolio of custom websites for businesses across industries.",
@@ -14,34 +14,20 @@ export const metadata: Metadata = {
 };
 
 export default async function WorkPage() {
-  const projectsWithPreviews = await Promise.all(
-    PROJECTS.map(async (p) => ({
-      ...p,
-      previewUrl: await getWebsitePreview(p.url),
-    })),
+  const base = buildShowreelProjects({});
+  const previews = Object.fromEntries(
+    await Promise.all(base.map(async (p) => [p.slug, await getWebsitePreview(p.url)] as const)),
   );
+  const showreelProjects = buildShowreelProjects(previews);
 
   return (
     <div className="pt-[140px]">
-      <section className="mx-auto max-w-[1200px] px-6 pb-32">
-        <div className="mb-16 max-w-2xl">
-          <p className="font-mono text-[11px] uppercase tracking-[1.8px] text-signal-violet">
-            Our Work
-          </p>
-          <h1 className="mt-4 font-sans text-4xl font-medium tracking-tight text-almost-white sm:text-5xl lg:text-6xl">
-            Live Projects
-          </h1>
-          <p className="mt-4 font-sans text-lg text-steel">
-            Real websites we&rsquo;ve built and launched for clients across industries.
-          </p>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2">
-          {projectsWithPreviews.map((project, i) => (
-            <WorkCard key={project.name} project={project} index={i} />
-          ))}
-        </div>
-      </section>
+      <ShowreelSection
+        projects={showreelProjects}
+        eyebrow="Our Work"
+        title="Live projects, in motion."
+        description="Scroll through the portfolio — live embeds where hosts allow framing, verified snapshots elsewhere, and only facts we can back with the shipped product."
+      />
     </div>
   );
 }
