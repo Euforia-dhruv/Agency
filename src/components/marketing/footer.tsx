@@ -77,6 +77,14 @@ export function Footer() {
                 Instagram
               </a>
               <a
+                href="https://www.linkedin.com/in/ventriee-weblabs-97632a421/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
+              >
+                LinkedIn
+              </a>
+              <a
                 href="mailto:ventriee.contact@gmail.com"
                 className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
               >

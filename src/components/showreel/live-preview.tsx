@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
-import { getFallbackPreviewUrl, type PreviewMode } from "@/lib/showreel-preview";
+import { getScreenshotFallbacks, type PreviewMode } from "@/lib/showreel-preview";
 
 interface LivePreviewProps {
   url: string;
@@ -21,7 +21,7 @@ type FrameState = "idle" | "loading" | "ready" | "blocked";
 function screenshotSources(previewUrl: string | null | undefined, url: string): string[] {
   const sources: string[] = [];
   if (previewUrl) sources.push(previewUrl);
-  sources.push(getFallbackPreviewUrl(url));
+  sources.push(...getScreenshotFallbacks(url));
   return sources;
 }
 

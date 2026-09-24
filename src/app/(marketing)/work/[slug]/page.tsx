@@ -7,6 +7,7 @@ import { GOOGLE_FORM_URL } from "@/lib/constants";
 import { getCaseStudy } from "@/lib/case-studies";
 import { getWebsitePreview } from "@/lib/preview";
 import { CaseStudyTrace } from "@/components/marketing/case-study-trace";
+import { CaseStudyPillar } from "@/components/marketing/case-study-pillar";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -62,8 +63,9 @@ export default async function CaseStudyPage({ params }: Props) {
   const nextProject = PROJECTS[(projectIndex + 1) % PROJECTS.length];
 
   return (
-    <div className="pt-[140px]">
-      <article className="pb-32">
+    <div className="relative pt-[140px]">
+      <CaseStudyPillar />
+      <article className="relative z-10 pb-32">
         <header className="mx-auto mb-12 max-w-[800px] px-6">
           <Link
             href="/work"

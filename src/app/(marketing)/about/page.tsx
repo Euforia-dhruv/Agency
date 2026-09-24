@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DitherLabSection } from "@/components/marketing/dither-lab-section";
 import { AboutGradientWaves } from "@/components/marketing/about-gradient-waves";
+import { AboutDitherBg } from "@/components/marketing/about-dither-bg";
 
 export const metadata: Metadata = {
   title: "About — Web Development Agency | VENTRIEE",
@@ -30,6 +31,7 @@ const PRINCIPLES = [
 export default function AboutPage() {
   return (
     <div className="relative pt-[140px]">
+      <AboutDitherBg />
       <AboutGradientWaves />
 
       <section className="relative z-10 mx-auto max-w-[1200px] px-6 pb-32">

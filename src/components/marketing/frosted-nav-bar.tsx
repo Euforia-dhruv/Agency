@@ -10,6 +10,7 @@ import { Logo } from "@/components/logo";
 
 const INSTAGRAM_URL =
   "https://www.instagram.com/ventriee.in?stkn=ZDNlZDc0MzIxNw==";
+const LINKEDIN_URL = "https://www.linkedin.com/in/ventriee-weblabs-97632a421/";
 
 interface NavLink {
   readonly label: string;
@@ -315,6 +316,14 @@ export function FrostedNavBar({
                     className="font-sans text-xs text-steel transition-colors hover:text-almost-white"
                   >
                     Instagram
+                  </a>
+                  <a
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-sans text-xs text-steel transition-colors hover:text-almost-white"
+                  >
+                    LinkedIn
                   </a>
                 </div>
               </motion.div>
