@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 
 const socialLinks = [
-  { label: "GitHub", href: "https://github.com/Euforia-dhruv" },
   { label: "LinkedIn", href: "#" },
   { label: "Instagram", href: "#" },
 ];

@@ -11,7 +11,6 @@ import { Logo } from "@/components/logo";
 const SOCIAL_LINKS = [
   { label: "Instagram", href: "#" },
   { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "https://github.com/Euforia-dhruv" },
 ];
 
 interface NavLink {

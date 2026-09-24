@@ -22,7 +22,7 @@ export const PROJECTS: ProjectCard[] = [
   {
     slug: "gym-56",
     name: "Gym 56",
-    url: "https://gym-56.vercel.app/",
+    url: "https://gym56.cc.cd/",
     category: "Fitness Website",
     description: "Modern fitness and gym website with premium UI and smooth animations.",
     status: "Live",

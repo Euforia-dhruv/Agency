@@ -52,30 +52,30 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
     const defaultTestimonials = [
       {
         _id: "1",
-        author: "Sarah Chen",
+        author: "Shadev",
         role: "Founder",
-        company: "TechFlow",
+        company: "Donayan",
         rating: 5,
         quote:
-          "VENTRIEE delivered our SaaS platform ahead of schedule. The attention to detail and code quality exceeded our expectations.",
+          "VENTRIEE translated our advertising and production work into a portfolio that finally feels like us — bold, fast, and impossible to ignore.",
       },
       {
         _id: "2",
-        author: "Marcus Patel",
-        role: "CTO",
-        company: "DevHive",
+        author: "Mayur",
+        role: "Owner",
+        company: "Gym 56",
         rating: 5,
         quote:
-          "The best development experience we've had. Clear communication, premium design, and a product that just works.",
+          "The website looks premium and loads instantly. Members compliment it all the time — exactly the energy we wanted for Gym 56.",
       },
       {
         _id: "3",
-        author: "Aisha Rahman",
-        role: "Product Lead",
-        company: "ScaleKit",
+        author: "Dhruv Brahmbhatt",
+        role: "Founder",
+        company: "TechSc0ut",
         rating: 5,
         quote:
-          "From discovery to launch, the process was smooth and transparent. Our MVP was live in 6 weeks.",
+          "Sharp product thinking and clean execution. VENTRIEE is the team we trust to build TechSc0ut right.",
       },
     ];
     return <TestimonialsContent testimonials={defaultTestimonials} />;
