@@ -94,19 +94,23 @@ export function FrostedNavBar({
 
   return (
     <header
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "shadow-[0_1px_12px_rgba(0,0,0,0.3)] border-b border-white/[0.06]"
-          : "border-b border-transparent"
-      }`}
-      style={{
-        height: "clamp(64px, 8vw, 72px)",
-        background: "rgba(9, 9, 9, 0.75)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-      }}
+      className="fixed top-0 right-0 left-0 z-50"
+      style={{ height: "clamp(64px, 8vw, 72px)" }}
     >
-      <div className="mx-auto flex h-full max-w-[1280px] items-center px-4 sm:px-6">
+      <div
+        aria-hidden
+        className={`absolute inset-0 transition-all duration-300 ${
+          scrolled
+            ? "shadow-[0_1px_12px_rgba(0,0,0,0.3)] border-b border-white/[0.06]"
+            : "border-b border-transparent"
+        }`}
+        style={{
+          background: "rgba(9, 9, 9, 0.75)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+        }}
+      />
+      <div className="relative mx-auto flex h-full max-w-[1280px] items-center px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="shrink-0 transition-opacity hover:opacity-85" aria-label="Home">
           <Logo size="md" className="hidden sm:inline-flex" />
