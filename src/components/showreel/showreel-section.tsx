@@ -268,7 +268,6 @@ export function ShowreelSection({
                           <LivePreview
                             url={project.url}
                             title={project.name}
-                            active={activeIndex === index}
                             fill
                             className="h-full"
                           />

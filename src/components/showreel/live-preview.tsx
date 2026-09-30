@@ -6,17 +6,50 @@ import { cn } from "@/lib/utils";
 interface LivePreviewProps {
   url: string;
   title: string;
-  active?: boolean;
   fill?: boolean;
   className?: string;
 }
 
 const DESKTOP_WIDTH = 1440;
 
-export function LivePreview({ url, title, active, fill = false, className }: LivePreviewProps) {
+const preloaded = new Set<string>();
+
+function preloadPreview(url: string) {
+  if (typeof document === "undefined" || preloaded.has(url)) return;
+  preloaded.add(url);
+  const preconnect = document.createElement("link");
+  preconnect.rel = "preconnect";
+  preconnect.href = new URL(url).origin;
+  document.head.appendChild(preconnect);
+  const link = document.createElement("link");
+  link.rel = "preload";
+  link.as = "document";
+  link.href = url;
+  document.head.appendChild(link);
+}
+
+export function LivePreview({ url, title, fill = false, className }: LivePreviewProps) {
+  const [near, setNear] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [scale, setScale] = useState(1);
   const frameRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el || near) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          preloadPreview(url);
+          setNear(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [near, url]);
 
   useEffect(() => {
     const el = frameRef.current;
@@ -59,11 +92,10 @@ export function LivePreview({ url, title, active, fill = false, className }: Liv
         {!loaded && (
           <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-[#15121f] to-[#0c0c12]" />
         )}
-        {active !== false && (
+        {near && (
           <iframe
             src={url}
             title={`${title} live preview`}
-            loading="lazy"
             tabIndex={-1}
             aria-hidden="true"
             onLoad={() => setLoaded(true)}
