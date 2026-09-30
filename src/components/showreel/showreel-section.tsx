@@ -133,11 +133,9 @@ function ProjectCopy({ project, index }: { project: ShowreelProject; index: numb
 function StaticShowreelCard({
   project,
   index,
-  previewPriority,
 }: {
   project: ShowreelProject;
   index: number;
-  previewPriority: boolean;
 }) {
   return (
     <motion.article
@@ -154,10 +152,6 @@ function StaticShowreelCard({
         <LivePreview
           url={project.url}
           title={project.name}
-          previewMode={project.previewMode}
-          previewUrl={project.previewUrl}
-          accent={project.accent}
-          priority={previewPriority}
           className="lg:sticky lg:top-28"
         />
       </div>
@@ -274,11 +268,7 @@ export function ShowreelSection({
                           <LivePreview
                             url={project.url}
                             title={project.name}
-                            previewMode={project.previewMode}
-                            previewUrl={project.previewUrl}
-                            accent={project.accent}
                             active={activeIndex === index}
-                            priority={index === 0}
                             fill
                             className="h-full"
                           />
@@ -349,12 +339,7 @@ export function ShowreelSection({
       ) : (
         <div className="mx-auto max-w-[1280px] px-4 sm:px-6">
           {projects.map((project, index) => (
-            <StaticShowreelCard
-              key={project.slug}
-              project={project}
-              index={index}
-              previewPriority={index === 0}
-            />
+            <StaticShowreelCard key={project.slug} project={project} index={index} />
           ))}
         </div>
       )}
