@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { getScreenshotFallbacks, type PreviewMode } from "@/lib/showreel-preview";
 
@@ -16,6 +16,8 @@ interface LivePreviewProps {
   className?: string;
 }
 
+const DESKTOP_WIDTH = 1440;
+
 function screenshotSources(previewUrl: string | null | undefined, url: string): string[] {
   const sources: string[] = [];
   if (previewUrl) sources.push(previewUrl);
@@ -30,13 +32,38 @@ export function LivePreview({
   accent,
   priority = false,
   fill = false,
+  active,
   className,
 }: LivePreviewProps) {
   const [shotIndex, setShotIndex] = useState(0);
   const [shotFailed, setShotFailed] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [frameLoaded, setFrameLoaded] = useState(false);
+  const [scale, setScale] = useState(1);
+  const frameRef = useRef<HTMLDivElement>(null);
 
   const shots = useMemo(() => screenshotSources(previewUrl, url), [previewUrl, url]);
   const currentShot = shots[Math.min(shotIndex, shots.length - 1)];
+
+  const showFrame = inView && active !== false;
+
+  useEffect(() => {
+    const el = frameRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: "200px",
+    });
+    io.observe(el);
+    const ro = new ResizeObserver((entries) => {
+      const w = entries[0].contentRect.width;
+      if (w > 0) setScale(w / DESKTOP_WIDTH);
+    });
+    ro.observe(el);
+    return () => {
+      io.disconnect();
+      ro.disconnect();
+    };
+  }, []);
 
   return (
     <div
@@ -59,13 +86,14 @@ export function LivePreview({
           {url.replace(/^https?:\/\//, "")}
         </span>
         <span className="ml-auto shrink-0 rounded-full border border-white/10 bg-white/5 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-steel">
-          Snapshot
+          {frameLoaded ? "Live" : "Snapshot"}
         </span>
       </div>
 
       <div
+        ref={frameRef}
         className={cn(
-          "relative w-full",
+          "relative w-full overflow-hidden",
           fill ? "min-h-[220px] flex-1" : "aspect-[16/10]",
         )}
       >
@@ -104,6 +132,25 @@ export function LivePreview({
               Open live site ↗
             </a>
           </div>
+        )}
+
+        {showFrame && (
+          <iframe
+            src={url}
+            title={`${title} live preview`}
+            loading="lazy"
+            tabIndex={-1}
+            aria-hidden="true"
+            onLoad={() => setFrameLoaded(true)}
+            className="pointer-events-none absolute left-0 top-0 border-0 transition-opacity duration-700"
+            style={{
+              width: DESKTOP_WIDTH,
+              height: `${100 / scale}%`,
+              transform: `scale(${scale})`,
+              transformOrigin: "top left",
+              opacity: frameLoaded ? 1 : 0,
+            }}
+          />
         )}
       </div>
     </div>
