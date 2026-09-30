@@ -52,7 +52,7 @@ export function TestimonialsSection({ testimonials }: TestimonialsSectionProps) 
     const defaultTestimonials = [
       {
         _id: "1",
-        author: "Shadev",
+        author: "Doyana Shadev",
         role: "Founder",
         company: "Donayan",
         rating: 5,

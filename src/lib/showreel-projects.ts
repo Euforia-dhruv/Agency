@@ -71,7 +71,7 @@ const FACTS: ShowreelFacts[] = [
     slug: "donayan",
     tagline: "Portfolio for a Mumbai creative producer",
     summary:
-      "Personal site for Donayan Sahdev, Freelance Director's Assistant and Creative Producer — production log, searchable creative library, and multi-channel contact intake.",
+      "Personal site for Doyana Shadev, Freelance Director's Assistant and Creative Producer — production log, searchable creative library, and multi-channel contact intake.",
     highlights: [
       "Filterable production log / selected works archive",
       "Searchable creative library for decks, pitches, and treatments",

@@ -73,7 +73,7 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
   },
   donayan: {
     intro:
-      "A personal portfolio for Donayan Sahdev — freelance director's assistant and creative producer — where the work leads and everything else gets out of the way.",
+      "A personal portfolio for Doyana Shadev — freelance director's assistant and creative producer — where the work leads and everything else gets out of the way.",
     sections: [
       {
         badge: "Brief",
