@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { NAV_LINKS, GOOGLE_FORM_URL } from "@/lib/constants";
+import { NAV_LINKS, CONTACT_URL } from "@/lib/constants";
 import { Logo } from "@/components/logo";
 
 const INSTAGRAM_URL =
@@ -35,7 +35,7 @@ const menuItemVariants = {
 
 export function FrostedNavBar({
   ctaLabel = "Start Project",
-  ctaHref = GOOGLE_FORM_URL,
+  ctaHref = CONTACT_URL,
   links = NAV_LINKS,
 }: FrostedNavBarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);

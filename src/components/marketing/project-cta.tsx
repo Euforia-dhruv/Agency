@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Zap, Target, Shield, Sparkles } from "lucide-react";
-import { GOOGLE_FORM_URL } from "@/lib/constants";
+import { CONTACT_URL, WHATSAPP_URL } from "@/lib/constants";
 
 const cards = [
   {
@@ -59,8 +59,8 @@ export function ProjectCTA() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-4 max-w-xl font-sans text-[clamp(0.9375rem,1vw+0.25rem,1.125rem)] leading-relaxed text-steel"
         >
-          Tell us about your project. It only takes 2–3 minutes to complete our project
-          questionnaire.
+          Tell us about your project. Email us or message us on WhatsApp and we&apos;ll get back to
+          you within 24 hours.
         </motion.p>
 
         {/* Buttons */}
@@ -71,7 +71,7 @@ export function ProjectCTA() {
           className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center"
         >
           <a
-            href={GOOGLE_FORM_URL}
+            href={CONTACT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="group relative inline-flex h-[60px] w-full items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-gradient-to-r from-signal-violet to-[#8b3fdb] px-12 font-sans text-[15px] font-medium text-almost-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(175,80,255,0.4)] sm:w-auto"
@@ -85,6 +85,15 @@ export function ProjectCTA() {
             className="inline-flex h-[60px] w-full items-center justify-center whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-10 font-sans text-[15px] text-steel transition-all duration-300 hover:-translate-y-0.5 hover:border-almost-white/30 hover:text-almost-white sm:w-auto"
           >
             Email Us
+          </a>
+
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-[60px] w-full items-center justify-center whitespace-nowrap rounded-full border border-white/[0.12] bg-white/[0.03] px-10 font-sans text-[15px] text-steel transition-all duration-300 hover:-translate-y-0.5 hover:border-almost-white/30 hover:text-almost-white sm:w-auto"
+          >
+            WhatsApp +91 94294 09126
           </a>
         </motion.div>
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AnimatedSection } from "./animated-section";
-import { GOOGLE_FORM_URL } from "@/lib/constants";
+import { CONTACT_URL } from "@/lib/constants";
 
 export function CTASection() {
   return (
@@ -22,7 +22,7 @@ export function CTASection() {
         </p>
         <div className="mt-6 flex flex-col items-center gap-4 md:mt-8 sm:flex-row sm:justify-center">
           <a
-            href={GOOGLE_FORM_URL}
+            href={CONTACT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-[48px] items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-almost-white bg-near-black px-8 font-sans text-sm text-almost-white transition-all hover:bg-almost-white hover:text-near-black"

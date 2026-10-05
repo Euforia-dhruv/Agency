@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Globe } from "lucide-react";
 import { PROJECTS } from "@/lib/projects-data";
-import { GOOGLE_FORM_URL } from "@/lib/constants";
+import { CONTACT_URL } from "@/lib/constants";
 import { getCaseStudy } from "@/lib/case-studies";
 import { getWebsitePreview } from "@/lib/preview";
 import { CaseStudyTrace } from "@/components/marketing/case-study-trace";
@@ -132,7 +132,7 @@ export default async function CaseStudyPage({ params }: Props) {
             </div>
             <div className="flex flex-wrap gap-4">
               <a
-                href={GOOGLE_FORM_URL}
+                href={CONTACT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-[48px] items-center justify-center gap-2 rounded-[16px] bg-signal-violet px-6 font-sans text-sm font-medium text-almost-white transition-all hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(175,80,255,0.3)]"

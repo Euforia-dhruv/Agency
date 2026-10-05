@@ -8,8 +8,11 @@ export const NAV_LINKS = [
 
 export const SITE_NAME = "VENTRIEE";
 
-export const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdw4IlcSamgm0OX-hQ-oG8ZdROOXnBV7JsohBDIcNex98Zsfw/viewform?usp=sharing&ouid=104155249190921591426";
+export const CONTACT_EMAIL = "ventriee.contact@gmail.com";
+export const CONTACT_URL = `mailto:${CONTACT_EMAIL}`;
+
+export const WHATSAPP_NUMBER = "9429409126";
+export const WHATSAPP_URL = `https://wa.me/91${WHATSAPP_NUMBER}`;
 
 export const CTA_LABEL = "Start Project";
-export const CTA_HREF = GOOGLE_FORM_URL;
+export const CTA_HREF = CONTACT_URL;

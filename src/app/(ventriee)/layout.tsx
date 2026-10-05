@@ -1,6 +1,6 @@
 import { FrostedNavBar } from "@/components/marketing/frosted-nav-bar";
 import { Footer } from "@/components/marketing/footer";
-import { GOOGLE_FORM_URL } from "@/lib/constants";
+import { CONTACT_URL } from "@/lib/constants";
 
 const VENTRIEE_LINKS = [
   { label: "Home", href: "/" },
@@ -12,7 +12,7 @@ const VENTRIEE_LINKS = [
 export default function VentrieeLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <FrostedNavBar ctaLabel="Start a Project" ctaHref={GOOGLE_FORM_URL} links={VENTRIEE_LINKS} />
+      <FrostedNavBar ctaLabel="Start a Project" ctaHref={CONTACT_URL} links={VENTRIEE_LINKS} />
       <main id="main-content" className="flex-1">{children}</main>
       <Footer />
     </>

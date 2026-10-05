@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
+import { WHATSAPP_URL } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -89,6 +90,14 @@ export function Footer() {
                 className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
               >
                 ventriee.contact@gmail.com
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-sans text-sm text-almost-white transition-colors hover:text-signal-violet"
+              >
+                WhatsApp: +91 94294 09126
               </a>
             </div>
           </div>

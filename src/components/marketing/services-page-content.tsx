@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { ProjectCTA } from "./project-cta";
 import { ServicesMoltenMetal } from "./services-molten-metal";
-import { GOOGLE_FORM_URL } from "@/lib/constants";
+import { CONTACT_URL } from "@/lib/constants";
 
 const SERVICES = [
   {
@@ -160,7 +160,7 @@ export function ServicesPageContent() {
             className="mt-8 flex flex-wrap items-center gap-4"
           >
             <a
-              href={GOOGLE_FORM_URL}
+              href={CONTACT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex min-h-[52px] items-center justify-center gap-2 whitespace-nowrap rounded-full bg-signal-violet px-8 font-sans text-sm font-medium text-almost-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_28px_rgba(175,80,255,0.45)]"

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GOOGLE_FORM_URL } from "@/lib/constants";
+import { CONTACT_URL } from "@/lib/constants";
 
 export function VentrieeHero() {
   return (
@@ -21,7 +21,7 @@ export function VentrieeHero() {
           </p>
           <div className="mt-10 flex items-center gap-4">
             <a
-              href={GOOGLE_FORM_URL}
+              href={CONTACT_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg border border-almost-white bg-near-black px-6 py-3 font-sans text-base font-normal text-almost-white transition-all hover:bg-almost-white hover:text-near-black"
