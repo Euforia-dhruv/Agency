@@ -107,6 +107,16 @@ export function Footer() {
           <p className="font-sans text-xs text-steel">
             &copy; {year} VENTRIEE. All rights reserved.
           </p>
+          <Link
+            href="https://ventriee.in"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 font-sans text-xs text-steel transition-colors hover:text-signal-violet"
+            aria-label="Designed and developed by Ventriee"
+          >
+            Designed &amp; Developed by
+            <Logo size="sm" className="scale-90 origin-right" />
+          </Link>
         </div>
       </div>
     </footer>
