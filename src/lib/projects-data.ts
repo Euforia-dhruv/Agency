@@ -45,6 +45,15 @@ export const PROJECTS: ProjectCard[] = [
     status: "Live",
   },
   {
+    slug: "7greens",
+    name: "7 Greens Solar Systems",
+    url: "https://www.7greens.in/",
+    category: "Solar Energy Website",
+    description:
+      "Corporate site for an ISO-certified Mumbai solar EPC company — rooftop, water heater, and LED solutions with quote capture.",
+    status: "Live",
+  },
+  {
     slug: "techsc0ut",
     name: "TechSc0ut",
     url: "https://techsc0ut.vercel.app/",

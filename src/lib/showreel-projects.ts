@@ -115,6 +115,29 @@ const FACTS: ShowreelFacts[] = [
     previewMode: "screenshot",
   },
   {
+    slug: "7greens",
+    tagline: "Mumbai solar EPC company site",
+    summary:
+      "Marketing site for Seven Greens Solar Systems — ISO 9001:2015 certified solar EPC company serving homes, societies, factories, and government campuses across Mumbai.",
+    highlights: [
+      "Service-led IA: solar rooftop, water heaters, and LED solutions",
+      "Quote request funnel with phone and WhatsApp CTAs",
+      "ISO certification and project credibility sections",
+      "Head office location, map, and business hours",
+      "Enquiry form with lead capture for residential and industrial queries",
+      "SEO structured for Mumbai solar installers search intent",
+    ],
+    tech: [
+      "Next.js App Router",
+      "Tailwind CSS",
+      "SEO",
+      "Lead capture",
+      "Google Maps",
+    ],
+    accent: "#16A34A",
+    previewMode: "screenshot",
+  },
+  {
     slug: "techsc0ut",
     tagline: "Custom PC builder (work in progress)",
     summary:

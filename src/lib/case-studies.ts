@@ -131,6 +131,36 @@ export const CASE_STUDIES: Record<string, CaseStudy> = {
     ],
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "SEO", "Lead Capture"],
   },
+  "7greens": {
+    intro:
+      "A corporate site for Seven Greens Solar Systems — an ISO 9001:2015 certified solar EPC company in Mumbai — built to turn technical capability into enquiries.",
+    sections: [
+      {
+        badge: "Brief",
+        title: "Make 15 years of solar work legible online.",
+        paragraphs: [
+          "Seven Greens designs, engineers, and maintains solar installations for homes, housing societies, factories, and government campuses. The old presence buried that range — services were hard to scan and enquiries had nowhere to go.",
+          "The site had to read as credible to a facility manager evaluating an EPC partner and simple enough for a homeowner wanting a rooftop quote.",
+        ],
+      },
+      {
+        badge: "Approach",
+        title: "Services first, proof close behind.",
+        paragraphs: [
+          "We structured the site around what people search for — rooftop solar, water heaters, LED solutions — with each service explained in plain language and routed to a quote request.",
+          "ISO certification, project scale, and contact paths (form, phone, WhatsApp, map) were placed where intent peaks, so a visitor never has to hunt for the next step.",
+        ],
+      },
+      {
+        badge: "Outcome",
+        title: "A site that generates enquiries, not just visits.",
+        paragraphs: [
+          "7 Greens went live with a clear service narrative, fast mobile performance, and a quote funnel wired for both residential and industrial leads — a digital front door matching its Bandra East office.",
+        ],
+      },
+    ],
+    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "SEO", "Lead Capture"],
+  },
   techsc0ut: {
     intro:
       "A custom PC builder web app — component catalogs, compatibility checking, comparison, and shareable builds — currently in development.",
