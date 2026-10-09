@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Logo } from "@/components/logo";
 import { WHATSAPP_URL } from "@/lib/constants";
 
@@ -115,7 +116,13 @@ export function Footer() {
             aria-label="Designed and developed by Ventriee"
           >
             Designed &amp; Developed by
-            <Logo size="sm" className="scale-90 origin-right" />
+            <Image
+              src="/ventriee-emblem.png"
+              alt="VENTRIEE"
+              width={18}
+              height={18}
+              className="h-[18px] w-[18px] object-contain"
+            />
           </Link>
         </div>
       </div>
