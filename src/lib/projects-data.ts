@@ -11,15 +11,6 @@ export interface ProjectCard {
 
 export const PROJECTS: ProjectCard[] = [
   {
-    slug: "ramagya-sports-academy",
-    name: "Ramagya Sports Academy",
-    url: "https://ramagyasportsacademy.com/",
-    category: "Sports Academy",
-    description:
-      "Enterprise website for one of India's leading sports academies with modern UI and CMS.",
-    status: "Live",
-  },
-  {
     slug: "gym-56",
     name: "Gym 56",
     url: "https://gym56.cc.cd/",

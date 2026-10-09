@@ -11,36 +11,6 @@ export interface CaseStudy {
 }
 
 export const CASE_STUDIES: Record<string, CaseStudy> = {
-  "ramagya-sports-academy": {
-    intro:
-      "An enterprise-grade web presence for one of India's leading sports academies — structured for scale, built for coaches, parents, and athletes alike.",
-    sections: [
-      {
-        badge: "Brief",
-        title: "A digital home worthy of the academy.",
-        paragraphs: [
-          "Ramagya Sports Academy needed more than a brochure site. Programs, squads, facilities, and achievements all had to live in one place — easy to browse on a phone from the sidelines, credible enough for partnerships and press.",
-          "The brief called for a modern interface backed by a CMS the academy team could actually run, without calling a developer every time a schedule changed.",
-        ],
-      },
-      {
-        badge: "Approach",
-        title: "Information architecture first, polish second.",
-        paragraphs: [
-          "We mapped the journeys that matter — a parent evaluating programs, an athlete checking training tracks, a partner scanning results — and built the navigation and page templates around those goals.",
-          "A component-driven UI system kept the experience consistent across long content pages, while the CMS layer let the academy publish updates, galleries, and announcements independently.",
-        ],
-      },
-      {
-        badge: "Outcome",
-        title: "Live, modern, and maintainable.",
-        paragraphs: [
-          "The site launched with a clean, contemporary interface and a content model the academy controls day to day. Program discovery is straightforward, the brand reads at enterprise level, and the platform is ready to grow with new sports and seasons.",
-        ],
-      },
-    ],
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "CMS"],
-  },
   "gym-56": {
     intro:
       "A premium fitness website engineered to feel as considered as the training floor — smooth motion, sharp UI, zero clutter.",

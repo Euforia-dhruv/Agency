@@ -23,8 +23,8 @@ const capabilities: Capability[] = [
     technologies: ["Figma", "Framer", "Prototyping", "Design Systems"],
     ctaLabel: "View Web Design Work",
     ctaHref: "/work",
-    caseStudyLabel: "Case Study: Ramagya Sports Academy",
-    caseStudyHref: "/work/ramagya-sports-academy",
+    caseStudyLabel: "Case Study: Donayan",
+    caseStudyHref: "/work/donayan",
   },
   {
     title: "Web Development",

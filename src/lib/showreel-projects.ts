@@ -19,31 +19,6 @@ export interface ShowreelProject extends Omit<ProjectCard, "previewUrl">, Showre
 
 const FACTS: ShowreelFacts[] = [
   {
-    slug: "ramagya-sports-academy",
-    tagline: "Noida multi-sport academy platform",
-    summary:
-      "Marketing and lead-gen site for Ramagya Sports Academy — deep sports navigation, appointment booking, payment hand-off, and a content program covering blogs, events, and achievements.",
-    highlights: [
-      "Mega-menu across indoor and outdoor sports programs",
-      "Calendly staff appointment booking and external Pay & Play checkout",
-      "Enquiry form with sport multi-select and source attribution",
-      "Blog, events, and achievements sitemaps (content-managed publishing)",
-      "Hero video carousel with DigitalOcean Spaces CDN delivery",
-      "GA4 analytics and schema.org structured data",
-    ],
-    tech: [
-      "Next.js App Router",
-      "Tailwind CSS",
-      "Swiper",
-      "Lenis",
-      "Cloudflare",
-      "DigitalOcean Spaces",
-      "Google Analytics 4",
-    ],
-    accent: "#DC2626",
-    previewMode: "screenshot",
-  },
-  {
     slug: "gym-56",
     tagline: "Premium fitness site for Gandhinagar",
     summary:
