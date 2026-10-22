@@ -71,6 +71,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
+    other: {
+      "dmca-site-verification": "S1NETVBFelhxRk9UMkpQMWkrV2IxQT090",
+    },
   },
 };
 
